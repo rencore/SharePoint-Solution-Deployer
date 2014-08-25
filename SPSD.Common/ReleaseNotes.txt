@@ -1,0 +1,102 @@
+###############################################################################
+# SharePoint Solution Deployer (SPSD)
+# Version          : 5.0.3.6439
+# Url              : http://spsd.codeplex.com
+# Creator          : Matthias Einig, RENCORE AB, http://twitter.com/mattein
+# License          : MS-PL
+# File             : ReleaseNotes.txt
+###############################################################################
+
+Important: Make sure to "Unblock" the zip file before extracting. 
+Otherwise you have to unblock each bat, ps1 and exe file one by one to get the SPSD running.
+
+v5.0.3.6439
+- Fixed CP16809: Error at Register-Extensions when running with PowerShell 2.0
+
+v5.0.3.6438
+- New: SPSD now has an extension system which allow you to create your custom PowerShell extensions and integrate them in the deployment process!
+- New: Added and example extension
+- New: Environment file can now be passed as parameter to the batch files
+- New: Added timstamps to better measure execution time
+- New: Added new deployment command "Ask" which asks the user for the desired deployment.
+- New CP16167: SPSD now works also when run though an application (e.g. console app), output will be just logged into the log file
+- New: Countdown after deployment until windows closes
+- Updated: SharePointVersions.xml to include new SharePoint versions for SP2010/SP2013
+- Changed: Renamed CustomTarget SkipSolution to ProcessSolution
+- Changed: Stability improvments
+- Changed: Memory disposal improvements
+- Changed; 
+- Fixed CP16490: Incompatible with Powershell 4.0 due to switch statements
+- Fixed CP16441: Compatibility Level ignored for global deploys
+- Fixed: CloseAllPSSessions had unused parameter in signature
+- Fixed: Startup in batch with relative path when not running from cmdline was failing when user UAC was enabled
+
+v4.2.1.2349 (2013-08-27)
+- Changed license from GPLv2 to MS-PL
+- Updated SharePointVersions.xml to include new SharePoint versions for SP2010/SP2013
+- Updated Environment XML schema, existing environments files can be used by updating the version of the SPSD node to 4.2.1.2349
+- New attributes for CompatibilityLevel, RequiredSharePointLanguages are currently not maintained with SPSD Environment Editor
+- New CP16175: Custom target "RunCustomPrerequisites": Use this target to run commands after the environment XML is loaded and before the preconditions are checked. 
+- New CP16175: Custom target "CheckCustomPreconditions": Use this target to run commands after all out-of-the-box precondition checks have been passed successfully.
+- New CP16175: Custom target "Initialize": Use this target to perform commands after all precondition checks were successful and before any deploy/update/retract action is started. 
+- New CP16175: Custom target "Finalize": Use this target to perform commands at the very end before the deployment summary is shown. (runs also in case of an exception)(runs also in case of an exception)
+- New CP16176: Custom target "SkipSolution": Use this target to skip a solution based on your own conditions or perform any custom command before the deployment step takes place. It will be run once for each solution for each deployment command.
+- New CP16383: Prerequisite check for required Language Packs installed on the farm
+- New CP16142: Allow adding SharePoint CompatibilityLevel Parameter (14,15) to each specified farm solution node in the xml. (only SP2013)
+- New CP16252: Colorize final status message
+- New: Custom AppLogo/ProductInfo can be added by changing /scripts/AppLogo.txt
+- Fixed CP16026: Starting the script failed when running SPSD from a path with spaces
+- Fixed CP16326: SPSD on Sharepoint 2010 cant run because of framework 4?
+- Fixed CP16333: Deployment to multiple web applications
+- Fixed CP16220: Issues with redeploying sandboxed solutions
+- Fixed: Retraction error when there was still a previous deployment job running
+- Fixed: Only write Transcript in PSConsole to avoid error in ISE
+- Updated help for custom events in CustomTarget.ps1
+- Changed logtype "Verbose" to "Normal", removed "VerboseExtended", added Success
+
+v4.1.1.2346 (2013-02-01)
+- Fixed: Bug in editor which prevented from saving to a new file
+- Fixed: Bug in editor: Save as file dialog uses now same location as where the file was opened before
+- Fixed: Bug in editor: Browsing for files to be references used the wrong source directory
+- Fixed (CP15991): Bug in editor: Configuration -> Actions -> Warmup -> All Sites was always checked if attribute was specified in the XML (even though it was false)
+- Fixed: Bug in Editor: Environment -> Solutions/Prerequisite Solutions -> Saving custom defined solutions without having URLs specified caused NullPointerException
+- Fixed: Method SPSD_Utilities:ReplaceBooleans made more robust
+- Fixed: Bug in SPSD_Utilities:ReplaceUserVars when Comments in the variables section caused an exception
+- Fixed: Bug in SPSD_Utilities:ReplaceVariables when user variables wern't resolved when reused in other user variables
+- Fixed: Bug in SPSD_Deployment:CheckSPMinimalLicense when property was set to Standard but Enterprise was installed
+- Fixed: Bug in SPSD_Deployment:GetSolutions if only one solution was configured in the environment XML
+- New feature (CP15981): Added optional parameter to PS script allowing to configure an alternative location for the solutions files (thx to tommykri). Can be set in the batch files or when calling SPSD_Main.ps1 directly. Works both with relative or absolute paths.
+- New feature (CP15984): Include Central Administation web application on retraction if bin solution has been deployed to it
+- Fixed (CP15979): Bug when deploying farm solutions to specific web application urls on SP2010
+- Fixed (CP15980): Error when loading external environment node with only one external node specified on SP2010
+- Fixed: Bug exception if no variables have been defined in the environment XML
+- Fixed: Issue in summary at the very end of the deployment, when the environment script filepath was to long to fit into the * box
+- Changed: Changed some variable assignment for better automated testing of the script
+- Changed: Logfile timestamp now with seconds
+
+v4.1.1.2346 (2013-01-17)
+- Fixed: Reusing remote PSSessions instead of opening new ones
+- Fixed: Bypass local cache when warming up urls
+- Changed: Better error summary if deployment fails, detailled summary will be saved in separate log file
+
+v4.1.0.5292 (2013-01-14)
+- New  : Environment XML file editor, which allows you to configure your deployment configuration conveniently
+- Fixed: Bug when resetting IIS on multiple servers in farm
+- Fixed: Bug when warming up all site collections
+- Fixed: Bug when loading nodes from external environment files on SP2010 machines
+- Changed: Setting "IncludeAllServersInFarm" to "RunOnMultipleServersInFarm" and allow it to be set to "OnlyLocal", "All", "WebFrontEnd" or "Application" 
+- Changed: Moved SharePoint versions and licenses lookup data into separate XML file which can be updated easier. The most recent XML file can always be retrieved from http://www.matthiaseinig.de/files/SharePointVersions.xml
+- Refactoring / code cleanup
+- Minor bugfixes
+
+v4.0.3.8989 (2012-12-18)
+- Fixed: Bug with AllowCASPolicy/AllowTrustBindeployment switch in SP15 
+
+v4.0.3.8623 (2012-11-28)
+- Updated: Added upport for SP2013 RTM and latest SP2010 CU 
+
+v4.0.3.2932 (2012-08-08)
+- Initial Release of SPSD rewritten in PowerShell
+
+v.3.2 (2012-02-13)
+- Last release of SPSD based on MSBuild

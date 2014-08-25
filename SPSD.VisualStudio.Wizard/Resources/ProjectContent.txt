@@ -1,0 +1,25 @@
+
+
+  <!-- The following content has been added by SharePoint Application Deployer -->
+  <PropertyGroup xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <BaseDir Condition="Exists('$(MSBuildProjectDirectory)')">$(MSBuildProjectDirectory)\..\</BaseDir>
+    <BaseDir Condition="!Exists('$(MSBuildProjectDirectory)')">$(SolutionDir)</BaseDir>
+    <SolutionTargetFolder>SandboxedSolutions</SolutionTargetFolder>
+    <SolutionTargetFolder Condition="'$(SandboxedSolution)' == 'False'">Solutions</SolutionTargetFolder>
+    <DropLocation>$(BaseDir)[NameOfSolutionDeploymentProject]\Output\$(Configuration)</DropLocation>
+    <SPSFDropLocation>$(DropLocation)\$(BuildNumber)\</SPSFDropLocation>
+  </PropertyGroup>  
+  <Target Name="CopyWSPToDeploymentFolder" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <CreateItem Include="$(OutDir)\$(TargetName).wsp">
+      <Output TaskParameter="Include" ItemName="WSPFile" />
+    </CreateItem>
+    <Message Condition="'@(WSPFile)' != ''" Text="Application Deployer: Copying '@(WSPFile)' to '$(SPSFDropLocation)\$(SolutionTargetFolder)'" Importance="high" />
+    <Copy Condition="'@(WSPFile)' != ''" SourceFiles="@(WSPFile)" DestinationFolder="$(SPSFDropLocation)\$(SolutionTargetFolder)\%(RecursiveDir)" SkipUnchangedFiles="false" />
+    <Message Text="Find deployment package here: $(SPSFDropLocation)" Importance="high" />
+    <Message Text=" " Importance="high" />
+  </Target>
+  <Target Name="AfterBuild" DependsOnTargets="$(AfterBuildDependsOn)" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" />
+  <PropertyGroup xmlns="http://schemas.microsoft.com/developer/msbuild/2003">    
+    <AfterBuildDependsOn>$(AfterBuildDependsOn);CreatePackage;CopyWSPToDeploymentFolder</AfterBuildDependsOn>
+  </PropertyGroup>
+

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- SPSD WSO Targets -->
+  <!-- This file needs to be integrated in each .csproj file of a SharePoint farm solution in order to package the WSP on build -->
+  <!-- The Deploymentproject must have project dependencies to all of these projects in order to build and package before createing the SPSD package -->
+  <!-- Author: Matthias Einig, RENCORE AB -->
+  <!-- SPSD Version 5.0.1.6438 -->
+
+  <PropertyGroup Condition=" '$(Configuration)' != 'Release'">
+    <!-- Set parameters for packaging -->
+    <IsPackaging>true</IsPackaging>
+    <IsDebugging>true</IsDebugging>
+  </PropertyGroup>
+
+  <Target Name="AfterBuild">
+    <CallTarget Targets="CreatePackage" />
+  </Target>
+</Project>

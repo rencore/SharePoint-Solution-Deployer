@@ -1,0 +1,10 @@
+###############################################################################
+# SharePoint Solution Deployer (SPSD)
+# Version          : 5.0.3.6439
+# Url              : http://spsd.codeplex.com
+# Creator          : Matthias Einig, RENCORE AB, http://twitter.com/mattein
+# License          : MS-PL
+# File			   : DropYouSolutionsHere.txt
+###############################################################################
+
+Please drop all your 3rd party .WSP files, which you want to deploy along with your project with SPSD into this folder.

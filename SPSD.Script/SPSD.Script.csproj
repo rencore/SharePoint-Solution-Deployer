@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9A7FBDC7-769F-4E86-9F5F-F74C3B799770}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SPSD.Script</RootNamespace>
+    <AssemblyName>SPSD.Script</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="Batches\Deploy.bat" />
+    <None Include="Batches\Redeploy.bat" />
+    <None Include="Batches\Retract.bat" />
+    <None Include="Batches\RunOnlyExtensions.bat" />
+    <None Include="Batches\Update.bat" />
+    <None Include="Scripts\CustomTargets.ps1" />
+    <None Include="Scripts\Extensions\Example\Example.ps1" />
+    <None Include="Scripts\SPSD_Base.ps1" />
+    <None Include="Scripts\SPSD_Deployment.ps1" />
+    <None Include="Scripts\SPSD_Extensions.ps1" />
+    <None Include="Scripts\SPSD_Main.ps1" />
+    <None Include="Scripts\SPSD_Staging.ps1" />
+    <None Include="Scripts\SPSD_Utilities.ps1" />
+    <None Include="Packaging.targets" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\SPSD.Common\SharePointVersions.xml">
+      <Link>Scripts\SharePointVersions.xml</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Environments\Default.xml" />
+    <Content Include="Environments\DefaultNoComments.xml" />
+    <Content Include="Environments\Extensions\Example.xml" />
+    <Content Include="RootFiles\HowToExtendSPSD.txt" />
+    <Content Include="RootFiles\Readme.txt" />
+    <Content Include="RootFiles\ReleaseNotes.txt" />
+    <Content Include="Scripts\AppLogo.txt" />
+    <Content Include="Scripts\Extensions\Example\manifest.xml" />
+    <Content Include="Scripts\Extensions\HowToCreateExtensions.txt" />
+    <Content Include="Solutions\DropYouSolutionsHere.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="Packaging.targets" />
+</Project>

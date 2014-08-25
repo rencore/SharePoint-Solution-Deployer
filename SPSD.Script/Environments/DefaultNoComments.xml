@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SPSD Version="5.0.3.6439">
+  <Configuration ID="Default">
+    <Settings>
+      <DeploymentRetries>3</DeploymentRetries>
+      <DeploymentTimeout>60000</DeploymentTimeout>
+      <RunOnMultipleServersInFarm>OnlyLocal</RunOnMultipleServersInFarm>
+      <WaitAfterDeployment>10000</WaitAfterDeployment>
+      <DisplayWizards>false</DisplayWizards>
+      <CreateULSLogfile>false</CreateULSLogfile>
+    </Settings>
+
+    <Restrictions>
+      <AllowGACDeployment>true</AllowGACDeployment>
+      <AllowCASPolicies>true</AllowCASPolicies>
+      <AllowFullTrustBinDeployment>true</AllowFullTrustBinDeployment>
+      <MinimalSharePointVersion>14.0.0.0</MinimalSharePointVersion>
+      <MinimalSharePointLicense>Foundation</MinimalSharePointLicense>
+      <RequiredSharePointLanguages>
+			  <SharePointLanguage LCID="$(LCID)" />
+	  </RequiredSharePointLanguages>
+    </Restrictions>
+
+    <Actions AfterDeploy="true" AfterRetract="true" AfterUpdate="true">
+      <RestartService Name="SPTimerV4" Force="false" />
+      <RestartService Name="SPAdminV4" Force="false" />
+      <RestartService Name="SPUserCodeV4" Force="false" />
+      <ResetIIS Force="false" />
+      <WarmUpUrls AllWebApps="true" AllSites="false"></WarmUpUrls>
+    </Actions>
+  </Configuration>
+
+  <Environment ID="Default">
+    <Variables ID="Default">
+      <Variable Name="UserID">$(env:USERDOMAIN)\$(env:USERNAME)</Variable>
+      <Variable Name="WebAppUrl">http://$(env:COMPUTERNAME).$(env:USERDNSDOMAIN)</Variable>
+      <Variable Name="SiteUrl">http://$(env:COMPUTERNAME).$(env:USERDNSDOMAIN)/sites/TestSite</Variable>
+      <Variable Name="LCID">1033</Variable>
+    </Variables>
+    <PreRequisiteSolutions ID="Default"></PreRequisiteSolutions>
+    <Solutions ID="Default" Force="true" Overwrite="true"></Solutions>
+  </Environment>
+
+  <Extensions ID="Default">
+    <Extension ID="ExampleInstance1" Type="Example" FilePath="Extensions\Example.xml" />
+  </Extensions>
+</SPSD>

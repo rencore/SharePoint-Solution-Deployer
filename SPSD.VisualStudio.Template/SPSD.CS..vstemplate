@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
+  <TemplateData>
+    <Name>SharePoint Solution Deployer (SPSD)</Name>
+    <Description>A project template for SharePoint projects to generate an installation package which can be deployed to remote SharePoint farms.</Description>
+    <Icon>SPSD.ico</Icon>
+    <ProjectType>CSharp</ProjectType>
+    <RequiredFrameworkVersion>2.0</RequiredFrameworkVersion>
+    <TemplateID>424aed64-26e9-4eb6-878c-f4db32f48295</TemplateID>
+    <CreateNewFolder>true</CreateNewFolder>
+    <CreateInPlace>true</CreateInPlace>
+    <DefaultName>Deployment</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <PromptForSaveOnCreation>true</PromptForSaveOnCreation>
+    <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+    <PreviewImage>SPSD.png</PreviewImage>
+    <SortOrder>9890</SortOrder>
+  </TemplateData>
+  <TemplateContent>
+    <Project File="ProjectTemplate.csproj" ReplaceParameters="true">
+      <Folder Name="Environments" TargetFolderName="Environments">
+        <ProjectItem ReplaceParameters="true" TargetFileName=">Default.xml">Default.xml</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName=">DefaultNoComments.xml">DefaultNoComments.xml</ProjectItem>
+      </Folder>
+      <Folder Name="Environments\Extensions" TargetFolderName="Environments\Extensions">
+        <ProjectItem ReplaceParameters="true" TargetFileName=">Example.xml">Example.xml</ProjectItem>
+      </Folder>
+      <Folder Name="Scripts" TargetFolderName="Scripts">
+        <ProjectItem ReplaceParameters="false" TargetFileName="AppLogo.txt">AppLogo.txt</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="CustomTargets.ps1">CustomTargets.ps1</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="SharePointVersions.xml">SharePointVersions.xml</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="SPSD_Base.ps1">SPSD_Base.ps1</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="SPSD_Deployment.ps1">SPSD_Deployment.ps1</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="SPSD_Extensions.ps1">SPSD_Extensions.ps1</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="SPSD_Main.ps1">SPSD_Main.ps1</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="SPSD_Staging.ps1">SPSD_Staging.ps1</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="SPSD_Utilities.ps1">SPSD_Utilities.ps1</ProjectItem>
+      </Folder>
+      <Folder Name="Scripts\Extensions" TargetFolderName="Scripts\Extensions">
+        <ProjectItem ReplaceParameters="false" TargetFileName="HowToCreateExtensions.txt">HowToCreateExtensions.txt</ProjectItem>
+      </Folder>
+      <Folder Name="Scripts\Extensions\Example" TargetFolderName="Scripts\Extensions\Example">
+        <ProjectItem ReplaceParameters="false" TargetFileName="Example.ps1">Example.ps1</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="manifest.xml">manifest.xml</ProjectItem>
+      </Folder>
+
+      <Folder Name="Batches" TargetFolderName="Batches">
+        <ProjectItem ReplaceParameters="false" TargetFileName="Deploy.bat">Deploy.bat</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="Update.bat">Update.bat</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="Retract.bat">Retract.bat</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="Redeploy.bat">Redeploy.bat</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="RunOnlyExtensions.bat">RunOnlyExtensions.bat</ProjectItem>
+      </Folder>
+      <Folder Name="Solutions" TargetFolderName="Solutions">
+        <ProjectItem ReplaceParameters="false" TargetFileName="3rdPartySolutions.txt">3rdPartySolutions.txt</ProjectItem>
+      </Folder>
+      <Folder Name="RootFiles" TargetFolderName="">
+        <ProjectItem ReplaceParameters="false" TargetFileName="HowToExtendSPSD.txt">HowToExtendSPSD.txt</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="Readme.txt">Readme.txt</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="ReleaseNotes.txt">ReleaseNotes.txt</ProjectItem>
+      </Folder>
+      <Folder Name="Build" TargetFolderName="Build">
+        <ProjectItem ReplaceParameters="false" TargetFileName="GitSPSDContinousDeploymentTemplate.12.xaml">GitSPSDContinousDeploymentTemplate.12.xaml</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="SPSD.targets">SPSD.targets</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="WSPProjectInclude.targets">WSPProjectInclude.targets</ProjectItem>
+      </Folder>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

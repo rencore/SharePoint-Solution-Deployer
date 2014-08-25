@@ -1,0 +1,1631 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter"
+                  Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema"
+                  xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Solution" msprop:Generator_TableClassName="SolutionDataTable"
+              msprop:Generator_TableVarName="tableSolution" msprop:Generator_RowChangedName="SolutionRowChanged"
+              msprop:Generator_TablePropName="Solution" msprop:Generator_RowDeletingName="SolutionRowDeleting"
+              msprop:Generator_RowChangingName="SolutionRowChanging"
+              msprop:Generator_RowEvHandlerName="SolutionRowChangeEventHandler"
+              msprop:Generator_RowDeletedName="SolutionRowDeleted" msprop:Generator_RowClassName="SolutionRow"
+              msprop:Generator_UserTableName="Solution" msprop:Generator_RowEvArgName="SolutionRowChangeEvent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="SiteCollection" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="WebApplication" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+      <xs:attribute name="Name" msprop:Generator_ColumnVarNameInTable="columnName"
+                    msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn"
+                    msprop:Generator_UserColumnName="Name" type="xs:string" />
+      <xs:attribute name="Force" msprop:Generator_ColumnVarNameInTable="columnForce"
+                    msprop:Generator_ColumnPropNameInRow="Force" msprop:Generator_ColumnPropNameInTable="ForceColumn"
+                    msprop:Generator_UserColumnName="Force" type="xs:boolean" />
+      <xs:attribute name="Overwrite" msprop:Generator_ColumnVarNameInTable="columnOverwrite"
+                    msprop:Generator_ColumnPropNameInRow="Overwrite"
+                    msprop:Generator_ColumnPropNameInTable="OverwriteColumn"
+                    msprop:Generator_UserColumnName="Overwrite" type="xs:boolean" />
+      <xs:attribute name="PreRequisiteSolutions_Id"
+                    msprop:Generator_ColumnVarNameInTable="columnPreRequisiteSolutions_Id"
+                    msprop:Generator_ColumnPropNameInRow="PreRequisiteSolutions_Id"
+                    msprop:Generator_ColumnPropNameInTable="PreRequisiteSolutions_IdColumn"
+                    msprop:Generator_UserColumnName="PreRequisiteSolutions_Id" type="xs:int" use="prohibited" />
+      <xs:attribute name="Solutions_Id" msprop:Generator_ColumnVarNameInTable="columnSolutions_Id"
+                    msprop:Generator_ColumnPropNameInRow="Solutions_Id"
+                    msprop:Generator_ColumnPropNameInTable="Solutions_IdColumn"
+                    msprop:Generator_UserColumnName="Solutions_Id" type="xs:int" use="prohibited" />
+      <xs:attribute name="Solution_Id_0" msdata:AutoIncrement="true"
+                    msprop:Generator_ColumnVarNameInTable="columnSolution_Id_0"
+                    msprop:Generator_ColumnPropNameInRow="Solution_Id_0"
+                    msprop:Generator_ColumnPropNameInTable="Solution_Id_0Column"
+                    msprop:Generator_UserColumnName="Solution_Id_0" type="xs:int" msdata:AllowDBNull="false"
+                    use="prohibited" />
+      <xs:attribute name="PreRequisiteSolutions_Id_0"
+                    msprop:Generator_ColumnVarNameInTable="columnPreRequisiteSolutions_Id_0"
+                    msprop:Generator_ColumnPropNameInRow="PreRequisiteSolutions_Id_0"
+                    msprop:Generator_ColumnPropNameInTable="PreRequisiteSolutions_Id_0Column"
+                    msprop:Generator_UserColumnName="PreRequisiteSolutions_Id_0" type="xs:int" use="prohibited" />
+      <xs:attribute name="Solutions_Id_0" msprop:Generator_ColumnVarNameInTable="columnSolutions_Id_0"
+                    msprop:Generator_ColumnPropNameInRow="Solutions_Id_0"
+                    msprop:Generator_ColumnPropNameInTable="Solutions_Id_0Column"
+                    msprop:Generator_UserColumnName="Solutions_Id_0" type="xs:int" use="prohibited" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SiteCollection" msprop:Generator_TableClassName="SiteCollectionDataTable"
+              msprop:Generator_TableVarName="tableSiteCollection"
+              msprop:Generator_RowChangedName="SiteCollectionRowChanged"
+              msprop:Generator_TablePropName="SiteCollection"
+              msprop:Generator_RowDeletingName="SiteCollectionRowDeleting"
+              msprop:Generator_RowChangingName="SiteCollectionRowChanging"
+              msprop:Generator_RowEvHandlerName="SiteCollectionRowChangeEventHandler"
+              msprop:Generator_RowDeletedName="SiteCollectionRowDeleted"
+              msprop:Generator_RowClassName="SiteCollectionRow" msprop:Generator_UserTableName="SiteCollection"
+              msprop:Generator_RowEvArgName="SiteCollectionRowChangeEvent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Sites" msprop:Generator_TableClassName="SitesDataTable"
+                    msprop:Generator_TableVarName="tableSites" msprop:Generator_RowChangedName="SitesRowChanged"
+                    msprop:Generator_TablePropName="Sites" msprop:Generator_RowDeletingName="SitesRowDeleting"
+                    msprop:Generator_RowChangingName="SitesRowChanging"
+                    msprop:Generator_RowEvHandlerName="SitesRowChangeEventHandler"
+                    msprop:Generator_RowDeletedName="SitesRowDeleted" msprop:Generator_RowClassName="SitesRow"
+                    msprop:Generator_UserTableName="Sites" msprop:Generator_RowEvArgName="SitesRowChangeEvent"
+                    minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Site" msprop:Generator_TableClassName="SiteDataTable"
+                          msprop:Generator_TableVarName="tableSite" msprop:Generator_RowChangedName="SiteRowChanged"
+                          msprop:Generator_TablePropName="Site" msprop:Generator_RowDeletingName="SiteRowDeleting"
+                          msprop:Generator_RowChangingName="SiteRowChanging"
+                          msprop:Generator_RowEvHandlerName="SiteRowChangeEventHandler"
+                          msprop:Generator_RowDeletedName="SiteRowDeleted" msprop:Generator_RowClassName="SiteRow"
+                          msprop:Generator_UserTableName="Site" msprop:Generator_RowEvArgName="SiteRowChangeEvent"
+                          minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="relativeSiteUrl" msprop:Generator_ColumnVarNameInTable="columnrelativeSiteUrl"
+                                msprop:Generator_ColumnPropNameInRow="relativeSiteUrl"
+                                msprop:Generator_ColumnPropNameInTable="relativeSiteUrlColumn"
+                                msprop:Generator_UserColumnName="relativeSiteUrl" type="xs:string" />
+                  <xs:attribute name="name" msprop:Generator_ColumnVarNameInTable="columnname"
+                                msprop:Generator_ColumnPropNameInRow="name"
+                                msprop:Generator_ColumnPropNameInTable="nameColumn"
+                                msprop:Generator_UserColumnName="name" type="xs:string" />
+                  <xs:attribute name="description" msprop:Generator_ColumnVarNameInTable="columndescription"
+                                msprop:Generator_ColumnPropNameInRow="description"
+                                msprop:Generator_ColumnPropNameInTable="descriptionColumn"
+                                msprop:Generator_UserColumnName="description" type="xs:string" />
+                  <xs:attribute name="Template" msprop:Generator_ColumnVarNameInTable="columnTemplate"
+                                msprop:Generator_ColumnPropNameInRow="Template"
+                                msprop:Generator_ColumnPropNameInTable="TemplateColumn"
+                                msprop:Generator_UserColumnName="Template" type="xs:string" />
+                  <xs:attribute name="Sites_Id" msprop:Generator_ColumnVarNameInTable="columnSites_Id"
+                                msprop:Generator_ColumnPropNameInRow="Sites_Id"
+                                msprop:Generator_ColumnPropNameInTable="Sites_IdColumn"
+                                msprop:Generator_UserColumnName="Sites_Id" type="xs:int" use="prohibited" />
+                  <xs:attribute name="Sites_Id_0" msprop:Generator_ColumnVarNameInTable="columnSites_Id_0"
+                                msprop:Generator_ColumnPropNameInRow="Sites_Id_0"
+                                msprop:Generator_ColumnPropNameInTable="Sites_Id_0Column"
+                                msprop:Generator_UserColumnName="Sites_Id_0" type="xs:int" use="prohibited" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="SiteCollection_Id" msprop:Generator_ColumnVarNameInTable="columnSiteCollection_Id"
+                          msprop:Generator_ColumnPropNameInRow="SiteCollection_Id"
+                          msprop:Generator_ColumnPropNameInTable="SiteCollection_IdColumn"
+                          msprop:Generator_UserColumnName="SiteCollection_Id" type="xs:int" use="prohibited" />
+            <xs:attribute name="Sites_Id_0" msdata:AutoIncrement="true"
+                          msprop:Generator_ColumnVarNameInTable="columnSites_Id_0"
+                          msprop:Generator_ColumnPropNameInRow="Sites_Id_0"
+                          msprop:Generator_ColumnPropNameInTable="Sites_Id_0Column"
+                          msprop:Generator_UserColumnName="Sites_Id_0" type="xs:int" msdata:AllowDBNull="false"
+                          use="prohibited" />
+            <xs:attribute name="SiteCollection_Id_0" msprop:Generator_ColumnVarNameInTable="columnSiteCollection_Id_0"
+                          msprop:Generator_ColumnPropNameInRow="SiteCollection_Id_0"
+                          msprop:Generator_ColumnPropNameInTable="SiteCollection_Id_0Column"
+                          msprop:Generator_UserColumnName="SiteCollection_Id_0" type="xs:int" use="prohibited" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="Url" msprop:Generator_ColumnVarNameInTable="columnUrl"
+                    msprop:Generator_ColumnPropNameInRow="Url" msprop:Generator_ColumnPropNameInTable="UrlColumn"
+                    msprop:Generator_UserColumnName="Url" type="xs:string" />
+      <xs:attribute name="owner" msprop:Generator_ColumnVarNameInTable="columnowner"
+                    msprop:Generator_ColumnPropNameInRow="owner" msprop:Generator_ColumnPropNameInTable="ownerColumn"
+                    msprop:Generator_UserColumnName="owner" type="xs:string" />
+      <xs:attribute name="name" msprop:Generator_ColumnVarNameInTable="columnname"
+                    msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn"
+                    msprop:Generator_UserColumnName="name" type="xs:string" />
+      <xs:attribute name="description" msprop:Generator_ColumnVarNameInTable="columndescription"
+                    msprop:Generator_ColumnPropNameInRow="description"
+                    msprop:Generator_ColumnPropNameInTable="descriptionColumn"
+                    msprop:Generator_UserColumnName="description" type="xs:string" />
+      <xs:attribute name="SearchUrl" msprop:Generator_ColumnVarNameInTable="columnSearchUrl"
+                    msprop:Generator_ColumnPropNameInRow="SearchUrl"
+                    msprop:Generator_ColumnPropNameInTable="SearchUrlColumn"
+                    msprop:Generator_UserColumnName="SearchUrl" type="xs:string" />
+      <xs:attribute name="CustomTemplate" msprop:Generator_ColumnVarNameInTable="columnCustomTemplate"
+                    msprop:Generator_ColumnPropNameInRow="CustomTemplate"
+                    msprop:Generator_ColumnPropNameInTable="CustomTemplateColumn"
+                    msprop:Generator_UserColumnName="CustomTemplate" type="xs:string" />
+      <xs:attribute name="Template" msprop:Generator_ColumnVarNameInTable="columnTemplate"
+                    msprop:Generator_ColumnPropNameInRow="Template"
+                    msprop:Generator_ColumnPropNameInTable="TemplateColumn" msprop:Generator_UserColumnName="Template"
+                    type="xs:string" />
+      <xs:attribute name="LCID" msprop:Generator_ColumnVarNameInTable="columnLCID"
+                    msprop:Generator_ColumnPropNameInRow="LCID" msprop:Generator_ColumnPropNameInTable="LCIDColumn"
+                    msprop:Generator_UserColumnName="LCID" type="xs:int" />
+      <xs:attribute name="Locale" msprop:Generator_ColumnVarNameInTable="columnLocale"
+                    msprop:Generator_ColumnPropNameInRow="Locale" msprop:Generator_ColumnPropNameInTable="LocaleColumn"
+                    msprop:Generator_UserColumnName="Locale" type="xs:string" />
+      <xs:attribute name="Time24" msprop:Generator_ColumnVarNameInTable="columnTime24"
+                    msprop:Generator_ColumnPropNameInRow="Time24" msprop:Generator_ColumnPropNameInTable="Time24Column"
+                    msprop:Generator_UserColumnName="Time24" type="xs:boolean" />
+      <xs:attribute name="SiteCollections_Id" msprop:Generator_ColumnVarNameInTable="columnSiteCollections_Id"
+                    msprop:Generator_ColumnPropNameInRow="SiteCollections_Id"
+                    msprop:Generator_ColumnPropNameInTable="SiteCollections_IdColumn"
+                    msprop:Generator_UserColumnName="SiteCollections_Id" type="xs:int" use="prohibited" />
+      <xs:attribute name="Solution_Id" msprop:Generator_ColumnVarNameInTable="columnSolution_Id"
+                    msprop:Generator_ColumnPropNameInRow="Solution_Id"
+                    msprop:Generator_ColumnPropNameInTable="Solution_IdColumn"
+                    msprop:Generator_UserColumnName="Solution_Id" type="xs:int" use="prohibited" />
+      <xs:attribute name="SiteCollection_Id_0" msdata:AutoIncrement="true"
+                    msprop:Generator_ColumnVarNameInTable="columnSiteCollection_Id_0"
+                    msprop:Generator_ColumnPropNameInRow="SiteCollection_Id_0"
+                    msprop:Generator_ColumnPropNameInTable="SiteCollection_Id_0Column"
+                    msprop:Generator_UserColumnName="SiteCollection_Id_0" type="xs:int" msdata:AllowDBNull="false"
+                    use="prohibited" />
+      <xs:attribute name="SiteCollections_Id_0" msprop:Generator_ColumnVarNameInTable="columnSiteCollections_Id_0"
+                    msprop:Generator_ColumnPropNameInRow="SiteCollections_Id_0"
+                    msprop:Generator_ColumnPropNameInTable="SiteCollections_Id_0Column"
+                    msprop:Generator_UserColumnName="SiteCollections_Id_0" type="xs:int" use="prohibited" />
+      <xs:attribute name="Solution_Id_0" msprop:Generator_ColumnVarNameInTable="columnSolution_Id_0"
+                    msprop:Generator_ColumnPropNameInRow="Solution_Id_0"
+                    msprop:Generator_ColumnPropNameInTable="Solution_Id_0Column"
+                    msprop:Generator_UserColumnName="Solution_Id_0" type="xs:int" use="prohibited" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WebApplication" msprop:Generator_TableClassName="WebApplicationDataTable"
+              msprop:Generator_TableVarName="tableWebApplication"
+              msprop:Generator_RowChangedName="WebApplicationRowChanged"
+              msprop:Generator_TablePropName="WebApplication"
+              msprop:Generator_RowDeletingName="WebApplicationRowDeleting"
+              msprop:Generator_RowChangingName="WebApplicationRowChanging"
+              msprop:Generator_RowEvHandlerName="WebApplicationRowChangeEventHandler"
+              msprop:Generator_RowDeletedName="WebApplicationRowDeleted"
+              msprop:Generator_RowClassName="WebApplicationRow" msprop:Generator_UserTableName="WebApplication"
+              msprop:Generator_RowEvArgName="WebApplicationRowChangeEvent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Database" msprop:Generator_TableClassName="DatabaseDataTable"
+                    msprop:Generator_TableVarName="tableDatabase" msprop:Generator_RowChangedName="DatabaseRowChanged"
+                    msprop:Generator_TablePropName="Database" msprop:Generator_RowDeletingName="DatabaseRowDeleting"
+                    msprop:Generator_RowChangingName="DatabaseRowChanging"
+                    msprop:Generator_RowEvHandlerName="DatabaseRowChangeEventHandler"
+                    msprop:Generator_RowDeletedName="DatabaseRowDeleted" msprop:Generator_RowClassName="DatabaseRow"
+                    msprop:Generator_UserTableName="Database" msprop:Generator_RowEvArgName="DatabaseRowChangeEvent"
+                    minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DBServer" msprop:Generator_ColumnVarNameInTable="columnDBServer"
+                          msprop:Generator_ColumnPropNameInRow="DBServer"
+                          msprop:Generator_ColumnPropNameInTable="DBServerColumn"
+                          msprop:Generator_UserColumnName="DBServer" type="xs:string" minOccurs="0" msdata:Ordinal="2" />
+              <xs:element name="DBAlias" msprop:Generator_TableClassName="DBAliasDataTable"
+                          msprop:Generator_TableVarName="tableDBAlias"
+                          msprop:Generator_RowChangedName="DBAliasRowChanged" msprop:Generator_TablePropName="DBAlias"
+                          msprop:Generator_RowDeletingName="DBAliasRowDeleting"
+                          msprop:Generator_RowChangingName="DBAliasRowChanging"
+                          msprop:Generator_RowEvHandlerName="DBAliasRowChangeEventHandler"
+                          msprop:Generator_RowDeletedName="DBAliasRowDeleted"
+                          msprop:Generator_RowClassName="DBAliasRow" msprop:Generator_UserTableName="DBAlias"
+                          msprop:Generator_RowEvArgName="DBAliasRowChangeEvent" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="Create" msprop:Generator_ColumnVarNameInTable="columnCreate"
+                                msprop:Generator_ColumnPropNameInRow="Create"
+                                msprop:Generator_ColumnPropNameInTable="CreateColumn"
+                                msprop:Generator_UserColumnName="Create" type="xs:boolean" />
+                  <xs:attribute name="DBInstance" msprop:Generator_ColumnVarNameInTable="columnDBInstance"
+                                msprop:Generator_ColumnPropNameInRow="DBInstance"
+                                msprop:Generator_ColumnPropNameInTable="DBInstanceColumn"
+                                msprop:Generator_UserColumnName="DBInstance" type="xs:string" />
+                  <xs:attribute name="DBPort" msprop:Generator_ColumnVarNameInTable="columnDBPort"
+                                msprop:Generator_ColumnPropNameInRow="DBPort"
+                                msprop:Generator_ColumnPropNameInTable="DBPortColumn"
+                                msprop:Generator_UserColumnName="DBPort" type="xs:int" />
+                  <xs:attribute name="Database_Id" msprop:Generator_ColumnVarNameInTable="columnDatabase_Id"
+                                msprop:Generator_ColumnPropNameInRow="Database_Id"
+                                msprop:Generator_ColumnPropNameInTable="Database_IdColumn"
+                                msprop:Generator_UserColumnName="Database_Id" type="xs:int" use="prohibited" />
+                  <xs:attribute name="Database_Id_0" msprop:Generator_ColumnVarNameInTable="columnDatabase_Id_0"
+                                msprop:Generator_ColumnPropNameInRow="Database_Id_0"
+                                msprop:Generator_ColumnPropNameInTable="Database_Id_0Column"
+                                msprop:Generator_UserColumnName="Database_Id_0" type="xs:int" use="prohibited" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="WebApplication_Id" msprop:Generator_ColumnVarNameInTable="columnWebApplication_Id"
+                          msprop:Generator_ColumnPropNameInRow="WebApplication_Id"
+                          msprop:Generator_ColumnPropNameInTable="WebApplication_IdColumn"
+                          msprop:Generator_UserColumnName="WebApplication_Id" type="xs:int" use="prohibited" />
+            <xs:attribute name="Database_Id_0" msdata:AutoIncrement="true"
+                          msprop:Generator_ColumnVarNameInTable="columnDatabase_Id_0"
+                          msprop:Generator_ColumnPropNameInRow="Database_Id_0"
+                          msprop:Generator_ColumnPropNameInTable="Database_Id_0Column"
+                          msprop:Generator_UserColumnName="Database_Id_0" type="xs:int" msdata:AllowDBNull="false"
+                          use="prohibited" />
+            <xs:attribute name="WebApplication_Id_0" msprop:Generator_ColumnVarNameInTable="columnWebApplication_Id_0"
+                          msprop:Generator_ColumnPropNameInRow="WebApplication_Id_0"
+                          msprop:Generator_ColumnPropNameInTable="WebApplication_Id_0Column"
+                          msprop:Generator_UserColumnName="WebApplication_Id_0" type="xs:int" use="prohibited" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ManagedPaths" msprop:Generator_TableClassName="ManagedPathsDataTable"
+                    msprop:Generator_TableVarName="tableManagedPaths"
+                    msprop:Generator_RowChangedName="ManagedPathsRowChanged"
+                    msprop:Generator_TablePropName="ManagedPaths"
+                    msprop:Generator_RowDeletingName="ManagedPathsRowDeleting"
+                    msprop:Generator_RowChangingName="ManagedPathsRowChanging"
+                    msprop:Generator_RowEvHandlerName="ManagedPathsRowChangeEventHandler"
+                    msprop:Generator_RowDeletedName="ManagedPathsRowDeleted"
+                    msprop:Generator_RowClassName="ManagedPathsRow" msprop:Generator_UserTableName="ManagedPaths"
+                    msprop:Generator_RowEvArgName="ManagedPathsRowChangeEvent" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ManagedPath" msprop:Generator_TableClassName="ManagedPathDataTable"
+                          msprop:Generator_TableVarName="tableManagedPath"
+                          msprop:Generator_RowChangedName="ManagedPathRowChanged"
+                          msprop:Generator_TablePropName="ManagedPath"
+                          msprop:Generator_RowDeletingName="ManagedPathRowDeleting"
+                          msprop:Generator_RowChangingName="ManagedPathRowChanging"
+                          msprop:Generator_RowEvHandlerName="ManagedPathRowChangeEventHandler"
+                          msprop:Generator_RowDeletedName="ManagedPathRowDeleted"
+                          msprop:Generator_RowClassName="ManagedPathRow" msprop:Generator_UserTableName="ManagedPath"
+                          msprop:Generator_RowEvArgName="ManagedPathRowChangeEvent" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="relativeUrl" msprop:Generator_ColumnVarNameInTable="columnrelativeUrl"
+                                msprop:Generator_ColumnPropNameInRow="relativeUrl"
+                                msprop:Generator_ColumnPropNameInTable="relativeUrlColumn"
+                                msprop:Generator_UserColumnName="relativeUrl" type="xs:string" />
+                  <xs:attribute name="explicit" msprop:Generator_ColumnVarNameInTable="columnexplicit"
+                                msprop:Generator_ColumnPropNameInRow="_explicit"
+                                msprop:Generator_ColumnPropNameInTable="explicitColumn"
+                                msprop:Generator_UserColumnName="explicit" type="xs:boolean" />
+                  <xs:attribute name="ManagedPaths_Id" msprop:Generator_ColumnVarNameInTable="columnManagedPaths_Id"
+                                msprop:Generator_ColumnPropNameInRow="ManagedPaths_Id"
+                                msprop:Generator_ColumnPropNameInTable="ManagedPaths_IdColumn"
+                                msprop:Generator_UserColumnName="ManagedPaths_Id" type="xs:int" use="prohibited" />
+                  <xs:attribute name="ManagedPaths_Id_0"
+                                msprop:Generator_ColumnVarNameInTable="columnManagedPaths_Id_0"
+                                msprop:Generator_ColumnPropNameInRow="ManagedPaths_Id_0"
+                                msprop:Generator_ColumnPropNameInTable="ManagedPaths_Id_0Column"
+                                msprop:Generator_UserColumnName="ManagedPaths_Id_0" type="xs:int" use="prohibited" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="WebApplication_Id" msprop:Generator_ColumnVarNameInTable="columnWebApplication_Id"
+                          msprop:Generator_ColumnPropNameInRow="WebApplication_Id"
+                          msprop:Generator_ColumnPropNameInTable="WebApplication_IdColumn"
+                          msprop:Generator_UserColumnName="WebApplication_Id" type="xs:int" use="prohibited" />
+            <xs:attribute name="ManagedPaths_Id_0" msdata:AutoIncrement="true"
+                          msprop:Generator_ColumnVarNameInTable="columnManagedPaths_Id_0"
+                          msprop:Generator_ColumnPropNameInRow="ManagedPaths_Id_0"
+                          msprop:Generator_ColumnPropNameInTable="ManagedPaths_Id_0Column"
+                          msprop:Generator_UserColumnName="ManagedPaths_Id_0" type="xs:int" msdata:AllowDBNull="false"
+                          use="prohibited" />
+            <xs:attribute name="WebApplication_Id_0" msprop:Generator_ColumnVarNameInTable="columnWebApplication_Id_0"
+                          msprop:Generator_ColumnPropNameInRow="WebApplication_Id_0"
+                          msprop:Generator_ColumnPropNameInTable="WebApplication_Id_0Column"
+                          msprop:Generator_UserColumnName="WebApplication_Id_0" type="xs:int" use="prohibited" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SiteCollections" msprop:Generator_TableClassName="SiteCollectionsDataTable"
+                    msprop:Generator_TableVarName="tableSiteCollections"
+                    msprop:Generator_RowChangedName="SiteCollectionsRowChanged"
+                    msprop:Generator_TablePropName="SiteCollections"
+                    msprop:Generator_RowDeletingName="SiteCollectionsRowDeleting"
+                    msprop:Generator_RowChangingName="SiteCollectionsRowChanging"
+                    msprop:Generator_RowEvHandlerName="SiteCollectionsRowChangeEventHandler"
+                    msprop:Generator_RowDeletedName="SiteCollectionsRowDeleted"
+                    msprop:Generator_RowClassName="SiteCollectionsRow" msprop:Generator_UserTableName="SiteCollections"
+                    msprop:Generator_RowEvArgName="SiteCollectionsRowChangeEvent" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="SiteCollection" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+            <xs:attribute name="WebApplication_Id" msprop:Generator_ColumnVarNameInTable="columnWebApplication_Id"
+                          msprop:Generator_ColumnPropNameInRow="WebApplication_Id"
+                          msprop:Generator_ColumnPropNameInTable="WebApplication_IdColumn"
+                          msprop:Generator_UserColumnName="WebApplication_Id" type="xs:int" use="prohibited" />
+            <xs:attribute name="WebApplication_Id_0" msprop:Generator_ColumnVarNameInTable="columnWebApplication_Id_0"
+                          msprop:Generator_ColumnPropNameInRow="WebApplication_Id_0"
+                          msprop:Generator_ColumnPropNameInTable="WebApplication_Id_0Column"
+                          msprop:Generator_UserColumnName="WebApplication_Id_0" type="xs:int" use="prohibited" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="Url" msprop:Generator_ColumnVarNameInTable="columnUrl"
+                    msprop:Generator_ColumnPropNameInRow="Url" msprop:Generator_ColumnPropNameInTable="UrlColumn"
+                    msprop:Generator_UserColumnName="Url" type="xs:string" />
+      <xs:attribute name="AllowDeletion" msprop:Generator_ColumnVarNameInTable="columnAllowDeletion"
+                    msprop:Generator_ColumnPropNameInRow="AllowDeletion"
+                    msprop:Generator_ColumnPropNameInTable="AllowDeletionColumn"
+                    msprop:Generator_UserColumnName="AllowDeletion" type="xs:boolean" />
+      <xs:attribute name="RecreateIfExists" msprop:Generator_ColumnVarNameInTable="columnRecreateIfExists"
+                    msprop:Generator_ColumnPropNameInRow="RecreateIfExists"
+                    msprop:Generator_ColumnPropNameInTable="RecreateIfExistsColumn"
+                    msprop:Generator_UserColumnName="RecreateIfExists" type="xs:boolean" />
+      <xs:attribute name="CreateOnlyIfExists" msprop:Generator_ColumnVarNameInTable="columnCreateOnlyIfExists"
+                    msprop:Generator_ColumnPropNameInRow="CreateOnlyIfExists"
+                    msprop:Generator_ColumnPropNameInTable="CreateOnlyIfExistsColumn"
+                    msprop:Generator_UserColumnName="CreateOnlyIfExists" type="xs:boolean" />
+      <xs:attribute name="AddURLsToHOSTS" msprop:Generator_ColumnVarNameInTable="columnAddURLsToHOSTS"
+                    msprop:Generator_ColumnPropNameInRow="AddURLsToHOSTS"
+                    msprop:Generator_ColumnPropNameInTable="AddURLsToHOSTSColumn"
+                    msprop:Generator_UserColumnName="AddURLsToHOSTS" type="xs:boolean" />
+      <xs:attribute name="Type" msprop:Generator_ColumnVarNameInTable="columnType"
+                    msprop:Generator_ColumnPropNameInRow="Type" msprop:Generator_ColumnPropNameInTable="TypeColumn"
+                    msprop:Generator_UserColumnName="Type" type="xs:string" />
+      <xs:attribute name="Name" msprop:Generator_ColumnVarNameInTable="columnName"
+                    msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn"
+                    msprop:Generator_UserColumnName="Name" type="xs:string" />
+      <xs:attribute name="ApplicationPool" msprop:Generator_ColumnVarNameInTable="columnApplicationPool"
+                    msprop:Generator_ColumnPropNameInRow="ApplicationPool"
+                    msprop:Generator_ColumnPropNameInTable="ApplicationPoolColumn"
+                    msprop:Generator_UserColumnName="ApplicationPool" type="xs:string" />
+      <xs:attribute name="ApplicationPoolAccount" msprop:Generator_ColumnVarNameInTable="columnApplicationPoolAccount"
+                    msprop:Generator_ColumnPropNameInRow="ApplicationPoolAccount"
+                    msprop:Generator_ColumnPropNameInTable="ApplicationPoolAccountColumn"
+                    msprop:Generator_UserColumnName="ApplicationPoolAccount" type="xs:string" />
+      <xs:attribute name="Port" msprop:Generator_ColumnVarNameInTable="columnPort"
+                    msprop:Generator_ColumnPropNameInRow="Port" msprop:Generator_ColumnPropNameInTable="PortColumn"
+                    msprop:Generator_UserColumnName="Port" type="xs:int" />
+      <xs:attribute name="AddURLToLocalIntranetZone"
+                    msprop:Generator_ColumnVarNameInTable="columnAddURLToLocalIntranetZone"
+                    msprop:Generator_ColumnPropNameInRow="AddURLToLocalIntranetZone"
+                    msprop:Generator_ColumnPropNameInTable="AddURLToLocalIntranetZoneColumn"
+                    msprop:Generator_UserColumnName="AddURLToLocalIntranetZone" type="xs:boolean" />
+      <xs:attribute name="databaseName" msprop:Generator_ColumnVarNameInTable="columndatabaseName"
+                    msprop:Generator_ColumnPropNameInRow="databaseName"
+                    msprop:Generator_ColumnPropNameInTable="databaseNameColumn"
+                    msprop:Generator_UserColumnName="databaseName" type="xs:string" />
+      <xs:attribute name="UseClaims" msprop:Generator_ColumnVarNameInTable="columnUseClaims"
+                    msprop:Generator_ColumnPropNameInRow="UseClaims"
+                    msprop:Generator_ColumnPropNameInTable="UseClaimsColumn"
+                    msprop:Generator_UserColumnName="UseClaims" type="xs:boolean" />
+      <xs:attribute name="UseBasicAuthentication" msprop:Generator_ColumnVarNameInTable="columnUseBasicAuthentication"
+                    msprop:Generator_ColumnPropNameInRow="UseBasicAuthentication"
+                    msprop:Generator_ColumnPropNameInTable="UseBasicAuthenticationColumn"
+                    msprop:Generator_UserColumnName="UseBasicAuthentication" type="xs:boolean" />
+      <xs:attribute name="UseOnlineWebPartCatalog"
+                    msprop:Generator_ColumnVarNameInTable="columnUseOnlineWebPartCatalog"
+                    msprop:Generator_ColumnPropNameInRow="UseOnlineWebPartCatalog"
+                    msprop:Generator_ColumnPropNameInTable="UseOnlineWebPartCatalogColumn"
+                    msprop:Generator_UserColumnName="UseOnlineWebPartCatalog" type="xs:boolean" />
+      <xs:attribute name="Solution_Id" msprop:Generator_ColumnVarNameInTable="columnSolution_Id"
+                    msprop:Generator_ColumnPropNameInRow="Solution_Id"
+                    msprop:Generator_ColumnPropNameInTable="Solution_IdColumn"
+                    msprop:Generator_UserColumnName="Solution_Id" type="xs:int" use="prohibited" />
+      <xs:attribute name="SiteStructures_Id" msprop:Generator_ColumnVarNameInTable="columnSiteStructures_Id"
+                    msprop:Generator_ColumnPropNameInRow="SiteStructures_Id"
+                    msprop:Generator_ColumnPropNameInTable="SiteStructures_IdColumn"
+                    msprop:Generator_UserColumnName="SiteStructures_Id" type="xs:int" use="prohibited" />
+      <xs:attribute name="WebApplication_Id_0" msdata:AutoIncrement="true"
+                    msprop:Generator_ColumnVarNameInTable="columnWebApplication_Id_0"
+                    msprop:Generator_ColumnPropNameInRow="WebApplication_Id_0"
+                    msprop:Generator_ColumnPropNameInTable="WebApplication_Id_0Column"
+                    msprop:Generator_UserColumnName="WebApplication_Id_0" type="xs:int" msdata:AllowDBNull="false"
+                    use="prohibited" />
+      <xs:attribute name="Solution_Id_0" msprop:Generator_ColumnVarNameInTable="columnSolution_Id_0"
+                    msprop:Generator_ColumnPropNameInRow="Solution_Id_0"
+                    msprop:Generator_ColumnPropNameInTable="Solution_Id_0Column"
+                    msprop:Generator_UserColumnName="Solution_Id_0" type="xs:int" use="prohibited" />
+      <xs:attribute name="SiteStructures_Id_0" msprop:Generator_ColumnVarNameInTable="columnSiteStructures_Id_0"
+                    msprop:Generator_ColumnPropNameInRow="SiteStructures_Id_0"
+                    msprop:Generator_ColumnPropNameInTable="SiteStructures_Id_0Column"
+                    msprop:Generator_UserColumnName="SiteStructures_Id_0" type="xs:int" use="prohibited" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SPSD" msprop:Generator_TableClassName="SPSDDataTable" msprop:Generator_TableVarName="tableSPSD"
+              msprop:Generator_RowChangedName="SPSDRowChanged" msprop:Generator_TablePropName="SPSD"
+              msprop:Generator_RowDeletingName="SPSDRowDeleting" msprop:Generator_RowChangingName="SPSDRowChanging"
+              msprop:Generator_RowEvHandlerName="SPSDRowChangeEventHandler"
+              msprop:Generator_RowDeletedName="SPSDRowDeleted" msprop:Generator_RowClassName="SPSDRow"
+              msprop:Generator_UserTableName="SPSD" msprop:Generator_RowEvArgName="SPSDRowChangeEvent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Configuration" msprop:Generator_TableClassName="ConfigurationDataTable"
+                    msprop:Generator_TableVarName="tableConfiguration"
+                    msprop:Generator_RowChangedName="ConfigurationRowChanged"
+                    msprop:Generator_TablePropName="Configuration"
+                    msprop:Generator_RowDeletingName="ConfigurationRowDeleting"
+                    msprop:Generator_RowChangingName="ConfigurationRowChanging"
+                    msprop:Generator_RowEvHandlerName="ConfigurationRowChangeEventHandler"
+                    msprop:Generator_RowDeletedName="ConfigurationRowDeleted"
+                    msprop:Generator_RowClassName="ConfigurationRow" msprop:Generator_UserTableName="Configuration"
+                    msprop:Generator_RowEvArgName="ConfigurationRowChangeEvent" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Settings" msprop:Generator_TableClassName="SettingsDataTable"
+                          msprop:Generator_TableVarName="tableSettings"
+                          msprop:Generator_RowChangedName="SettingsRowChanged"
+                          msprop:Generator_TablePropName="Settings"
+                          msprop:Generator_RowDeletingName="SettingsRowDeleting"
+                          msprop:Generator_RowChangingName="SettingsRowChanging"
+                          msprop:Generator_RowEvHandlerName="SettingsRowChangeEventHandler"
+                          msprop:Generator_RowDeletedName="SettingsRowDeleted"
+                          msprop:Generator_RowClassName="SettingsRow" msprop:Generator_UserTableName="Settings"
+                          msprop:Generator_RowEvArgName="SettingsRowChangeEvent" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="DeploymentRetries"
+                                msprop:Generator_ColumnVarNameInTable="columnDeploymentRetries"
+                                msprop:Generator_ColumnPropNameInRow="DeploymentRetries"
+                                msprop:Generator_ColumnPropNameInTable="DeploymentRetriesColumn"
+                                msprop:Generator_UserColumnName="DeploymentRetries" type="xs:long" minOccurs="0"
+                                msdata:Ordinal="0" />
+                    <xs:element name="DeploymentTimeout"
+                                msprop:Generator_ColumnVarNameInTable="columnDeploymentTimeout"
+                                msprop:Generator_ColumnPropNameInRow="DeploymentTimeout"
+                                msprop:Generator_ColumnPropNameInTable="DeploymentTimeoutColumn"
+                                msprop:Generator_UserColumnName="DeploymentTimeout" type="xs:long" minOccurs="0"
+                                msdata:Ordinal="1" />
+                    <xs:element name="RunOnMultipleServersInFarm"
+                                msprop:Generator_ColumnVarNameInTable="columnRunOnMultipleServersInFarm"
+                                msprop:Generator_ColumnPropNameInRow="RunOnMultipleServersInFarm"
+                                msprop:Generator_ColumnPropNameInTable="RunOnMultipleServersInFarmColumn"
+                                msprop:Generator_UserColumnName="RunOnMultipleServersInFarm" type="xs:string"
+                                minOccurs="0" msdata:Ordinal="2" />
+                    <xs:element name="WaitAfterDeployment"
+                                msprop:Generator_ColumnVarNameInTable="columnWaitAfterDeployment"
+                                msprop:Generator_ColumnPropNameInRow="WaitAfterDeployment"
+                                msprop:Generator_ColumnPropNameInTable="WaitAfterDeploymentColumn"
+                                msprop:Generator_UserColumnName="WaitAfterDeployment" type="xs:string" minOccurs="0"
+                                msdata:Ordinal="3" />
+                    <xs:element name="DisplayWizards" msprop:Generator_ColumnVarNameInTable="columnDisplayWizards"
+                                msprop:Generator_ColumnPropNameInRow="DisplayWizards"
+                                msprop:Generator_ColumnPropNameInTable="DisplayWizardsColumn"
+                                msprop:Generator_UserColumnName="DisplayWizards" type="xs:boolean" minOccurs="0"
+                                msdata:Ordinal="4" />
+                    <xs:element name="CreateULSLogfile" msprop:Generator_ColumnVarNameInTable="columnCreateULSLogfile"
+                                msprop:Generator_ColumnPropNameInRow="CreateULSLogfile"
+                                msprop:Generator_ColumnPropNameInTable="CreateULSLogfileColumn"
+                                msprop:Generator_UserColumnName="CreateULSLogfile" type="xs:boolean" minOccurs="0"
+                                msdata:Ordinal="5" />
+                  </xs:sequence>
+                  <xs:attribute name="ID" msprop:Generator_ColumnVarNameInTable="columnID"
+                                msprop:Generator_ColumnPropNameInRow="ID"
+                                msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID"
+                                type="xs:string" />
+                  <xs:attribute name="FilePath" msprop:Generator_ColumnVarNameInTable="columnFilePath"
+                                msprop:Generator_ColumnPropNameInRow="FilePath"
+                                msprop:Generator_ColumnPropNameInTable="FilePathColumn"
+                                msprop:Generator_UserColumnName="FilePath" type="xs:string" />
+                  <xs:attribute name="Configuration_Id" msprop:Generator_ColumnVarNameInTable="columnConfiguration_Id"
+                                msprop:Generator_ColumnPropNameInRow="Configuration_Id"
+                                msprop:Generator_ColumnPropNameInTable="Configuration_IdColumn"
+                                msprop:Generator_UserColumnName="Configuration_Id" type="xs:int" use="prohibited" />
+                  <xs:attribute name="Configuration_Id_0"
+                                msprop:Generator_ColumnVarNameInTable="columnConfiguration_Id_0"
+                                msprop:Generator_ColumnPropNameInRow="Configuration_Id_0"
+                                msprop:Generator_ColumnPropNameInTable="Configuration_Id_0Column"
+                                msprop:Generator_UserColumnName="Configuration_Id_0" type="xs:int" use="prohibited" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Restrictions" msprop:Generator_TableClassName="RestrictionsDataTable"
+                          msprop:Generator_TableVarName="tableRestrictions"
+                          msprop:Generator_RowChangedName="RestrictionsRowChanged"
+                          msprop:Generator_TablePropName="Restrictions"
+                          msprop:Generator_RowDeletingName="RestrictionsRowDeleting"
+                          msprop:Generator_RowChangingName="RestrictionsRowChanging"
+                          msprop:Generator_RowEvHandlerName="RestrictionsRowChangeEventHandler"
+                          msprop:Generator_RowDeletedName="RestrictionsRowDeleted"
+                          msprop:Generator_RowClassName="RestrictionsRow" msprop:Generator_UserTableName="Restrictions"
+                          msprop:Generator_RowEvArgName="RestrictionsRowChangeEvent" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="AllowGACDeployment"
+                                msprop:Generator_ColumnVarNameInTable="columnAllowGACDeployment"
+                                msprop:Generator_ColumnPropNameInRow="AllowGACDeployment"
+                                msprop:Generator_ColumnPropNameInTable="AllowGACDeploymentColumn"
+                                msprop:Generator_UserColumnName="AllowGACDeployment" type="xs:boolean" minOccurs="0"
+                                msdata:Ordinal="0" />
+                    <xs:element name="AllowCASPolicies" msprop:Generator_ColumnVarNameInTable="columnAllowCASPolicies"
+                                msprop:Generator_ColumnPropNameInRow="AllowCASPolicies"
+                                msprop:Generator_ColumnPropNameInTable="AllowCASPoliciesColumn"
+                                msprop:Generator_UserColumnName="AllowCASPolicies" type="xs:boolean" minOccurs="0"
+                                msdata:Ordinal="1" />
+                    <xs:element name="AllowFullTrustBinDeployment"
+                                msprop:Generator_ColumnVarNameInTable="columnAllowFullTrustBinDeployment"
+                                msprop:Generator_ColumnPropNameInRow="AllowFullTrustBinDeployment"
+                                msprop:Generator_ColumnPropNameInTable="AllowFullTrustBinDeploymentColumn"
+                                msprop:Generator_UserColumnName="AllowFullTrustBinDeployment" type="xs:boolean"
+                                minOccurs="0" msdata:Ordinal="2" />
+                    <xs:element name="MinimalSharePointVersion"
+                                msprop:Generator_ColumnVarNameInTable="columnMinimalSharePointVersion"
+                                msprop:Generator_ColumnPropNameInRow="MinimalSharePointVersion"
+                                msprop:Generator_ColumnPropNameInTable="MinimalSharePointVersionColumn"
+                                msprop:Generator_UserColumnName="MinimalSharePointVersion" type="xs:string"
+                                minOccurs="0" msdata:Ordinal="3" />
+                    <xs:element name="MinimalSharePointLicense"
+                                msprop:Generator_ColumnVarNameInTable="columnMinimalSharePointLicense"
+                                msprop:Generator_ColumnPropNameInRow="MinimalSharePointLicense"
+                                msprop:Generator_ColumnPropNameInTable="MinimalSharePointLicenseColumn"
+                                msprop:Generator_UserColumnName="MinimalSharePointLicense" type="xs:string"
+                                minOccurs="0" msdata:Ordinal="4" />
+                  </xs:sequence>
+                  <xs:attribute name="ID" msprop:Generator_ColumnVarNameInTable="columnID"
+                                msprop:Generator_ColumnPropNameInRow="ID"
+                                msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID"
+                                type="xs:string" />
+                  <xs:attribute name="FilePath" msprop:Generator_ColumnVarNameInTable="columnFilePath"
+                                msprop:Generator_ColumnPropNameInRow="FilePath"
+                                msprop:Generator_ColumnPropNameInTable="FilePathColumn"
+                                msprop:Generator_UserColumnName="FilePath" type="xs:string" />
+                  <xs:attribute name="Configuration_Id" msprop:Generator_ColumnVarNameInTable="columnConfiguration_Id"
+                                msprop:Generator_ColumnPropNameInRow="Configuration_Id"
+                                msprop:Generator_ColumnPropNameInTable="Configuration_IdColumn"
+                                msprop:Generator_UserColumnName="Configuration_Id" type="xs:int" use="prohibited" />
+                  <xs:attribute name="Configuration_Id_0"
+                                msprop:Generator_ColumnVarNameInTable="columnConfiguration_Id_0"
+                                msprop:Generator_ColumnPropNameInRow="Configuration_Id_0"
+                                msprop:Generator_ColumnPropNameInTable="Configuration_Id_0Column"
+                                msprop:Generator_UserColumnName="Configuration_Id_0" type="xs:int" use="prohibited" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Actions" msprop:Generator_TableClassName="ActionsDataTable"
+                          msprop:Generator_TableVarName="tableActions"
+                          msprop:Generator_RowChangedName="ActionsRowChanged" msprop:Generator_TablePropName="Actions"
+                          msprop:Generator_RowDeletingName="ActionsRowDeleting"
+                          msprop:Generator_RowChangingName="ActionsRowChanging"
+                          msprop:Generator_RowEvHandlerName="ActionsRowChangeEventHandler"
+                          msprop:Generator_RowDeletedName="ActionsRowDeleted"
+                          msprop:Generator_RowClassName="ActionsRow" msprop:Generator_UserTableName="Actions"
+                          msprop:Generator_RowEvArgName="ActionsRowChangeEvent" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="RestartService" msprop:Generator_TableClassName="RestartServiceDataTable"
+                                msprop:Generator_TableVarName="tableRestartService"
+                                msprop:Generator_RowChangedName="RestartServiceRowChanged"
+                                msprop:Generator_TablePropName="RestartService"
+                                msprop:Generator_RowDeletingName="RestartServiceRowDeleting"
+                                msprop:Generator_RowChangingName="RestartServiceRowChanging"
+                                msprop:Generator_RowEvHandlerName="RestartServiceRowChangeEventHandler"
+                                msprop:Generator_RowDeletedName="RestartServiceRowDeleted"
+                                msprop:Generator_RowClassName="RestartServiceRow"
+                                msprop:Generator_UserTableName="RestartService"
+                                msprop:Generator_RowEvArgName="RestartServiceRowChangeEvent" minOccurs="0"
+                                maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="Name" msprop:Generator_ColumnVarNameInTable="columnName"
+                                      msprop:Generator_ColumnPropNameInRow="Name"
+                                      msprop:Generator_ColumnPropNameInTable="NameColumn"
+                                      msprop:Generator_UserColumnName="Name" type="xs:string" />
+                        <xs:attribute name="Force" msprop:Generator_ColumnVarNameInTable="columnForce"
+                                      msprop:Generator_ColumnPropNameInRow="Force"
+                                      msprop:Generator_ColumnPropNameInTable="ForceColumn"
+                                      msprop:Generator_UserColumnName="Force" type="xs:boolean" />
+                        <xs:attribute name="AfterDeploy" msprop:Generator_ColumnVarNameInTable="columnAfterDeploy"
+                                      msprop:Generator_ColumnPropNameInRow="AfterDeploy"
+                                      msprop:Generator_ColumnPropNameInTable="AfterDeployColumn"
+                                      msprop:Generator_UserColumnName="AfterDeploy" type="xs:boolean" />
+                        <xs:attribute name="AfterRetract" msprop:Generator_ColumnVarNameInTable="columnAfterRetract"
+                                      msprop:Generator_ColumnPropNameInRow="AfterRetract"
+                                      msprop:Generator_ColumnPropNameInTable="AfterRetractColumn"
+                                      msprop:Generator_UserColumnName="AfterRetract" type="xs:boolean" />
+                        <xs:attribute name="AfterUpdate" msprop:Generator_ColumnVarNameInTable="columnAfterUpdate"
+                                      msprop:Generator_ColumnPropNameInRow="AfterUpdate"
+                                      msprop:Generator_ColumnPropNameInTable="AfterUpdateColumn"
+                                      msprop:Generator_UserColumnName="AfterUpdate" type="xs:boolean" />
+                        <xs:attribute name="Actions_Id" msprop:Generator_ColumnVarNameInTable="columnActions_Id"
+                                      msprop:Generator_ColumnPropNameInRow="Actions_Id"
+                                      msprop:Generator_ColumnPropNameInTable="Actions_IdColumn"
+                                      msprop:Generator_UserColumnName="Actions_Id" type="xs:int" use="prohibited" />
+                        <xs:attribute name="Actions_Id_0" msprop:Generator_ColumnVarNameInTable="columnActions_Id_0"
+                                      msprop:Generator_ColumnPropNameInRow="Actions_Id_0"
+                                      msprop:Generator_ColumnPropNameInTable="Actions_Id_0Column"
+                                      msprop:Generator_UserColumnName="Actions_Id_0" type="xs:int" use="prohibited" />
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="ResetIIS" msprop:Generator_TableClassName="ResetIISDataTable"
+                                msprop:Generator_TableVarName="tableResetIIS"
+                                msprop:Generator_RowChangedName="ResetIISRowChanged"
+                                msprop:Generator_TablePropName="ResetIIS"
+                                msprop:Generator_RowDeletingName="ResetIISRowDeleting"
+                                msprop:Generator_RowChangingName="ResetIISRowChanging"
+                                msprop:Generator_RowEvHandlerName="ResetIISRowChangeEventHandler"
+                                msprop:Generator_RowDeletedName="ResetIISRowDeleted"
+                                msprop:Generator_RowClassName="ResetIISRow" msprop:Generator_UserTableName="ResetIIS"
+                                msprop:Generator_RowEvArgName="ResetIISRowChangeEvent" minOccurs="0" maxOccurs="1">
+                      <xs:complexType>
+                        <xs:attribute name="Force" msprop:Generator_ColumnVarNameInTable="columnForce"
+                                      msprop:Generator_ColumnPropNameInRow="Force"
+                                      msprop:Generator_ColumnPropNameInTable="ForceColumn"
+                                      msprop:Generator_UserColumnName="Force" type="xs:boolean" />
+                        <xs:attribute name="AfterDeploy" msprop:Generator_ColumnVarNameInTable="columnAfterDeploy"
+                                      msprop:Generator_ColumnPropNameInRow="AfterDeploy"
+                                      msprop:Generator_ColumnPropNameInTable="AfterDeployColumn"
+                                      msprop:Generator_UserColumnName="AfterDeploy" type="xs:boolean" />
+                        <xs:attribute name="AfterRetract" msprop:Generator_ColumnVarNameInTable="columnAfterRetract"
+                                      msprop:Generator_ColumnPropNameInRow="AfterRetract"
+                                      msprop:Generator_ColumnPropNameInTable="AfterRetractColumn"
+                                      msprop:Generator_UserColumnName="AfterRetract" type="xs:boolean" />
+                        <xs:attribute name="AfterUpdate" msprop:Generator_ColumnVarNameInTable="columnAfterUpdate"
+                                      msprop:Generator_ColumnPropNameInRow="AfterUpdate"
+                                      msprop:Generator_ColumnPropNameInTable="AfterUpdateColumn"
+                                      msprop:Generator_UserColumnName="AfterUpdate" type="xs:boolean" />
+                        <xs:attribute name="Actions_Id" msprop:Generator_ColumnVarNameInTable="columnActions_Id"
+                                      msprop:Generator_ColumnPropNameInRow="Actions_Id"
+                                      msprop:Generator_ColumnPropNameInTable="Actions_IdColumn"
+                                      msprop:Generator_UserColumnName="Actions_Id" type="xs:int" use="prohibited" />
+                        <xs:attribute name="Actions_Id_0" msprop:Generator_ColumnVarNameInTable="columnActions_Id_0"
+                                      msprop:Generator_ColumnPropNameInRow="Actions_Id_0"
+                                      msprop:Generator_ColumnPropNameInTable="Actions_Id_0Column"
+                                      msprop:Generator_UserColumnName="Actions_Id_0" type="xs:int" use="prohibited" />
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="RecycleAppPools" msprop:Generator_TableClassName="RecycleAppPoolsDataTable"
+                                msprop:Generator_TableVarName="tableRecycleAppPools"
+                                msprop:Generator_RowChangedName="RecycleAppPoolsRowChanged"
+                                msprop:Generator_TablePropName="RecycleAppPools"
+                                msprop:Generator_RowDeletingName="RecycleAppPoolsRowDeleting"
+                                msprop:Generator_RowChangingName="RecycleAppPoolsRowChanging"
+                                msprop:Generator_RowEvHandlerName="RecycleAppPoolsRowChangeEventHandler"
+                                msprop:Generator_RowDeletedName="RecycleAppPoolsRowDeleted"
+                                msprop:Generator_RowClassName="RecycleAppPoolsRow"
+                                msprop:Generator_UserTableName="RecycleAppPools"
+                                msprop:Generator_RowEvArgName="RecycleAppPoolsRowChangeEvent" minOccurs="0"
+                                maxOccurs="1">
+                      <xs:complexType>
+                        <xs:attribute name="All" msprop:Generator_ColumnVarNameInTable="columnAll"
+                                      msprop:Generator_ColumnPropNameInRow="All"
+                                      msprop:Generator_ColumnPropNameInTable="AllColumn"
+                                      msprop:Generator_UserColumnName="All" type="xs:boolean" />
+                        <xs:attribute name="AfterDeploy" msprop:Generator_ColumnVarNameInTable="columnAfterDeploy"
+                                      msprop:Generator_ColumnPropNameInRow="AfterDeploy"
+                                      msprop:Generator_ColumnPropNameInTable="AfterDeployColumn"
+                                      msprop:Generator_UserColumnName="AfterDeploy" type="xs:boolean" />
+                        <xs:attribute name="AfterRetract" msprop:Generator_ColumnVarNameInTable="columnAfterRetract"
+                                      msprop:Generator_ColumnPropNameInRow="AfterRetract"
+                                      msprop:Generator_ColumnPropNameInTable="AfterRetractColumn"
+                                      msprop:Generator_UserColumnName="AfterRetract" type="xs:boolean" />
+                        <xs:attribute name="AfterUpdate" msprop:Generator_ColumnVarNameInTable="columnAfterUpdate"
+                                      msprop:Generator_ColumnPropNameInRow="AfterUpdate"
+                                      msprop:Generator_ColumnPropNameInTable="AfterUpdateColumn"
+                                      msprop:Generator_UserColumnName="AfterUpdate" type="xs:boolean" />
+                        <xs:attribute name="Actions_Id" msprop:Generator_ColumnVarNameInTable="columnActions_Id"
+                                      msprop:Generator_ColumnPropNameInRow="Actions_Id"
+                                      msprop:Generator_ColumnPropNameInTable="Actions_IdColumn"
+                                      msprop:Generator_UserColumnName="Actions_Id" type="xs:int" use="prohibited" />
+                        <xs:attribute name="Actions_Id_0" msprop:Generator_ColumnVarNameInTable="columnActions_Id_0"
+                                      msprop:Generator_ColumnPropNameInRow="Actions_Id_0"
+                                      msprop:Generator_ColumnPropNameInTable="Actions_Id_0Column"
+                                      msprop:Generator_UserColumnName="Actions_Id_0" type="xs:int" use="prohibited" />
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="WarmUpUrls" msprop:Generator_TableClassName="WarmUpUrlsDataTable"
+                                msprop:Generator_TableVarName="tableWarmUpUrls"
+                                msprop:Generator_RowChangedName="WarmUpUrlsRowChanged"
+                                msprop:Generator_TablePropName="WarmUpUrls"
+                                msprop:Generator_RowDeletingName="WarmUpUrlsRowDeleting"
+                                msprop:Generator_RowChangingName="WarmUpUrlsRowChanging"
+                                msprop:Generator_RowEvHandlerName="WarmUpUrlsRowChangeEventHandler"
+                                msprop:Generator_RowDeletedName="WarmUpUrlsRowDeleted"
+                                msprop:Generator_RowClassName="WarmUpUrlsRow"
+                                msprop:Generator_UserTableName="WarmUpUrls"
+                                msprop:Generator_RowEvArgName="WarmUpUrlsRowChangeEvent" minOccurs="0" maxOccurs="1">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="WarmUp" msprop:Generator_TableClassName="WarmUpDataTable"
+                                      msprop:Generator_TableVarName="tableWarmUp"
+                                      msprop:Generator_RowChangedName="WarmUpRowChanged"
+                                      msprop:Generator_TablePropName="WarmUp"
+                                      msprop:Generator_RowDeletingName="WarmUpRowDeleting"
+                                      msprop:Generator_RowChangingName="WarmUpRowChanging"
+                                      msprop:Generator_RowEvHandlerName="WarmUpRowChangeEventHandler"
+                                      msprop:Generator_RowDeletedName="WarmUpRowDeleted"
+                                      msprop:Generator_RowClassName="WarmUpRow" msprop:Generator_UserTableName="WarmUp"
+                                      msprop:Generator_RowEvArgName="WarmUpRowChangeEvent" minOccurs="0"
+                                      maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:attribute name="Url" msprop:Generator_ColumnVarNameInTable="columnUrl"
+                                            msprop:Generator_ColumnPropNameInRow="Url"
+                                            msprop:Generator_ColumnPropNameInTable="UrlColumn"
+                                            msprop:Generator_UserColumnName="Url" type="xs:string" />
+                              <xs:attribute name="WarmUpUrls_Id"
+                                            msprop:Generator_ColumnVarNameInTable="columnWarmUpUrls_Id"
+                                            msprop:Generator_ColumnPropNameInRow="WarmUpUrls_Id"
+                                            msprop:Generator_ColumnPropNameInTable="WarmUpUrls_IdColumn"
+                                            msprop:Generator_UserColumnName="WarmUpUrls_Id" type="xs:int"
+                                            use="prohibited" />
+                              <xs:attribute name="WarmUpUrls_Id_0"
+                                            msprop:Generator_ColumnVarNameInTable="columnWarmUpUrls_Id_0"
+                                            msprop:Generator_ColumnPropNameInRow="WarmUpUrls_Id_0"
+                                            msprop:Generator_ColumnPropNameInTable="WarmUpUrls_Id_0Column"
+                                            msprop:Generator_UserColumnName="WarmUpUrls_Id_0" type="xs:int"
+                                            use="prohibited" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="AllWebApps" msprop:Generator_ColumnVarNameInTable="columnAllWebApps"
+                                      msprop:Generator_ColumnPropNameInRow="AllWebApps"
+                                      msprop:Generator_ColumnPropNameInTable="AllWebAppsColumn"
+                                      msprop:Generator_UserColumnName="AllWebApps" type="xs:boolean" />
+                        <xs:attribute name="AllSites" msprop:Generator_ColumnVarNameInTable="columnAllSites"
+                                      msprop:Generator_ColumnPropNameInRow="AllSites"
+                                      msprop:Generator_ColumnPropNameInTable="AllSitesColumn"
+                                      msprop:Generator_UserColumnName="AllSites" type="xs:boolean" />
+                        <xs:attribute name="AfterDeploy" msprop:Generator_ColumnVarNameInTable="columnAfterDeploy"
+                                      msprop:Generator_ColumnPropNameInRow="AfterDeploy"
+                                      msprop:Generator_ColumnPropNameInTable="AfterDeployColumn"
+                                      msprop:Generator_UserColumnName="AfterDeploy" type="xs:boolean" />
+                        <xs:attribute name="AfterUpdate" msprop:Generator_ColumnVarNameInTable="columnAfterUpdate"
+                                      msprop:Generator_ColumnPropNameInRow="AfterUpdate"
+                                      msprop:Generator_ColumnPropNameInTable="AfterUpdateColumn"
+                                      msprop:Generator_UserColumnName="AfterUpdate" type="xs:boolean" />
+                        <xs:attribute name="AfterRetract" msprop:Generator_ColumnVarNameInTable="columnAfterRetract"
+                                      msprop:Generator_ColumnPropNameInRow="AfterRetract"
+                                      msprop:Generator_ColumnPropNameInTable="AfterRetractColumn"
+                                      msprop:Generator_UserColumnName="AfterRetract" type="xs:boolean" />
+                        <xs:attribute name="Actions_Id" msprop:Generator_ColumnVarNameInTable="columnActions_Id"
+                                      msprop:Generator_ColumnPropNameInRow="Actions_Id"
+                                      msprop:Generator_ColumnPropNameInTable="Actions_IdColumn"
+                                      msprop:Generator_UserColumnName="Actions_Id" type="xs:int" use="prohibited" />
+                        <xs:attribute name="WarmUpUrls_Id_0" msdata:AutoIncrement="true"
+                                      msprop:Generator_ColumnVarNameInTable="columnWarmUpUrls_Id_0"
+                                      msprop:Generator_ColumnPropNameInRow="WarmUpUrls_Id_0"
+                                      msprop:Generator_ColumnPropNameInTable="WarmUpUrls_Id_0Column"
+                                      msprop:Generator_UserColumnName="WarmUpUrls_Id_0" type="xs:int"
+                                      msdata:AllowDBNull="false" use="prohibited" />
+                        <xs:attribute name="Actions_Id_0" msprop:Generator_ColumnVarNameInTable="columnActions_Id_0"
+                                      msprop:Generator_ColumnPropNameInRow="Actions_Id_0"
+                                      msprop:Generator_ColumnPropNameInTable="Actions_Id_0Column"
+                                      msprop:Generator_UserColumnName="Actions_Id_0" type="xs:int" use="prohibited" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="ID" msprop:Generator_ColumnVarNameInTable="columnID"
+                                msprop:Generator_ColumnPropNameInRow="ID"
+                                msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID"
+                                type="xs:string" />
+                  <xs:attribute name="FilePath" msprop:Generator_ColumnVarNameInTable="columnFilePath"
+                                msprop:Generator_ColumnPropNameInRow="FilePath"
+                                msprop:Generator_ColumnPropNameInTable="FilePathColumn"
+                                msprop:Generator_UserColumnName="FilePath" type="xs:string" />
+                  <xs:attribute name="AfterDeploy" msprop:Generator_ColumnVarNameInTable="columnAfterDeploy"
+                                msprop:Generator_ColumnPropNameInRow="AfterDeploy"
+                                msprop:Generator_ColumnPropNameInTable="AfterDeployColumn"
+                                msprop:Generator_UserColumnName="AfterDeploy" type="xs:boolean" />
+                  <xs:attribute name="AfterRetract" msprop:Generator_ColumnVarNameInTable="columnAfterRetract"
+                                msprop:Generator_ColumnPropNameInRow="AfterRetract"
+                                msprop:Generator_ColumnPropNameInTable="AfterRetractColumn"
+                                msprop:Generator_UserColumnName="AfterRetract" type="xs:boolean" />
+                  <xs:attribute name="AfterUpdate" msprop:Generator_ColumnVarNameInTable="columnAfterUpdate"
+                                msprop:Generator_ColumnPropNameInRow="AfterUpdate"
+                                msprop:Generator_ColumnPropNameInTable="AfterUpdateColumn"
+                                msprop:Generator_UserColumnName="AfterUpdate" type="xs:boolean" />
+                  <xs:attribute name="Configuration_Id" msprop:Generator_ColumnVarNameInTable="columnConfiguration_Id"
+                                msprop:Generator_ColumnPropNameInRow="Configuration_Id"
+                                msprop:Generator_ColumnPropNameInTable="Configuration_IdColumn"
+                                msprop:Generator_UserColumnName="Configuration_Id" type="xs:int" use="prohibited" />
+                  <xs:attribute name="Actions_Id_0" msdata:AutoIncrement="true"
+                                msprop:Generator_ColumnVarNameInTable="columnActions_Id_0"
+                                msprop:Generator_ColumnPropNameInRow="Actions_Id_0"
+                                msprop:Generator_ColumnPropNameInTable="Actions_Id_0Column"
+                                msprop:Generator_UserColumnName="Actions_Id_0" type="xs:int" msdata:AllowDBNull="false"
+                                use="prohibited" />
+                  <xs:attribute name="Configuration_Id_0"
+                                msprop:Generator_ColumnVarNameInTable="columnConfiguration_Id_0"
+                                msprop:Generator_ColumnPropNameInRow="Configuration_Id_0"
+                                msprop:Generator_ColumnPropNameInTable="Configuration_Id_0Column"
+                                msprop:Generator_UserColumnName="Configuration_Id_0" type="xs:int" use="prohibited" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="ID" msprop:Generator_ColumnVarNameInTable="columnID"
+                          msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn"
+                          msprop:Generator_UserColumnName="ID" type="xs:string" />
+            <xs:attribute name="FilePath" msprop:Generator_ColumnVarNameInTable="columnFilePath"
+                          msprop:Generator_ColumnPropNameInRow="FilePath"
+                          msprop:Generator_ColumnPropNameInTable="FilePathColumn"
+                          msprop:Generator_UserColumnName="FilePath" type="xs:string" />
+            <xs:attribute name="SPSD_Id" msprop:Generator_ColumnVarNameInTable="columnSPSD_Id"
+                          msprop:Generator_ColumnPropNameInRow="SPSD_Id"
+                          msprop:Generator_ColumnPropNameInTable="SPSD_IdColumn"
+                          msprop:Generator_UserColumnName="SPSD_Id" type="xs:int" use="prohibited" />
+            <xs:attribute name="Configuration_Id_0" msdata:AutoIncrement="true"
+                          msprop:Generator_ColumnVarNameInTable="columnConfiguration_Id_0"
+                          msprop:Generator_ColumnPropNameInRow="Configuration_Id_0"
+                          msprop:Generator_ColumnPropNameInTable="Configuration_Id_0Column"
+                          msprop:Generator_UserColumnName="Configuration_Id_0" type="xs:int" msdata:AllowDBNull="false"
+                          use="prohibited" />
+            <xs:attribute name="SPSD_Id_0" msprop:Generator_ColumnVarNameInTable="columnSPSD_Id_0"
+                          msprop:Generator_ColumnPropNameInRow="SPSD_Id_0"
+                          msprop:Generator_ColumnPropNameInTable="SPSD_Id_0Column"
+                          msprop:Generator_UserColumnName="SPSD_Id_0" type="xs:int" use="prohibited" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Environment" msprop:Generator_TableClassName="EnvironmentDataTable"
+                    msprop:Generator_TableVarName="tableEnvironment"
+                    msprop:Generator_RowChangedName="EnvironmentRowChanged"
+                    msprop:Generator_TablePropName="Environment"
+                    msprop:Generator_RowDeletingName="EnvironmentRowDeleting"
+                    msprop:Generator_RowChangingName="EnvironmentRowChanging"
+                    msprop:Generator_RowEvHandlerName="EnvironmentRowChangeEventHandler"
+                    msprop:Generator_RowDeletedName="EnvironmentRowDeleted"
+                    msprop:Generator_RowClassName="EnvironmentRow" msprop:Generator_UserTableName="Environment"
+                    msprop:Generator_RowEvArgName="EnvironmentRowChangeEvent" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Variables" msprop:Generator_TableClassName="VariablesDataTable"
+                          msprop:Generator_TableVarName="tableVariables"
+                          msprop:Generator_RowChangedName="VariablesRowChanged"
+                          msprop:Generator_TablePropName="Variables"
+                          msprop:Generator_RowDeletingName="VariablesRowDeleting"
+                          msprop:Generator_RowChangingName="VariablesRowChanging"
+                          msprop:Generator_RowEvHandlerName="VariablesRowChangeEventHandler"
+                          msprop:Generator_RowDeletedName="VariablesRowDeleted"
+                          msprop:Generator_RowClassName="VariablesRow" msprop:Generator_UserTableName="Variables"
+                          msprop:Generator_RowEvArgName="VariablesRowChangeEvent" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Variable" nillable="true" msprop:Generator_TableClassName="VariableDataTable"
+                                msprop:Generator_TableVarName="tableVariable"
+                                msprop:Generator_RowChangedName="VariableRowChanged"
+                                msprop:Generator_TablePropName="Variable"
+                                msprop:Generator_RowDeletingName="VariableRowDeleting"
+                                msprop:Generator_RowChangingName="VariableRowChanging"
+                                msprop:Generator_RowEvHandlerName="VariableRowChangeEventHandler"
+                                msprop:Generator_RowDeletedName="VariableRowDeleted"
+                                msprop:Generator_RowClassName="VariableRow" msprop:Generator_UserTableName="Variable"
+                                msprop:Generator_RowEvArgName="VariableRowChangeEvent" minOccurs="0"
+                                maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:simpleContent msprop:Generator_ColumnVarNameInTable="columnVariable_Text"
+                                          msprop:Generator_ColumnPropNameInRow="Variable_Text"
+                                          msprop:Generator_ColumnPropNameInTable="Variable_TextColumn"
+                                          msprop:Generator_UserColumnName="Variable_Text"
+                                          msdata:ColumnName="Variable_Text" msdata:Ordinal="1">
+                          <xs:extension base="xs:string">
+                            <xs:attribute name="Name" msprop:Generator_ColumnVarNameInTable="columnName"
+                                          msprop:Generator_ColumnPropNameInRow="Name"
+                                          msprop:Generator_ColumnPropNameInTable="NameColumn"
+                                          msprop:Generator_UserColumnName="Name" type="xs:string" />
+                            <xs:attribute name="Variables_Id"
+                                          msprop:Generator_ColumnVarNameInTable="columnVariables_Id"
+                                          msprop:Generator_ColumnPropNameInRow="Variables_Id"
+                                          msprop:Generator_ColumnPropNameInTable="Variables_IdColumn"
+                                          msprop:Generator_UserColumnName="Variables_Id" type="xs:int" use="prohibited" />
+                            <xs:attribute name="Variables_Id_0"
+                                          msprop:Generator_ColumnVarNameInTable="columnVariables_Id_0"
+                                          msprop:Generator_ColumnPropNameInRow="Variables_Id_0"
+                                          msprop:Generator_ColumnPropNameInTable="Variables_Id_0Column"
+                                          msprop:Generator_UserColumnName="Variables_Id_0" type="xs:int"
+                                          use="prohibited" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="ID" msprop:Generator_ColumnVarNameInTable="columnID"
+                                msprop:Generator_ColumnPropNameInRow="ID"
+                                msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID"
+                                type="xs:string" />
+                  <xs:attribute name="FilePath" msprop:Generator_ColumnVarNameInTable="columnFilePath"
+                                msprop:Generator_ColumnPropNameInRow="FilePath"
+                                msprop:Generator_ColumnPropNameInTable="FilePathColumn"
+                                msprop:Generator_UserColumnName="FilePath" type="xs:string" />
+                  <xs:attribute name="Environment_Id" msprop:Generator_ColumnVarNameInTable="columnEnvironment_Id"
+                                msprop:Generator_ColumnPropNameInRow="Environment_Id"
+                                msprop:Generator_ColumnPropNameInTable="Environment_IdColumn"
+                                msprop:Generator_UserColumnName="Environment_Id" type="xs:int" use="prohibited" />
+                  <xs:attribute name="Variables_Id_0" msdata:AutoIncrement="true"
+                                msprop:Generator_ColumnVarNameInTable="columnVariables_Id_0"
+                                msprop:Generator_ColumnPropNameInRow="Variables_Id_0"
+                                msprop:Generator_ColumnPropNameInTable="Variables_Id_0Column"
+                                msprop:Generator_UserColumnName="Variables_Id_0" type="xs:int"
+                                msdata:AllowDBNull="false" use="prohibited" />
+                  <xs:attribute name="Environment_Id_0" msprop:Generator_ColumnVarNameInTable="columnEnvironment_Id_0"
+                                msprop:Generator_ColumnPropNameInRow="Environment_Id_0"
+                                msprop:Generator_ColumnPropNameInTable="Environment_Id_0Column"
+                                msprop:Generator_UserColumnName="Environment_Id_0" type="xs:int" use="prohibited" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="PreRequisiteSolutions" msprop:Generator_TableClassName="PreRequisiteSolutionsDataTable"
+                          msprop:Generator_TableVarName="tablePreRequisiteSolutions"
+                          msprop:Generator_RowChangedName="PreRequisiteSolutionsRowChanged"
+                          msprop:Generator_TablePropName="PreRequisiteSolutions"
+                          msprop:Generator_RowDeletingName="PreRequisiteSolutionsRowDeleting"
+                          msprop:Generator_RowChangingName="PreRequisiteSolutionsRowChanging"
+                          msprop:Generator_RowEvHandlerName="PreRequisiteSolutionsRowChangeEventHandler"
+                          msprop:Generator_RowDeletedName="PreRequisiteSolutionsRowDeleted"
+                          msprop:Generator_RowClassName="PreRequisiteSolutionsRow"
+                          msprop:Generator_UserTableName="PreRequisiteSolutions"
+                          msprop:Generator_RowEvArgName="PreRequisiteSolutionsRowChangeEvent" minOccurs="0"
+                          maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="Solution" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                  <xs:attribute name="ID" msprop:Generator_ColumnVarNameInTable="columnID"
+                                msprop:Generator_ColumnPropNameInRow="ID"
+                                msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID"
+                                type="xs:string" />
+                  <xs:attribute name="FilePath" msprop:Generator_ColumnVarNameInTable="columnFilePath"
+                                msprop:Generator_ColumnPropNameInRow="FilePath"
+                                msprop:Generator_ColumnPropNameInTable="FilePathColumn"
+                                msprop:Generator_UserColumnName="FilePath" type="xs:string" />
+                  <xs:attribute name="Environment_Id" msprop:Generator_ColumnVarNameInTable="columnEnvironment_Id"
+                                msprop:Generator_ColumnPropNameInRow="Environment_Id"
+                                msprop:Generator_ColumnPropNameInTable="Environment_IdColumn"
+                                msprop:Generator_UserColumnName="Environment_Id" type="xs:int" use="prohibited" />
+                  <xs:attribute name="Environment_Id_0" msprop:Generator_ColumnVarNameInTable="columnEnvironment_Id_0"
+                                msprop:Generator_ColumnPropNameInRow="Environment_Id_0"
+                                msprop:Generator_ColumnPropNameInTable="Environment_Id_0Column"
+                                msprop:Generator_UserColumnName="Environment_Id_0" type="xs:int" use="prohibited" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Solutions" msprop:Generator_TableClassName="SolutionsDataTable"
+                          msprop:Generator_TableVarName="tableSolutions"
+                          msprop:Generator_RowChangedName="SolutionsRowChanged"
+                          msprop:Generator_TablePropName="Solutions"
+                          msprop:Generator_RowDeletingName="SolutionsRowDeleting"
+                          msprop:Generator_RowChangingName="SolutionsRowChanging"
+                          msprop:Generator_RowEvHandlerName="SolutionsRowChangeEventHandler"
+                          msprop:Generator_RowDeletedName="SolutionsRowDeleted"
+                          msprop:Generator_RowClassName="SolutionsRow" msprop:Generator_UserTableName="Solutions"
+                          msprop:Generator_RowEvArgName="SolutionsRowChangeEvent" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="Solution" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                  <xs:attribute name="ID" msprop:Generator_ColumnVarNameInTable="columnID"
+                                msprop:Generator_ColumnPropNameInRow="ID"
+                                msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID"
+                                type="xs:string" />
+                  <xs:attribute name="Force" msprop:Generator_ColumnVarNameInTable="columnForce"
+                                msprop:Generator_ColumnPropNameInRow="Force"
+                                msprop:Generator_ColumnPropNameInTable="ForceColumn"
+                                msprop:Generator_UserColumnName="Force" type="xs:boolean" />
+                  <xs:attribute name="Overwrite" msprop:Generator_ColumnVarNameInTable="columnOverwrite"
+                                msprop:Generator_ColumnPropNameInRow="Overwrite"
+                                msprop:Generator_ColumnPropNameInTable="OverwriteColumn"
+                                msprop:Generator_UserColumnName="Overwrite" type="xs:boolean" />
+                  <xs:attribute name="Environment_Id" msprop:Generator_ColumnVarNameInTable="columnEnvironment_Id"
+                                msprop:Generator_ColumnPropNameInRow="Environment_Id"
+                                msprop:Generator_ColumnPropNameInTable="Environment_IdColumn"
+                                msprop:Generator_UserColumnName="Environment_Id" type="xs:int" use="prohibited" />
+                  <xs:attribute name="Environment_Id_0" msprop:Generator_ColumnVarNameInTable="columnEnvironment_Id_0"
+                                msprop:Generator_ColumnPropNameInRow="Environment_Id_0"
+                                msprop:Generator_ColumnPropNameInTable="Environment_Id_0Column"
+                                msprop:Generator_UserColumnName="Environment_Id_0" type="xs:int" use="prohibited" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="ID" msprop:Generator_ColumnVarNameInTable="columnID"
+                          msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn"
+                          msprop:Generator_UserColumnName="ID" type="xs:string" />
+            <xs:attribute name="FilePath" msprop:Generator_ColumnVarNameInTable="columnFilePath"
+                          msprop:Generator_ColumnPropNameInRow="FilePath"
+                          msprop:Generator_ColumnPropNameInTable="FilePathColumn"
+                          msprop:Generator_UserColumnName="FilePath" type="xs:string" />
+            <xs:attribute name="SPSD_Id" msprop:Generator_ColumnVarNameInTable="columnSPSD_Id"
+                          msprop:Generator_ColumnPropNameInRow="SPSD_Id"
+                          msprop:Generator_ColumnPropNameInTable="SPSD_IdColumn"
+                          msprop:Generator_UserColumnName="SPSD_Id" type="xs:int" use="prohibited" />
+            <xs:attribute name="Environment_Id_0" msdata:AutoIncrement="true"
+                          msprop:Generator_ColumnVarNameInTable="columnEnvironment_Id_0"
+                          msprop:Generator_ColumnPropNameInRow="Environment_Id_0"
+                          msprop:Generator_ColumnPropNameInTable="Environment_Id_0Column"
+                          msprop:Generator_UserColumnName="Environment_Id_0" type="xs:int" msdata:AllowDBNull="false"
+                          use="prohibited" />
+            <xs:attribute name="SPSD_Id_0" msprop:Generator_ColumnVarNameInTable="columnSPSD_Id_0"
+                          msprop:Generator_ColumnPropNameInRow="SPSD_Id_0"
+                          msprop:Generator_ColumnPropNameInTable="SPSD_Id_0Column"
+                          msprop:Generator_UserColumnName="SPSD_Id_0" type="xs:int" use="prohibited" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SiteStructures" msprop:Generator_TableClassName="SiteStructuresDataTable"
+                    msprop:Generator_TableVarName="tableSiteStructures"
+                    msprop:Generator_RowChangedName="SiteStructuresRowChanged"
+                    msprop:Generator_TablePropName="SiteStructures"
+                    msprop:Generator_RowDeletingName="SiteStructuresRowDeleting"
+                    msprop:Generator_RowChangingName="SiteStructuresRowChanging"
+                    msprop:Generator_RowEvHandlerName="SiteStructuresRowChangeEventHandler"
+                    msprop:Generator_RowDeletedName="SiteStructuresRowDeleted"
+                    msprop:Generator_RowClassName="SiteStructuresRow" msprop:Generator_UserTableName="SiteStructures"
+                    msprop:Generator_RowEvArgName="SiteStructuresRowChangeEvent" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="WebApplication" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+            <xs:attribute name="ID" msprop:Generator_ColumnVarNameInTable="columnID"
+                          msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn"
+                          msprop:Generator_UserColumnName="ID" type="xs:string" />
+            <xs:attribute name="FilePath" msprop:Generator_ColumnVarNameInTable="columnFilePath"
+                          msprop:Generator_ColumnPropNameInRow="FilePath"
+                          msprop:Generator_ColumnPropNameInTable="FilePathColumn"
+                          msprop:Generator_UserColumnName="FilePath" type="xs:string" />
+            <xs:attribute name="SPSD_Id" msprop:Generator_ColumnVarNameInTable="columnSPSD_Id"
+                          msprop:Generator_ColumnPropNameInRow="SPSD_Id"
+                          msprop:Generator_ColumnPropNameInTable="SPSD_IdColumn"
+                          msprop:Generator_UserColumnName="SPSD_Id" type="xs:int" use="prohibited" />
+            <xs:attribute name="SPSD_Id_0" msprop:Generator_ColumnVarNameInTable="columnSPSD_Id_0"
+                          msprop:Generator_ColumnPropNameInRow="SPSD_Id_0"
+                          msprop:Generator_ColumnPropNameInTable="SPSD_Id_0Column"
+                          msprop:Generator_UserColumnName="SPSD_Id_0" type="xs:int" use="prohibited" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SharePoint" msprop:Generator_TableClassName="SharePointDataTable"
+                    msprop:Generator_TableVarName="tableSharePoint"
+                    msprop:Generator_RowChangedName="SharePointRowChanged" msprop:Generator_TablePropName="SharePoint"
+                    msprop:Generator_RowDeletingName="SharePointRowDeleting"
+                    msprop:Generator_RowChangingName="SharePointRowChanging"
+                    msprop:Generator_RowEvHandlerName="SharePointRowChangeEventHandler"
+                    msprop:Generator_RowDeletedName="SharePointRowDeleted"
+                    msprop:Generator_RowClassName="SharePointRow" msprop:Generator_UserTableName="SharePoint"
+                    msprop:Generator_RowEvArgName="SharePointRowChangeEvent" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Versions" msprop:Generator_TableClassName="VersionsDataTable"
+                          msprop:Generator_TableVarName="tableVersions"
+                          msprop:Generator_RowChangedName="VersionsRowChanged"
+                          msprop:Generator_TablePropName="Versions"
+                          msprop:Generator_RowDeletingName="VersionsRowDeleting"
+                          msprop:Generator_RowChangingName="VersionsRowChanging"
+                          msprop:Generator_RowEvHandlerName="VersionsRowChangeEventHandler"
+                          msprop:Generator_RowDeletedName="VersionsRowDeleted"
+                          msprop:Generator_RowClassName="VersionsRow" msprop:Generator_UserTableName="Versions"
+                          msprop:Generator_RowEvArgName="VersionsRowChangeEvent" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Version" msprop:Generator_TableClassName="VersionDataTable"
+                                msprop:Generator_TableVarName="tableVersion"
+                                msprop:Generator_RowChangedName="VersionRowChanged"
+                                msprop:Generator_TablePropName="Version"
+                                msprop:Generator_RowDeletingName="VersionRowDeleting"
+                                msprop:Generator_RowChangingName="VersionRowChanging"
+                                msprop:Generator_RowEvHandlerName="VersionRowChangeEventHandler"
+                                msprop:Generator_RowDeletedName="VersionRowDeleted"
+                                msprop:Generator_RowClassName="VersionRow" msprop:Generator_UserTableName="Version"
+                                msprop:Generator_RowEvArgName="VersionRowChangeEvent" minOccurs="0"
+                                maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="Number" msprop:Generator_ColumnVarNameInTable="columnNumber"
+                                      msprop:Generator_ColumnPropNameInRow="Number"
+                                      msprop:Generator_ColumnPropNameInTable="NumberColumn"
+                                      msprop:Generator_UserColumnName="Number" type="xs:string" />
+                        <xs:attribute name="Name" msprop:Generator_ColumnVarNameInTable="columnName"
+                                      msprop:Generator_ColumnPropNameInRow="Name"
+                                      msprop:Generator_ColumnPropNameInTable="NameColumn"
+                                      msprop:Generator_UserColumnName="Name" type="xs:string" />
+                        <xs:attribute name="Versions_Id" msprop:Generator_ColumnVarNameInTable="columnVersions_Id"
+                                      msprop:Generator_ColumnPropNameInRow="Versions_Id"
+                                      msprop:Generator_ColumnPropNameInTable="Versions_IdColumn"
+                                      msprop:Generator_UserColumnName="Versions_Id" type="xs:int" use="prohibited" />
+                        <xs:attribute name="Versions_Id_0" msprop:Generator_ColumnVarNameInTable="columnVersions_Id_0"
+                                      msprop:Generator_ColumnPropNameInRow="Versions_Id_0"
+                                      msprop:Generator_ColumnPropNameInTable="Versions_Id_0Column"
+                                      msprop:Generator_UserColumnName="Versions_Id_0" type="xs:int" use="prohibited" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="SharePoint_Id" msprop:Generator_ColumnVarNameInTable="columnSharePoint_Id"
+                                msprop:Generator_ColumnPropNameInRow="SharePoint_Id"
+                                msprop:Generator_ColumnPropNameInTable="SharePoint_IdColumn"
+                                msprop:Generator_UserColumnName="SharePoint_Id" type="xs:int" use="prohibited" />
+                  <xs:attribute name="Versions_Id_0" msdata:AutoIncrement="true"
+                                msprop:Generator_ColumnVarNameInTable="columnVersions_Id_0"
+                                msprop:Generator_ColumnPropNameInRow="Versions_Id_0"
+                                msprop:Generator_ColumnPropNameInTable="Versions_Id_0Column"
+                                msprop:Generator_UserColumnName="Versions_Id_0" type="xs:int"
+                                msdata:AllowDBNull="false" use="prohibited" />
+                  <xs:attribute name="SharePoint_Id_0" msprop:Generator_ColumnVarNameInTable="columnSharePoint_Id_0"
+                                msprop:Generator_ColumnPropNameInRow="SharePoint_Id_0"
+                                msprop:Generator_ColumnPropNameInTable="SharePoint_Id_0Column"
+                                msprop:Generator_UserColumnName="SharePoint_Id_0" type="xs:int" use="prohibited" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Licenses" msprop:Generator_TableClassName="LicensesDataTable"
+                          msprop:Generator_TableVarName="tableLicenses"
+                          msprop:Generator_RowChangedName="LicensesRowChanged"
+                          msprop:Generator_TablePropName="Licenses"
+                          msprop:Generator_RowDeletingName="LicensesRowDeleting"
+                          msprop:Generator_RowChangingName="LicensesRowChanging"
+                          msprop:Generator_RowEvHandlerName="LicensesRowChangeEventHandler"
+                          msprop:Generator_RowDeletedName="LicensesRowDeleted"
+                          msprop:Generator_RowClassName="LicensesRow" msprop:Generator_UserTableName="Licenses"
+                          msprop:Generator_RowEvArgName="LicensesRowChangeEvent" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="License" msprop:Generator_TableClassName="LicenseDataTable"
+                                msprop:Generator_TableVarName="tableLicense"
+                                msprop:Generator_RowChangedName="LicenseRowChanged"
+                                msprop:Generator_TablePropName="License"
+                                msprop:Generator_RowDeletingName="LicenseRowDeleting"
+                                msprop:Generator_RowChangingName="LicenseRowChanging"
+                                msprop:Generator_RowEvHandlerName="LicenseRowChangeEventHandler"
+                                msprop:Generator_RowDeletedName="LicenseRowDeleted"
+                                msprop:Generator_RowClassName="LicenseRow" msprop:Generator_UserTableName="License"
+                                msprop:Generator_RowEvArgName="LicenseRowChangeEvent" minOccurs="0"
+                                maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="Guid"
+                                      msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+                                      msprop:Generator_ColumnVarNameInTable="columnGuid"
+                                      msprop:Generator_ColumnPropNameInRow="Guid"
+                                      msprop:Generator_ColumnPropNameInTable="GuidColumn"
+                                      msprop:Generator_UserColumnName="Guid" type="xs:string" />
+                        <xs:attribute name="Type" msprop:Generator_ColumnVarNameInTable="columnType"
+                                      msprop:Generator_ColumnPropNameInRow="Type"
+                                      msprop:Generator_ColumnPropNameInTable="TypeColumn"
+                                      msprop:Generator_UserColumnName="Type" type="xs:string" />
+                        <xs:attribute name="Name" msprop:Generator_ColumnVarNameInTable="columnName"
+                                      msprop:Generator_ColumnPropNameInRow="Name"
+                                      msprop:Generator_ColumnPropNameInTable="NameColumn"
+                                      msprop:Generator_UserColumnName="Name" type="xs:string" />
+                        <xs:attribute name="Licenses_Id" msprop:Generator_ColumnVarNameInTable="columnLicenses_Id"
+                                      msprop:Generator_ColumnPropNameInRow="Licenses_Id"
+                                      msprop:Generator_ColumnPropNameInTable="Licenses_IdColumn"
+                                      msprop:Generator_UserColumnName="Licenses_Id" type="xs:int" use="prohibited" />
+                        <xs:attribute name="Licenses_Id_0" msprop:Generator_ColumnVarNameInTable="columnLicenses_Id_0"
+                                      msprop:Generator_ColumnPropNameInRow="Licenses_Id_0"
+                                      msprop:Generator_ColumnPropNameInTable="Licenses_Id_0Column"
+                                      msprop:Generator_UserColumnName="Licenses_Id_0" type="xs:int" use="prohibited" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="SharePoint_Id" msprop:Generator_ColumnVarNameInTable="columnSharePoint_Id"
+                                msprop:Generator_ColumnPropNameInRow="SharePoint_Id"
+                                msprop:Generator_ColumnPropNameInTable="SharePoint_IdColumn"
+                                msprop:Generator_UserColumnName="SharePoint_Id" type="xs:int" use="prohibited" />
+                  <xs:attribute name="Licenses_Id_0" msdata:AutoIncrement="true"
+                                msprop:Generator_ColumnVarNameInTable="columnLicenses_Id_0"
+                                msprop:Generator_ColumnPropNameInRow="Licenses_Id_0"
+                                msprop:Generator_ColumnPropNameInTable="Licenses_Id_0Column"
+                                msprop:Generator_UserColumnName="Licenses_Id_0" type="xs:int"
+                                msdata:AllowDBNull="false" use="prohibited" />
+                  <xs:attribute name="SharePoint_Id_0" msprop:Generator_ColumnVarNameInTable="columnSharePoint_Id_0"
+                                msprop:Generator_ColumnPropNameInRow="SharePoint_Id_0"
+                                msprop:Generator_ColumnPropNameInTable="SharePoint_Id_0Column"
+                                msprop:Generator_UserColumnName="SharePoint_Id_0" type="xs:int" use="prohibited" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="SPSD_Id" msprop:Generator_ColumnVarNameInTable="columnSPSD_Id"
+                          msprop:Generator_ColumnPropNameInRow="SPSD_Id"
+                          msprop:Generator_ColumnPropNameInTable="SPSD_IdColumn"
+                          msprop:Generator_UserColumnName="SPSD_Id" type="xs:int" use="prohibited" />
+            <xs:attribute name="SharePoint_Id_0" msdata:AutoIncrement="true"
+                          msprop:Generator_ColumnVarNameInTable="columnSharePoint_Id_0"
+                          msprop:Generator_ColumnPropNameInRow="SharePoint_Id_0"
+                          msprop:Generator_ColumnPropNameInTable="SharePoint_Id_0Column"
+                          msprop:Generator_UserColumnName="SharePoint_Id_0" type="xs:int" msdata:AllowDBNull="false"
+                          use="prohibited" />
+            <xs:attribute name="SPSD_Id_0" msprop:Generator_ColumnVarNameInTable="columnSPSD_Id_0"
+                          msprop:Generator_ColumnPropNameInRow="SPSD_Id_0"
+                          msprop:Generator_ColumnPropNameInTable="SPSD_Id_0Column"
+                          msprop:Generator_UserColumnName="SPSD_Id_0" type="xs:int" use="prohibited" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="Version" msprop:Generator_ColumnVarNameInTable="columnVersion"
+                    msprop:Generator_ColumnPropNameInRow="Version"
+                    msprop:Generator_ColumnPropNameInTable="VersionColumn" msprop:Generator_UserColumnName="Version"
+                    type="xs:string" />
+      <xs:attribute name="SPSD_Id_0" msdata:AutoIncrement="true"
+                    msprop:Generator_ColumnVarNameInTable="columnSPSD_Id_0"
+                    msprop:Generator_ColumnPropNameInRow="SPSD_Id_0"
+                    msprop:Generator_ColumnPropNameInTable="SPSD_Id_0Column"
+                    msprop:Generator_UserColumnName="SPSD_Id_0" type="xs:int" msdata:AllowDBNull="false"
+                    use="prohibited" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:Locale="en" msprop:Generator_DataSetName="NewDataSet"
+              msprop:Generator_UserDSName="NewDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="Solution" />
+        <xs:element ref="SiteCollection" />
+        <xs:element ref="WebApplication" />
+        <xs:element ref="SPSD" />
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//Solution" />
+      <xs:field xpath="@Solution_Id_0" />
+    </xs:unique>
+    <xs:unique name="Sites_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//Sites" />
+      <xs:field xpath="@Sites_Id_0" />
+    </xs:unique>
+    <xs:unique name="SiteCollection_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//SiteCollection" />
+      <xs:field xpath="@SiteCollection_Id_0" />
+    </xs:unique>
+    <xs:unique name="Database_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//Database" />
+      <xs:field xpath="@Database_Id_0" />
+    </xs:unique>
+    <xs:unique name="ManagedPaths_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//ManagedPaths" />
+      <xs:field xpath="@ManagedPaths_Id_0" />
+    </xs:unique>
+    <xs:unique name="WebApplication_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//WebApplication" />
+      <xs:field xpath="@WebApplication_Id_0" />
+    </xs:unique>
+    <xs:unique name="WarmUpUrls_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//WarmUpUrls" />
+      <xs:field xpath="@WarmUpUrls_Id_0" />
+    </xs:unique>
+    <xs:unique name="Actions_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//Actions" />
+      <xs:field xpath="@Actions_Id_0" />
+    </xs:unique>
+    <xs:unique name="Configuration_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//Configuration" />
+      <xs:field xpath="@Configuration_Id_0" />
+    </xs:unique>
+    <xs:unique name="Variables_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//Variables" />
+      <xs:field xpath="@Variables_Id_0" />
+    </xs:unique>
+    <xs:unique name="Environment_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//Environment" />
+      <xs:field xpath="@Environment_Id_0" />
+    </xs:unique>
+    <xs:unique name="Releases_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//Releases" />
+      <xs:field xpath="@Releases_Id_0" />
+    </xs:unique>
+    <xs:unique name="Versions_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//Versions" />
+      <xs:field xpath="@Versions_Id_0" />
+    </xs:unique>
+    <xs:unique name="Licenses_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//Licenses" />
+      <xs:field xpath="@Licenses_Id_0" />
+    </xs:unique>
+    <xs:unique name="SharePoint_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//SharePoint" />
+      <xs:field xpath="@SharePoint_Id_0" />
+    </xs:unique>
+    <xs:unique name="SPSD_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//SPSD" />
+      <xs:field xpath="@SPSD_Id_0" />
+    </xs:unique>
+    <xs:keyref name="SPSD_SharePoint" refer="SPSD_Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="SharePoint" msprop:rel_Generator_ChildPropName="GetSharePointRows"
+               msprop:rel_Generator_UserRelationName="SPSD_SharePoint" msprop:rel_Generator_ParentPropName="SPSDRow"
+               msprop:rel_Generator_RelationVarName="relationSPSD_SharePoint"
+               msprop:rel_Generator_UserParentTable="SPSD">
+      <xs:selector xpath=".//SharePoint" />
+      <xs:field xpath="@SPSD_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="SharePoint_Licenses" refer="SharePoint_Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="Licenses" msprop:rel_Generator_ChildPropName="GetLicensesRows"
+               msprop:rel_Generator_UserRelationName="SharePoint_Licenses"
+               msprop:rel_Generator_ParentPropName="SharePointRow"
+               msprop:rel_Generator_RelationVarName="relationSharePoint_Licenses"
+               msprop:rel_Generator_UserParentTable="SharePoint">
+      <xs:selector xpath=".//Licenses" />
+      <xs:field xpath="@SharePoint_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="Licenses_License" refer="Licenses_Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="License" msprop:rel_Generator_ChildPropName="GetLicenseRows"
+               msprop:rel_Generator_UserRelationName="Licenses_License"
+               msprop:rel_Generator_ParentPropName="LicensesRow"
+               msprop:rel_Generator_RelationVarName="relationLicenses_License"
+               msprop:rel_Generator_UserParentTable="Licenses">
+      <xs:selector xpath=".//License" />
+      <xs:field xpath="@Licenses_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="SharePoint_Versions" refer="SharePoint_Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="Versions" msprop:rel_Generator_ChildPropName="GetVersionsRows"
+               msprop:rel_Generator_UserRelationName="SharePoint_Versions"
+               msprop:rel_Generator_ParentPropName="SharePointRow"
+               msprop:rel_Generator_RelationVarName="relationSharePoint_Versions"
+               msprop:rel_Generator_UserParentTable="SharePoint">
+      <xs:selector xpath=".//Versions" />
+      <xs:field xpath="@SharePoint_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="Versions_Version" refer="Versions_Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="Version" msprop:rel_Generator_ChildPropName="GetVersionRows"
+               msprop:rel_Generator_UserRelationName="Versions_Version"
+               msprop:rel_Generator_ParentPropName="VersionsRow"
+               msprop:rel_Generator_RelationVarName="relationVersions_Version"
+               msprop:rel_Generator_UserParentTable="Versions">
+      <xs:selector xpath=".//Version" />
+      <xs:field xpath="@Versions_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="SharePoint_Releases" refer="SharePoint_Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="Releases" msprop:rel_Generator_ChildPropName="GetReleasesRows"
+               msprop:rel_Generator_UserRelationName="SharePoint_Releases"
+               msprop:rel_Generator_ParentPropName="SharePointRow"
+               msprop:rel_Generator_RelationVarName="relationSharePoint_Releases"
+               msprop:rel_Generator_UserParentTable="SharePoint">
+      <xs:selector xpath=".//Releases" />
+      <xs:field xpath="@SharePoint_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="Releases_Release" refer="Releases_Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="Release" msprop:rel_Generator_ChildPropName="GetReleaseRows"
+               msprop:rel_Generator_UserRelationName="Releases_Release"
+               msprop:rel_Generator_ParentPropName="ReleasesRow"
+               msprop:rel_Generator_RelationVarName="relationReleases_Release"
+               msprop:rel_Generator_UserParentTable="Releases">
+      <xs:selector xpath=".//Release" />
+      <xs:field xpath="@Releases_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="SPSD_SiteStructures" refer="SPSD_Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="SiteStructures"
+               msprop:rel_Generator_ChildPropName="GetSiteStructuresRows"
+               msprop:rel_Generator_UserRelationName="SPSD_SiteStructures"
+               msprop:rel_Generator_ParentPropName="SPSDRow"
+               msprop:rel_Generator_RelationVarName="relationSPSD_SiteStructures"
+               msprop:rel_Generator_UserParentTable="SPSD">
+      <xs:selector xpath=".//SiteStructures" />
+      <xs:field xpath="@SPSD_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="SPSD_Environment" refer="SPSD_Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="Environment"
+               msprop:rel_Generator_ChildPropName="GetEnvironmentRows"
+               msprop:rel_Generator_UserRelationName="SPSD_Environment" msprop:rel_Generator_ParentPropName="SPSDRow"
+               msprop:rel_Generator_RelationVarName="relationSPSD_Environment"
+               msprop:rel_Generator_UserParentTable="SPSD">
+      <xs:selector xpath=".//Environment" />
+      <xs:field xpath="@SPSD_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="Environment_Solutions" refer="Environment_Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="Solutions" msprop:rel_Generator_ChildPropName="GetSolutionsRows"
+               msprop:rel_Generator_UserRelationName="Environment_Solutions"
+               msprop:rel_Generator_ParentPropName="EnvironmentRow"
+               msprop:rel_Generator_RelationVarName="relationEnvironment_Solutions"
+               msprop:rel_Generator_UserParentTable="Environment">
+      <xs:selector xpath=".//Solutions" />
+      <xs:field xpath="@Environment_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="Environment_PreRequisiteSolutions" refer="Environment_Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="PreRequisiteSolutions"
+               msprop:rel_Generator_ChildPropName="GetPreRequisiteSolutionsRows"
+               msprop:rel_Generator_UserRelationName="Environment_PreRequisiteSolutions"
+               msprop:rel_Generator_ParentPropName="EnvironmentRow"
+               msprop:rel_Generator_RelationVarName="relationEnvironment_PreRequisiteSolutions"
+               msprop:rel_Generator_UserParentTable="Environment">
+      <xs:selector xpath=".//PreRequisiteSolutions" />
+      <xs:field xpath="@Environment_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="Environment_Variables" refer="Environment_Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="Variables" msprop:rel_Generator_ChildPropName="GetVariablesRows"
+               msprop:rel_Generator_UserRelationName="Environment_Variables"
+               msprop:rel_Generator_ParentPropName="EnvironmentRow"
+               msprop:rel_Generator_RelationVarName="relationEnvironment_Variables"
+               msprop:rel_Generator_UserParentTable="Environment">
+      <xs:selector xpath=".//Variables" />
+      <xs:field xpath="@Environment_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="Variables_Variable" refer="Variables_Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="Variable" msprop:rel_Generator_ChildPropName="GetVariableRows"
+               msprop:rel_Generator_UserRelationName="Variables_Variable"
+               msprop:rel_Generator_ParentPropName="VariablesRow"
+               msprop:rel_Generator_RelationVarName="relationVariables_Variable"
+               msprop:rel_Generator_UserParentTable="Variables">
+      <xs:selector xpath=".//Variable" />
+      <xs:field xpath="@Variables_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="SPSD_Configuration" refer="SPSD_Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="Configuration"
+               msprop:rel_Generator_ChildPropName="GetConfigurationRows"
+               msprop:rel_Generator_UserRelationName="SPSD_Configuration" msprop:rel_Generator_ParentPropName="SPSDRow"
+               msprop:rel_Generator_RelationVarName="relationSPSD_Configuration"
+               msprop:rel_Generator_UserParentTable="SPSD">
+      <xs:selector xpath=".//Configuration" />
+      <xs:field xpath="@SPSD_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="Configuration_Actions" refer="Configuration_Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="Actions" msprop:rel_Generator_ChildPropName="GetActionsRows"
+               msprop:rel_Generator_UserRelationName="Configuration_Actions"
+               msprop:rel_Generator_ParentPropName="ConfigurationRow"
+               msprop:rel_Generator_RelationVarName="relationConfiguration_Actions"
+               msprop:rel_Generator_UserParentTable="Configuration">
+      <xs:selector xpath=".//Actions" />
+      <xs:field xpath="@Configuration_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="Actions_WarmUpUrls" refer="Actions_Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="WarmUpUrls" msprop:rel_Generator_ChildPropName="GetWarmUpUrlsRows"
+               msprop:rel_Generator_UserRelationName="Actions_WarmUpUrls"
+               msprop:rel_Generator_ParentPropName="ActionsRow"
+               msprop:rel_Generator_RelationVarName="relationActions_WarmUpUrls"
+               msprop:rel_Generator_UserParentTable="Actions">
+      <xs:selector xpath=".//WarmUpUrls" />
+      <xs:field xpath="@Actions_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="WarmUpUrls_WarmUp" refer="WarmUpUrls_Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="WarmUp" msprop:rel_Generator_ChildPropName="GetWarmUpRows"
+               msprop:rel_Generator_UserRelationName="WarmUpUrls_WarmUp"
+               msprop:rel_Generator_ParentPropName="WarmUpUrlsRow"
+               msprop:rel_Generator_RelationVarName="relationWarmUpUrls_WarmUp"
+               msprop:rel_Generator_UserParentTable="WarmUpUrls">
+      <xs:selector xpath=".//WarmUp" />
+      <xs:field xpath="@WarmUpUrls_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="Actions_RecycleAppPools" refer="Actions_Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="RecycleAppPools"
+               msprop:rel_Generator_ChildPropName="GetRecycleAppPoolsRows"
+               msprop:rel_Generator_UserRelationName="Actions_RecycleAppPools"
+               msprop:rel_Generator_ParentPropName="ActionsRow"
+               msprop:rel_Generator_RelationVarName="relationActions_RecycleAppPools"
+               msprop:rel_Generator_UserParentTable="Actions">
+      <xs:selector xpath=".//RecycleAppPools" />
+      <xs:field xpath="@Actions_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="Actions_ResetIIS" refer="Actions_Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="ResetIIS" msprop:rel_Generator_ChildPropName="GetResetIISRows"
+               msprop:rel_Generator_UserRelationName="Actions_ResetIIS"
+               msprop:rel_Generator_ParentPropName="ActionsRow"
+               msprop:rel_Generator_RelationVarName="relationActions_ResetIIS"
+               msprop:rel_Generator_UserParentTable="Actions">
+      <xs:selector xpath=".//ResetIIS" />
+      <xs:field xpath="@Actions_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="Actions_RestartService" refer="Actions_Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="RestartService"
+               msprop:rel_Generator_ChildPropName="GetRestartServiceRows"
+               msprop:rel_Generator_UserRelationName="Actions_RestartService"
+               msprop:rel_Generator_ParentPropName="ActionsRow"
+               msprop:rel_Generator_RelationVarName="relationActions_RestartService"
+               msprop:rel_Generator_UserParentTable="Actions">
+      <xs:selector xpath=".//RestartService" />
+      <xs:field xpath="@Actions_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="Configuration_Restrictions" refer="Configuration_Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="Restrictions"
+               msprop:rel_Generator_ChildPropName="GetRestrictionsRows"
+               msprop:rel_Generator_UserRelationName="Configuration_Restrictions"
+               msprop:rel_Generator_ParentPropName="ConfigurationRow"
+               msprop:rel_Generator_RelationVarName="relationConfiguration_Restrictions"
+               msprop:rel_Generator_UserParentTable="Configuration">
+      <xs:selector xpath=".//Restrictions" />
+      <xs:field xpath="@Configuration_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="Configuration_Settings" refer="Configuration_Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="Settings" msprop:rel_Generator_ChildPropName="GetSettingsRows"
+               msprop:rel_Generator_UserRelationName="Configuration_Settings"
+               msprop:rel_Generator_ParentPropName="ConfigurationRow"
+               msprop:rel_Generator_RelationVarName="relationConfiguration_Settings"
+               msprop:rel_Generator_UserParentTable="Configuration">
+      <xs:selector xpath=".//Settings" />
+      <xs:field xpath="@Configuration_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="SiteStructures_WebApplication" refer="SiteStructures_Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="WebApplication"
+               msprop:rel_Generator_ChildPropName="GetWebApplicationRows"
+               msprop:rel_Generator_UserRelationName="SiteStructures_WebApplication"
+               msprop:rel_Generator_RelationVarName="relationSiteStructures_WebApplication"
+               msprop:rel_Generator_UserParentTable="SiteStructures"
+               msprop:rel_Generator_ParentPropName="SiteStructuresRow">
+      <xs:selector xpath=".//WebApplication" />
+      <xs:field xpath="@SiteStructures_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="Solution_WebApplication" refer="Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="WebApplication"
+               msprop:rel_Generator_ChildPropName="GetWebApplicationRows"
+               msprop:rel_Generator_UserRelationName="Solution_WebApplication"
+               msprop:rel_Generator_ParentPropName="SolutionRow"
+               msprop:rel_Generator_RelationVarName="relationSolution_WebApplication"
+               msprop:rel_Generator_UserParentTable="Solution">
+      <xs:selector xpath=".//WebApplication" />
+      <xs:field xpath="@Solution_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="WebApplication_SiteCollections" refer="WebApplication_Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="SiteCollections"
+               msprop:rel_Generator_ChildPropName="GetSiteCollectionsRows"
+               msprop:rel_Generator_UserRelationName="WebApplication_SiteCollections"
+               msprop:rel_Generator_ParentPropName="WebApplicationRow"
+               msprop:rel_Generator_RelationVarName="relationWebApplication_SiteCollections"
+               msprop:rel_Generator_UserParentTable="WebApplication">
+      <xs:selector xpath=".//SiteCollections" />
+      <xs:field xpath="@WebApplication_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="WebApplication_ManagedPaths" refer="WebApplication_Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="ManagedPaths"
+               msprop:rel_Generator_ChildPropName="GetManagedPathsRows"
+               msprop:rel_Generator_UserRelationName="WebApplication_ManagedPaths"
+               msprop:rel_Generator_ParentPropName="WebApplicationRow"
+               msprop:rel_Generator_RelationVarName="relationWebApplication_ManagedPaths"
+               msprop:rel_Generator_UserParentTable="WebApplication">
+      <xs:selector xpath=".//ManagedPaths" />
+      <xs:field xpath="@WebApplication_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="ManagedPaths_ManagedPath" refer="ManagedPaths_Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="ManagedPath"
+               msprop:rel_Generator_ChildPropName="GetManagedPathRows"
+               msprop:rel_Generator_UserRelationName="ManagedPaths_ManagedPath"
+               msprop:rel_Generator_ParentPropName="ManagedPathsRow"
+               msprop:rel_Generator_RelationVarName="relationManagedPaths_ManagedPath"
+               msprop:rel_Generator_UserParentTable="ManagedPaths">
+      <xs:selector xpath=".//ManagedPath" />
+      <xs:field xpath="@ManagedPaths_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="WebApplication_Database" refer="WebApplication_Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="Database" msprop:rel_Generator_ChildPropName="GetDatabaseRows"
+               msprop:rel_Generator_UserRelationName="WebApplication_Database"
+               msprop:rel_Generator_ParentPropName="WebApplicationRow"
+               msprop:rel_Generator_RelationVarName="relationWebApplication_Database"
+               msprop:rel_Generator_UserParentTable="WebApplication">
+      <xs:selector xpath=".//Database" />
+      <xs:field xpath="@WebApplication_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="Database_DBAlias" refer="Database_Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="DBAlias" msprop:rel_Generator_ChildPropName="GetDBAliasRows"
+               msprop:rel_Generator_UserRelationName="Database_DBAlias"
+               msprop:rel_Generator_ParentPropName="DatabaseRow"
+               msprop:rel_Generator_RelationVarName="relationDatabase_DBAlias"
+               msprop:rel_Generator_UserParentTable="Database">
+      <xs:selector xpath=".//DBAlias" />
+      <xs:field xpath="@Database_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="Solution_SiteCollection" refer="Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="SiteCollection"
+               msprop:rel_Generator_ChildPropName="GetSiteCollectionRows"
+               msprop:rel_Generator_UserRelationName="Solution_SiteCollection"
+               msprop:rel_Generator_ParentPropName="SolutionRow"
+               msprop:rel_Generator_RelationVarName="relationSolution_SiteCollection"
+               msprop:rel_Generator_UserParentTable="Solution">
+      <xs:selector xpath=".//SiteCollection" />
+      <xs:field xpath="@Solution_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="SiteCollections_SiteCollection" refer="SiteCollections_Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="SiteCollection"
+               msprop:rel_Generator_ChildPropName="GetSiteCollectionRows"
+               msprop:rel_Generator_UserRelationName="SiteCollections_SiteCollection"
+               msprop:rel_Generator_RelationVarName="relationSiteCollections_SiteCollection"
+               msprop:rel_Generator_UserParentTable="SiteCollections"
+               msprop:rel_Generator_ParentPropName="SiteCollectionsRow">
+      <xs:selector xpath=".//SiteCollection" />
+      <xs:field xpath="@SiteCollections_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="SiteCollection_Sites" refer="SiteCollection_Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="Sites" msprop:rel_Generator_ChildPropName="GetSitesRows"
+               msprop:rel_Generator_UserRelationName="SiteCollection_Sites"
+               msprop:rel_Generator_ParentPropName="SiteCollectionRow"
+               msprop:rel_Generator_RelationVarName="relationSiteCollection_Sites"
+               msprop:rel_Generator_UserParentTable="SiteCollection">
+      <xs:selector xpath=".//Sites" />
+      <xs:field xpath="@SiteCollection_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="Sites_Site" refer="Sites_Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="Site" msprop:rel_Generator_ChildPropName="GetSiteRows"
+               msprop:rel_Generator_UserRelationName="Sites_Site" msprop:rel_Generator_ParentPropName="SitesRow"
+               msprop:rel_Generator_RelationVarName="relationSites_Site" msprop:rel_Generator_UserParentTable="Sites">
+      <xs:selector xpath=".//Site" />
+      <xs:field xpath="@Sites_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="Solutions_Solution" refer="Solutions_Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="Solution" msprop:rel_Generator_ChildPropName="GetSolutionRows"
+               msprop:rel_Generator_UserRelationName="Solutions_Solution"
+               msprop:rel_Generator_RelationVarName="relationSolutions_Solution"
+               msprop:rel_Generator_UserParentTable="Solutions" msprop:rel_Generator_ParentPropName="SolutionsRow">
+      <xs:selector xpath=".//Solution" />
+      <xs:field xpath="@Solutions_Id_0" />
+    </xs:keyref>
+    <xs:keyref name="PreRequisiteSolutions_Solution" refer="PreRequisiteSolutions_Constraint1" msdata:IsNested="true"
+               msprop:rel_Generator_UserChildTable="Solution" msprop:rel_Generator_ChildPropName="GetSolutionRows"
+               msprop:rel_Generator_UserRelationName="PreRequisiteSolutions_Solution"
+               msprop:rel_Generator_RelationVarName="relationPreRequisiteSolutions_Solution"
+               msprop:rel_Generator_UserParentTable="PreRequisiteSolutions"
+               msprop:rel_Generator_ParentPropName="PreRequisiteSolutionsRow">
+      <xs:selector xpath=".//Solution" />
+      <xs:field xpath="@PreRequisiteSolutions_Id_0" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

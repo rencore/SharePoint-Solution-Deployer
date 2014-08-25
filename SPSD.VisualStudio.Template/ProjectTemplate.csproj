@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="10.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <ProjectGuid>$guid1$</ProjectGuid>
+    <SchemaVersion>2.0</SchemaVersion>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>$safeprojectname$</RootNamespace>
+    <AssemblyName>$safeprojectname$</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="Batches\Deploy.bat" />
+    <None Include="Batches\Redeploy.bat" />
+    <None Include="Batches\Retract.bat" />
+    <None Include="Batches\RunOnlyExtensions.bat" />
+    <None Include="Batches\Update.bat" />
+    <None Include="Scripts\CustomTargets.ps1" />
+    <None Include="Scripts\Extensions\Example\Example.ps1" />
+    <None Include="Scripts\SPSD_Base.ps1" />
+    <None Include="Scripts\SPSD_Deployment.ps1" />
+    <None Include="Scripts\SPSD_Extensions.ps1" />
+    <None Include="Scripts\SPSD_Main.ps1" />
+    <None Include="Scripts\SPSD_Staging.ps1" />
+    <None Include="Scripts\SPSD_Utilities.ps1" />
+    <None Include="Build\GitSPSDContinousDeploymentTemplate.12.xaml" />
+    <None Include="Build\SPSD.targets" />
+    <None Include="Build\WSPProjectInclude.targets" />
+    <None Include="Scripts\SharePointVersions.xml" />
+    <None Include="Environments\Default.xml" />
+    <None Include="Environments\DefaultNoComments.xml" />
+    <None Include="Environments\Extensions\Example.xml" />
+    <None Include="HowToExtendSPSD.txt" />
+    <None Include="Readme.txt" />
+    <None Include="ReleaseNotes.txt" />
+    <None Include="Scripts\AppLogo.txt" />
+    <None Include="Scripts\Extensions\Example\manifest.xml" />
+    <None Include="Scripts\Extensions\HowToCreateExtensions.txt" />
+    <None Include="Solutions\DropYouSolutionsHere.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="Build\SPSD.targets" />
+</Project>

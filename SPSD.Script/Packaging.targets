@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- SPSD Targets and Properties -->
+  <!-- This file contains targets which are used by projects in the solution to create wsp solution files -->
+  <!-- Author: Matthias Einig, RENCORE AB -->
+  <!-- SPSD Version 5.0.1.6438 -->
+
+  <Target Name="AfterBuild">
+    <CallTarget Targets="CreateSPSDPackageLocalBuild;" />
+  </Target>
+  <Target Name="BeforeBuild">
+  </Target>
+
+
+  <PropertyGroup>
+    <SPSDPackageLocation Condition="$(BuildingInsideVisualStudio)=='true'">$(SolutionDir)$(ProjectName)\bin\$(Configuration)\SPSD\</SPSDPackageLocation>
+  </PropertyGroup>
+  
+  <Target Name="CreateSPSDPackageLocalBuild" DependsOnTargets="CleanSPSDPackage" Condition="$(BuildingInsideVisualStudio)=='true'">
+    <Message Text="SPSD: Creating SharePoint Solution Deployment Package at $(SPSDPackageLocation) (LocalBuild)" Condition="$(BuildingInsideVisualStudio)=='true'" Importance="high" />
+
+    <!-- copy batches folder -->
+    <CreateItem Include="$(SolutionDir)$(ProjectName)\Batches\*.bat">
+      <Output TaskParameter="Include" ItemName="BatchFilesDefault" />
+    </CreateItem>
+    <Copy SourceFiles="@(BatchFilesDefault)" DestinationFolder="$(SPSDPackageLocation)\%(RecursiveDir)" SkipUnchangedFiles="false" />
+
+    <!-- copy batches folder -->
+    <CreateItem Include="$(SolutionDir)$(ProjectName)\RootFiles\*.*">
+      <Output TaskParameter="Include" ItemName="RootFilesDefault" />
+    </CreateItem>
+    <Copy SourceFiles="@(RootFilesDefault)" DestinationFolder="$(SPSDPackageLocation)\%(RecursiveDir)" SkipUnchangedFiles="false" />
+
+    <!-- copy scripts folder -->
+    <CreateItem Include="$(SolutionDir)$(ProjectName)\Scripts\**\*.*">
+      <Output TaskParameter="Include" ItemName="PSFilesDefault" />
+    </CreateItem>
+    <Copy SourceFiles="@(PSFilesDefault)" DestinationFolder="$(SPSDPackageLocation)\Scripts\%(RecursiveDir)" SkipUnchangedFiles="false" />
+
+    <!-- copy environments folder -->
+    <CreateItem Include="$(SolutionDir)$(ProjectName)\Environments\**\*.*">
+      <Output TaskParameter="Include" ItemName="EnvFiles" />
+    </CreateItem>
+    <Copy SourceFiles="@(EnvFiles)" DestinationFolder="$(SPSDPackageLocation)\Environments\%(RecursiveDir)" SkipUnchangedFiles="false" />
+
+    <!-- copy 3rd party solutions-->
+    <CreateItem Include="$(SolutionDir)$(ProjectName)\Solutions\**\*.*">
+      <Output TaskParameter="Include" ItemName="SolFiles" />
+    </CreateItem>
+    <Copy SourceFiles="@(SolFiles)" DestinationFolder="$(SPSDPackageLocation)\Solutions\" SkipUnchangedFiles="false" />
+    
+    <Message Text="SPSD: Deployment package location: $(SPSDPackageLocation)" Importance="high" />
+
+    <Delete Files="$(SolutionDir)$(ProjectName)\bin\$(Configuration)\SPSD.Script.pdb" />
+    <Delete Files="$(SolutionDir)$(ProjectName)\bin\$(Configuration)\SPSD.Script.dll" />
+    <Move SourceFiles="$(SolutionDir)$(ProjectName)\bin\$(Configuration)\Scripts\SharePointVersions.xml" DestinationFolder="$(SPSDPackageLocation)\Scripts\" />
+    <RemoveDir Directories="$(SolutionDir)$(ProjectName)\bin\$(Configuration)\Scripts" ContinueOnError="true" />
+  </Target>
+  <Target Name="CleanSPSDPackage">
+    <Message Text="------ SPSD: Cleaning complete solution output in &quot;$(SPSDPackageLocation)&quot; ------" Importance="high" />
+    <RemoveDir Directories="$(SPSDPackageLocation)" ContinueOnError="true" />
+  </Target>
+
+</Project>
