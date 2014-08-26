@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SPSD Version="5.0.1.6438">
+  <Extensions>
+    <Extension ID="BlockedFileExtensions" Type="BlockedFileExtensions">
+      <Events>
+        <Event Name="BeforeDeploy">Add-SPBlockedFileExtensions</Event>
+        <Event Name="AfterRetract">Remove-SPBlockedFileExtensions</Event>
+      </Events>
+      <Parameters>
+        <Parameter Name="BlockedFileExtensions">$(BlockedFileExtensions)</Parameter>
+      </Parameters> 
+      <Data>
+      </Data>
+    </Extension>
+  </Extensions>
+</SPSD>

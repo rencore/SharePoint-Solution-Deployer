@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SPSD Version="5.0.3.6439">
+  <Configuration ID="Default" FilePath="ConfigurationNode.xml" />
+
+  <Extensions ID="Default">
+    <Extension ID="BlockedFileExtensions" Type="BlockedFileExtensions" FilePath="Extensions\BlockedFileExtensions.xml" />
+  </Extensions>
+
+  <Environment ID="Default">
+    <Variables ID="Default">
+      <!-- Variables for Blocked Type Extensions-->
+      <Variable Name="BlockedFileExtensions">adi;dwg;sldprt;slddrw;sldasm;swb</Variable>
+    </Variables>
+
+    <PreRequisiteSolutions ID="Default"></PreRequisiteSolutions>
+    <Solutions ID="Default" Force="true" Overwrite="true"></Solutions>
+  </Environment>
+  
+  
+  <Configuration ID="Default">
+    <Settings>
+      <DeploymentRetries>3</DeploymentRetries>
+      <DeploymentTimeout>60000</DeploymentTimeout>
+      <RunOnMultipleServersInFarm>OnlyLocal</RunOnMultipleServersInFarm>
+      <WaitAfterDeployment>pause</WaitAfterDeployment>
+      <DisplayWizards>false</DisplayWizards>
+      <CreateULSLogfile>false</CreateULSLogfile>
+    </Settings>
+
+    <Restrictions>
+      <AllowGACDeployment>true</AllowGACDeployment>
+      <AllowCASPolicies>true</AllowCASPolicies>
+      <AllowFullTrustBinDeployment>true</AllowFullTrustBinDeployment>
+      <MinimalSharePointVersion>14.0.0.0</MinimalSharePointVersion>
+      <MinimalSharePointLicense>Foundation</MinimalSharePointLicense>
+      <RequiredSharePointLanguages>
+        <!-- A language pack can be either specified with the LCID, the LanguageTag or the DisplayName -->
+        <!--
+        <SharePointLanguage LCID="1053" DisplayName="Swedish" />
+        <SharePointLanguage LCID="1049" DisplayName="Russian" />
+        <SharePointLanguage LCID="1063" DisplayName="Lithuanian" />
+        <SharePointLanguage LCID="1062" DisplayName="Latvian" />
+        <SharePointLanguage LCID="1036" DisplayName="French" />
+        <SharePointLanguage LCID="2070" DisplayName="Portugese" />
+        <SharePointLanguage LCID="1033" DisplayName="English" />
+        <SharePointLanguage LCID="1045" DisplayName="Polish" />
+        <SharePointLanguage LCID="1051" DisplayName="Slovak" />
+        <SharePointLanguage LCID="1038" DisplayName="Hungarian" />
+        <SharePointLanguage LCID="2052" DisplayName="Chinese - Simplified" />
+        <SharePointLanguage LCID="1028" DisplayName="Chinese - Traditional" />
+        -->
+      </RequiredSharePointLanguages>
+    </Restrictions>
+  </Configuration>
+</SPSD>

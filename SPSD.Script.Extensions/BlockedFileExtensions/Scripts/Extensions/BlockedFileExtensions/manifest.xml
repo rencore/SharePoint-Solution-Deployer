@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SPSD>
+  <Extensions>
+    <Extension>
+        <Manifest>
+            <Type>BlockedFileExtensions</Type>
+            <Description>Adds or removes blocked file extensions to all webapps in the farm.</Description>
+            <Version>1.0.0.0</Version>
+            <Script>BlockedFileExtensions.ps1</Script>
+            <Enabled>true</Enabled>
+        </Manifest>
+    </Extension>
+   </Extensions>
+</SPSD>
