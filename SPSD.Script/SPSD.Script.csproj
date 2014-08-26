@@ -54,6 +54,18 @@
     <None Include="Packaging.targets" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\SPSD.Common\HowToExtendSPSD.txt">
+      <Link>RootFiles\HowToExtendSPSD.txt</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\SPSD.Common\Readme.txt">
+      <Link>RootFiles\Readme.txt</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\SPSD.Common\ReleaseNotes.txt">
+      <Link>RootFiles\ReleaseNotes.txt</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\SPSD.Common\SharePointVersions.xml">
       <Link>Scripts\SharePointVersions.xml</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -61,9 +73,6 @@
     <Content Include="Environments\Default.xml" />
     <Content Include="Environments\DefaultNoComments.xml" />
     <Content Include="Environments\Extensions\Example.xml" />
-    <Content Include="RootFiles\HowToExtendSPSD.txt" />
-    <Content Include="RootFiles\Readme.txt" />
-    <Content Include="RootFiles\ReleaseNotes.txt" />
     <Content Include="Scripts\AppLogo.txt" />
     <Content Include="Scripts\Extensions\Example\manifest.xml" />
     <Content Include="Scripts\Extensions\HowToCreateExtensions.txt" />

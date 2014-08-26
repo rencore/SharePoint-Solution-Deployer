@@ -26,12 +26,6 @@
     </CreateItem>
     <Copy SourceFiles="@(BatchFilesDefault)" DestinationFolder="$(SPSDPackageLocation)\%(RecursiveDir)" SkipUnchangedFiles="false" />
 
-    <!-- copy batches folder -->
-    <CreateItem Include="$(SolutionDir)$(ProjectName)\RootFiles\*.*">
-      <Output TaskParameter="Include" ItemName="RootFilesDefault" />
-    </CreateItem>
-    <Copy SourceFiles="@(RootFilesDefault)" DestinationFolder="$(SPSDPackageLocation)\%(RecursiveDir)" SkipUnchangedFiles="false" />
-
     <!-- copy scripts folder -->
     <CreateItem Include="$(SolutionDir)$(ProjectName)\Scripts\**\*.*">
       <Output TaskParameter="Include" ItemName="PSFilesDefault" />
@@ -50,12 +44,24 @@
     </CreateItem>
     <Copy SourceFiles="@(SolFiles)" DestinationFolder="$(SPSDPackageLocation)\Solutions\" SkipUnchangedFiles="false" />
     
-    <Message Text="SPSD: Deployment package location: $(SPSDPackageLocation)" Importance="high" />
+    <Move SourceFiles="$(SolutionDir)$(ProjectName)\bin\$(Configuration)\Scripts\SharePointVersions.xml" DestinationFolder="$(SPSDPackageLocation)\Scripts\" />
 
+    <!-- copy batches folder -->
+    <CreateItem Include="$(SolutionDir)$(ProjectName)\bin\$(Configuration)\RootFiles\*.*">
+      <Output TaskParameter="Include" ItemName="RootFilesDefault" />
+    </CreateItem>
+    <Move SourceFiles="@(RootFilesDefault)" DestinationFolder="$(SPSDPackageLocation)\"  />
+
+    <!-- clean up unused assembly files -->
     <Delete Files="$(SolutionDir)$(ProjectName)\bin\$(Configuration)\SPSD.Script.pdb" />
     <Delete Files="$(SolutionDir)$(ProjectName)\bin\$(Configuration)\SPSD.Script.dll" />
-    <Move SourceFiles="$(SolutionDir)$(ProjectName)\bin\$(Configuration)\Scripts\SharePointVersions.xml" DestinationFolder="$(SPSDPackageLocation)\Scripts\" />
+    
+    <!-- clean up empty directies -->
     <RemoveDir Directories="$(SolutionDir)$(ProjectName)\bin\$(Configuration)\Scripts" ContinueOnError="true" />
+    <RemoveDir Directories="$(SolutionDir)$(ProjectName)\bin\$(Configuration)\RootFiles" ContinueOnError="true" />
+
+    <Message Text="SPSD: Deployment package location: $(SPSDPackageLocation)" Importance="high" />
+
   </Target>
   <Target Name="CleanSPSDPackage">
     <Message Text="------ SPSD: Cleaning complete solution output in &quot;$(SPSDPackageLocation)&quot; ------" Importance="high" />
