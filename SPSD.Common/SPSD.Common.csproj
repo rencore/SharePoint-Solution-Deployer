@@ -51,6 +51,7 @@
     <Compile Include="Properties\SharedAssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="HowToExtendSPSD.txt" />
     <Content Include="images\SPSD.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
