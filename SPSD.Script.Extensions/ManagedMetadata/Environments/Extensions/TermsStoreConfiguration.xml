@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SPSD Version="5.0.1.6438">
+  <Extensions>
+    <Extension ID="TermsStoreConfiguration" Type="ManagedMetadata" >
+      <Events>
+        <Event Name="BeforeDeploy">Import-SPTermStoreXml</Event>
+      </Events>
+      <Parameters>
+        <Parameter Name="Overwrite">$(TermsConfigurationOverwrite)</Parameter>
+        <Parameter Name="Backup">$(TermsBackup)</Parameter>
+      </Parameters>
+      <Data>
+        <TermStore Name="$(TermStore)" WorkingLanguage="$(WorkingLanguage)" DefaultLanguage="$(DefaultLanguage)">
+          <Languages>
+            <Language>1053</Language>
+            <!-- Swedish -->
+            <Language>1049</Language>
+            <!-- Russian -->
+            <Language>1063</Language>
+            <!-- Lithuanian -->
+            <Language>1062</Language>
+            <!-- Latvian -->
+            <Language>1036</Language>
+            <!-- French -->
+            <Language>2070</Language>
+            <!-- Portugese -->
+            <Language>1033</Language>
+            <!-- English -->
+            <Language>1045</Language>
+            <!-- Polish -->
+            <Language>1051</Language>
+            <!-- Slovak -->
+            <Language>1038</Language>
+            <!-- Hungarian -->
+            <Language>2052</Language>
+            <!-- Chinese - Simplified -->
+            <!--Language>1028</Language-->
+            <!-- Chinese - Traditional -->
+          </Languages>
+          <TermStoreAdministrators>
+            <TermStoreAdministrator DenyRightsMask="None" GrantRightsMask="ManageTermStore, TermStoreAdministrator">$(TermStoreAdministrators)</TermStoreAdministrator>
+          </TermStoreAdministrators>
+        </TermStore>
+      </Data>
+    </Extension>
+  </Extensions>
+</SPSD>

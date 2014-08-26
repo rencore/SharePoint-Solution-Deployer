@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SPSD Version="5.0.1.6438">
+  <Extensions>
+    <Extension ID="Terms" Type="ManagedMetadata">
+      <Events>
+        <Event Name="BeforeDeploy">Import-SPTermStoreXml</Event>
+      </Events>
+      <Parameters>
+        <Parameter Name="Overwrite">$(TermsOverwrite)</Parameter>
+        <Parameter Name="Backup">$(TermsBackup)</Parameter>
+      </Parameters>
+      <Data>
+        <TermStore Name="$(TermStore)">
+          <Groups>
+            <Group Name="$(TermGroupName)" ID="835e678c-34ce-442e-874e-2877caac8cc4">
+              <Description>
+              </Description>
+              <TermSets>
+                <TermSet Name="Navigation" ID="8f99acec-8a45-4f50-a335-bdc656ef140c" IsAvailableForTagging="True" IsOpenForTermCreation="False" Contact=" " CustomSortOrder="">
+                  <Description>
+                  </Description>
+                  <CustomProperties>
+                    <Property Name="megadropdown_home_url">$(NavigationBaseUrl)</Property>
+                  </CustomProperties>
+                  <Terms>
+                    <Term Name="Divisions" ID="0e81f7d3-64c1-4812-9073-62fde01bae9d" IsAvailableForTagging="True" IsDeprecated="False" CustomSortOrder="475f5f9d-496c-4186-8226-250e6fd4a65c:b66dfb58-6382-4b37-bba8-f2199247262c" IsKeyword="False" IsHashTag="False" IsReused="False" IsRoot="True" IsSourceTerm="True" IsPinned="True" IsPinnedRoot="True">
+                      <Description>
+                      </Description>
+                      <Labels>
+                        <Label Language="1033" IsDefaultForLanguage="True">Test1</Label>
+                      </Labels>
+                      <LocalCustomProperties>
+                        <Property Name="css">test1</Property>
+                      </LocalCustomProperties>
+                      <Terms>
+                        <Term Name="test2" ID="475f5f9d-496c-4186-8226-250e6fd4a65c" IsAvailableForTagging="True" IsDeprecated="False" CustomSortOrder="" IsKeyword="False" IsHashTag="False" IsReused="False" IsRoot="False" IsSourceTerm="True" IsPinned="False" IsPinnedRoot="True">
+                          <Description>
+                          </Description>
+                          <Labels>
+                            <Label Language="1033" IsDefaultForLanguage="True">test2</Label>
+                          </Labels>
+                          <LocalCustomProperties>
+                            <Property Name="url">$(NavigationBaseUrl)/sites/test2/</Property>
+                          </LocalCustomProperties>
+                        </Term>
+                        <Term Name="test3" ID="b66dfb58-6382-4b37-bba8-f2199247262c" IsAvailableForTagging="True" IsDeprecated="False" CustomSortOrder="" IsKeyword="False" IsHashTag="False" IsReused="False" IsRoot="False" IsSourceTerm="True" IsPinned="False" IsPinnedRoot="True">
+                          <Description>
+                          </Description>
+                          <Labels>
+                            <Label Language="1033" IsDefaultForLanguage="True">test3</Label>
+                          </Labels>
+                          <LocalCustomProperties>
+                            <Property Name="url">$(NavigationBaseUrl)/sites/test3/</Property>
+                          </LocalCustomProperties>
+                        </Term>
+                      </Terms>
+                    </Term>
+                  </Terms>
+                </TermSet>
+              </TermSets>
+            </Group>
+          </Groups>
+        </TermStore>
+      </Data>
+    </Extension>
+  </Extensions>
+</SPSD>
