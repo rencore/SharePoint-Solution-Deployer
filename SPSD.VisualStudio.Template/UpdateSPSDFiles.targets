@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- SPSD Targets and Properties -->
+  <!-- This file contains targets which update the SPSD files for the use in a Visual Studio Template -->
+  <!-- Author: Matthias Einig, RENCORE AB -->
+  <!-- SPSD Version 5.0.1.6438 -->
+
+  <Target Name="BeforeBuild">
+    <CallTarget Targets="GetSPSDFiles;" />
+  </Target>
+
+  <Target Name="AfterBuild">
+    <CallTarget Targets="CleanSPSDFiles;" />
+  </Target>
+
+
+  <PropertyGroup>
+    <SPSDCommonProject>$(SolutionDir)SPSD.Common</SPSDCommonProject>
+    <SPSDScriptProject>$(SolutionDir)SPSD.Script\Temp</SPSDScriptProject>
+    <SPSDTargetProject>$(SolutionDir)$(ProjectName)</SPSDTargetProject>
+  </PropertyGroup>
+  
+  <Target Name="GetSPSDFiles">
+    <Message Text="SPSD: Getting SPSD files for VSTemplate" Condition="$(BuildingInsideVisualStudio)=='true'" Importance="high" />
+
+    <!-- copy batches folder -->
+    <CreateItem Include="$(SPSDScriptProject)\Batches\*.bat">
+      <Output TaskParameter="Include" ItemName="BatchFilesDefault" />
+    </CreateItem>
+    <Copy SourceFiles="@(BatchFilesDefault)" DestinationFolder="$(SPSDTargetProject)\Batches\%(RecursiveDir)" SkipUnchangedFiles="false" />
+
+    <!-- copy batches folder -->
+    <CreateItem Include="$(SPSDCommonProject)\*.txt">
+      <Output TaskParameter="Include" ItemName="RootFilesDefault" />
+    </CreateItem>
+    <Copy SourceFiles="@(RootFilesDefault)" DestinationFolder="$(SPSDTargetProject)\RootFiles\%(RecursiveDir)" SkipUnchangedFiles="false" />
+
+    <!-- copy scripts folder -->
+    <CreateItem Include="$(SPSDScriptProject)\Scripts\**\*.*">
+      <Output TaskParameter="Include" ItemName="PSFilesDefault" />
+    </CreateItem>
+    <Copy SourceFiles="@(PSFilesDefault)" DestinationFolder="$(SPSDTargetProject)\Scripts\%(RecursiveDir)" SkipUnchangedFiles="false" />
+
+    <!-- copy environments folder -->
+    <CreateItem Include="$(SPSDScriptProject)\Environments\**\*.*">
+      <Output TaskParameter="Include" ItemName="EnvFiles" />
+    </CreateItem>
+    <Copy SourceFiles="@(EnvFiles)" DestinationFolder="$(SPSDTargetProject)\Environments\%(RecursiveDir)" SkipUnchangedFiles="false" />
+
+    <!-- copy SharePointVersions.xml -->
+    <Copy SourceFiles="$(SPSDCommonProject)\SharePointVersions.xml" DestinationFolder="$(SPSDTargetProject)\Scripts\" SkipUnchangedFiles="false" />
+
+    <Message Text="SPSD: Files retrieved" Importance="high" />
+
+  </Target>
+  <Target Name="CleanSPSDFiles">
+    <Message Text="SPSD: Cleaning VSTemplate from SPSD files" Condition="$(BuildingInsideVisualStudio)=='true'" Importance="high" />
+
+    <RemoveDir Directories="$(SPSDTargetProject)\Batches\" ContinueOnError="true" />
+    <RemoveDir Directories="$(SPSDTargetProject)\RootFiles\" ContinueOnError="true" />
+    <RemoveDir Directories="$(SPSDTargetProject)\Scripts\" ContinueOnError="true" />
+    <RemoveDir Directories="$(SPSDTargetProject)\Environments\" ContinueOnError="true" />
+    <RemoveDir Directories="$(SPSDTargetProject)\Batches\" ContinueOnError="true" />
+
+    <Message Text="SPSD: VS Template cleaned" Importance="high" />
+
+  </Target>
+
+</Project>

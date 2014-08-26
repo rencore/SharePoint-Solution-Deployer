@@ -95,39 +95,17 @@
     <None Include="Build\SPSD.targets">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Batches\Deploy.bat" />
-    <None Include="Batches\Redeploy.bat" />
-    <None Include="Batches\Retract.bat" />
-    <None Include="Batches\RunOnlyExtensions.bat" />
-    <None Include="Batches\Update.bat" />
+    <None Include="UpdateSPSDFiles.targets" />
     <None Include="ProjectTemplate.csproj">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <VSTemplate Include="SPSD.CS..vstemplate">
+    <VSTemplate Include="SPSD.CS.vstemplate">
       <SubType>Designer</SubType>
     </VSTemplate>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Scripts\CustomTargets.ps1" />
-    <None Include="Scripts\Extensions\Example\Example.ps1" />
-    <None Include="Scripts\SPSD_Base.ps1" />
-    <None Include="Scripts\SPSD_Deployment.ps1" />
-    <None Include="Scripts\SPSD_Extensions.ps1" />
-    <None Include="Scripts\SPSD_Main.ps1" />
-    <None Include="Scripts\SPSD_Staging.ps1" />
-    <None Include="Scripts\SPSD_Utilities.ps1" />
-    <Content Include="Environments\Default.xml" />
-    <Content Include="Environments\DefaultNoComments.xml" />
-    <Content Include="Environments\Extensions\Example.xml" />
-    <Content Include="RootFiles\HowToExtendSPSD.txt" />
-    <Content Include="RootFiles\Readme.txt" />
-    <Content Include="RootFiles\ReleaseNotes.txt" />
-    <Content Include="Scripts\AppLogo.txt" />
-    <Content Include="Scripts\Extensions\Example\manifest.xml" />
-    <Content Include="Scripts\Extensions\HowToCreateExtensions.txt" />
-    <Content Include="Scripts\SharePointVersions.xml" />
     <Content Include="Solutions\3rdPartySolutions.txt" />
     <None Include="SPSD.ico" />
     <None Include="SPSD.png" />
@@ -161,11 +139,5 @@
     <PreBuildEvent>
     </PreBuildEvent>
   </PropertyGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  <Import Project="UpdateSPSDFiles.targets" />
 </Project>
