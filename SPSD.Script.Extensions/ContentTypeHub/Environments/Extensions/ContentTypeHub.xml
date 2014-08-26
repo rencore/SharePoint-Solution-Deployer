@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SPSD Version="5.0.1.6438">
+  <Extensions>
+    <Extension ID="ContentTypeHub" Type="ContentTypeHub">
+      <Events>
+        <Event Name="AfterDeploy">Create-SPContentTypeHubExtension</Event>
+        <!-- Event Name="BeforeRetract">Remove-SPContentTypeHubExtension</Event -->
+      </Events>
+      <Parameters>
+        <Parameter Name="HubUrl">$(ContentTypeHubUrl)</Parameter>
+        <Parameter Name="Owner">$(ContentTypeHubOwner)</Parameter>
+        <Parameter Name="MMSName">$(ContentTypeHubMMSName)</Parameter>
+        <Parameter Name="Overwrite">$(ContentTypeHubOverwrite)</Parameter>
+        <Parameter Name="Confirm">false</Parameter>
+        <Parameter Name="AfterDeployExtensionDelegate">$(ContentTypeHubAfterDeployExtensionDelegate)</Parameter>
+      </Parameters> 
+      <Data>
+      </Data>
+    </Extension>
+  </Extensions>
+</SPSD>
