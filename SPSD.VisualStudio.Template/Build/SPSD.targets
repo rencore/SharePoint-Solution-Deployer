@@ -14,8 +14,8 @@
 
 
   <PropertyGroup>
-    <SPSDPackageLocation Condition="$(BuildingInsideVisualStudio)=='true'">$(SolutionDir)$(ProjectName)\$(Configuration)\SPSD\$(BuildNumber)</SPSDPackageLocation>
-    <SPSDPackageLocation Condition="$(BuildingInsideVisualStudio)!='true'">$(OutDir)Package\$(BuildNumber)</SPSDPackageLocation>
+    <SPSDPackageLocation Condition="$(BuildingInsideVisualStudio)=='true'">$(SolutionDir)$(ProjectName)\$(Configuration)\SPSD</SPSDPackageLocation>
+    <SPSDPackageLocation Condition="$(BuildingInsideVisualStudio)!='true'">$(OutDir)Package</SPSDPackageLocation>
   </PropertyGroup>
   
   <Target Name="CreateSPSDPackageLocalBuild" DependsOnTargets="CleanSPSDPackage" Condition="$(BuildingInsideVisualStudio)=='true'">
