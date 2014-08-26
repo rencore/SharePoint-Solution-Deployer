@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SPSD>
+  <Extensions>
+    <Extension>
+        <Manifest>
+            <Type>SiteStructure</Type>
+            <Description>Creates a SiteStructure including content databases</Description>
+            <Version>1.0.0.0</Version>
+            <Script>SiteStructure.ps1</Script>
+            <Enabled>true</Enabled>
+        </Manifest>
+    </Extension>
+   </Extensions>
+</SPSD>

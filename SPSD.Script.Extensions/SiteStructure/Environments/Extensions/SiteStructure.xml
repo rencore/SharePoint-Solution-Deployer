@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SPSD Version="5.0.1.6438">
+ <Extensions>
+  <Extension ID="SiteStructure" Type="SiteStructure">
+   <Events>
+    <Event Name="AfterDeploy">Create-SiteStructure</Event>
+   </Events>
+   <Parameters>
+     <Parameter Name="WebAppUrl">$(WebAppUrl)</Parameter>
+     <Parameter Name="DatabaseServer">$(DatabaseServer)</Parameter>
+   </Parameters>
+    <Data>
+      <PermissionGroups>
+        <PermissionGroup Name="PermissionGroup">
+          <Permission User="$(TestUserADGroup)" PermissionSet="Contribute" />
+        </PermissionGroup>
+      </PermissionGroups>
+
+      <Sites ID="SitesData">
+        <!-- Start site -->
+        <Site Url="/" lcid="1033" Title="RootSite" ContentDB="Main" Template="STS#0" PermissionGroup="$(PermissionGroup)"/>
+        <Site Url="/search" lcid="1033" Title="Search" ContentDB="Main" Template="SRCHCEN#0" ExplicitPath="true" PermissionGroup="$(PermissionGroup)"/>
+        <!-- Test -->
+        <!--Site Url="/sites/test/" lcid="1033" Title="Test" ContentDB="Main" Template="{CA13AAB2-C9E2-4B04-859C-48885DDD11ED}#CustomTemplate" PermissionGroup="TestUsersContribute"/-->
+
+      </Sites>
+    </Data>
+  </Extension>
+ </Extensions>
+</SPSD>
