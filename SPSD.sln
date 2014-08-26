@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPSD.VisualStudio.Wizard", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPSD.Script", "SPSD.Script\SPSD.Script.csproj", "{9A7FBDC7-769F-4E86-9F5F-F74C3B799770}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPSD.Script.Extensions", "SPSD.Script.Extensions\SPSD.Script.Extensions.csproj", "{B4A3084B-C7F1-4333-9D39-FA3A55B338CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{9A7FBDC7-769F-4E86-9F5F-F74C3B799770}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A7FBDC7-769F-4E86-9F5F-F74C3B799770}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A7FBDC7-769F-4E86-9F5F-F74C3B799770}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4A3084B-C7F1-4333-9D39-FA3A55B338CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4A3084B-C7F1-4333-9D39-FA3A55B338CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4A3084B-C7F1-4333-9D39-FA3A55B338CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4A3084B-C7F1-4333-9D39-FA3A55B338CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
