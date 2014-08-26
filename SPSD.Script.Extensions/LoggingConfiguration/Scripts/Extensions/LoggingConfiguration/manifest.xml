@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SPSD>
+  <Extensions>
+    <Extension>
+        <Manifest>
+            <Type>LoggingConfiguration</Type>
+            <Description>
+              Creates and Deletes SPDiognosticAreas and SPDiagnosticCategories. Requires Microsoft.Practices.ServiceLocation and Microsoft.Practices.SharePoint.Common to be deployed on the farm.
+            </Description>
+            <Version>1.0.0.0</Version>
+            <Script>LoggingConfiguration.ps1</Script>
+            <Enabled>true</Enabled>
+        </Manifest>
+    </Extension>
+   </Extensions>
+</SPSD>
+
