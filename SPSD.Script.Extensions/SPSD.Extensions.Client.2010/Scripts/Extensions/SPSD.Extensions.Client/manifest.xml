@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SPSD>
+  <Extensions>
+    <Extension>
+        <Manifest>
+            <Type>SPSD.Extensions.Client</Type>
+            <Description>
+				This is a wrapper for the SpDeploy PowerShell extension.
+				Currently the SharePoint 2010 version only support CSOM deployment of files
+				to document libraries with the Add-SpFile commandlet.
+            </Description>
+            <Version>1.0.0.0</Version>
+            <Script>SPSD.Extensions.Client.ps1</Script>
+            <Enabled>true</Enabled>
+        </Manifest>
+    </Extension>
+   </Extensions>
+</SPSD>

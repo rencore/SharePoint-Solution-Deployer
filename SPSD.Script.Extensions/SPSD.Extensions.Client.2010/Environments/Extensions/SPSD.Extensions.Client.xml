@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SPSD Version="5.0.3.6438">
+  <Extensions>
+    <!-- This represents the extension configuration of the specific instance "ExampleExtension1" of-->
+    <!-- the extension of type "ExampleExtension" -->
+    <Extension ID="DeployResources" Type="SPSD.Extensions.Client">
+      <!-- Here you register the methods of zour extension .ps1 file to one or several events -->
+      <!-- You can also register multiple methods to the same event. -->
+      <Events>
+        <!-- This examples lists the available events -->
+        <!-- The PowerShell function requires to accept the parameters as described in the ExampleExtension.ps1 file -->
+        <Event Name="BeforeDeploy">Invoke-Add-SpFile</Event>
+        <!--
+        <Event Name="AfterDeploy"></Event>
+        <Event Name="BeforeRetract"></Event>
+        <Event Name="AfterRetract"></Event>
+        <Event Name="BeforeUpdate"></Event>
+        <Event Name="AfterUpdate"></Event>
+        <Event Name="Initialize"></Event>
+        <Event Name="Finalize"></Event>
+        <Event Name="ProcessSolution"></Event>
+        <Event Name="Preconditions"></Event>
+       -->
+      </Events>
+      <!-- Here you can define parameter which are passed to the methods which are registered for SPSD events -->
+      <!-- Each parameter is a kez value pair -->
+      <!-- You can also use SPSD variables here which will be resolved automatically on runtime -->
+      <Parameters>
+      </Parameters>
+      <!-- Here you can define you custom data XML structure which will be passed to the registered PowerShell functions -->
+      <!-- You can also use SPSD variables which will be resolved automatically on runtime -->
+      <Data>
+        <!-- Configure here what files to deploy. For a full list of parameters see the PowerShell help for Add-SPFile after loading SPSD.Extension.Client.dll module into the PowerShell session. -->
+        <!-- Sample: Deploys all files recursively from the ResourceLibrary folder to SharePoint. Useful when e.g. working with client-side solutions (JavaScript). -->
+        <!--<DeployItem SourcePath="..\..\..\ClientSolutions\ResourceLibrary" SiteUrl="$(ResourceSiteUrl)" RelativeDocLibUrl="$(ResourceLibrary)" NoOverwrite="false" AddUpdateOnly="true" />-->
+      </Data>
+    </Extension>
+  </Extensions>
+</SPSD>

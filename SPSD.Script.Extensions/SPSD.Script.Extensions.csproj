@@ -50,6 +50,22 @@
     <Content Include="ManagedMetadata\Scripts\Extensions\ManagedMetadata\manifest.xml" />
     <Content Include="ManagedMetadata\Scripts\Extensions\ManagedMetadata\Terms.xml" />
     <Content Include="ManagedMetadata\Scripts\Extensions\ManagedMetadata\TermsStoreConfiguration.xml" />
+    <Content Include="SPSD.Extensions.Client.2010\Environments\Default.xml" />
+    <Content Include="SPSD.Extensions.Client.2010\Environments\Extensions\SPSD.Extensions.Client.xml" />
+    <Content Include="SPSD.Extensions.Client.2010\Scripts\Extensions\SPSD.Extensions.Client\manifest.xml" />
+    <Content Include="SPSD.Extensions.Client.2010\Scripts\Extensions\SPSD.Extensions.Client\SPSD.Extensions.Client.dll" />
+    <Content Include="SPSD.Extensions.Client.2013\Environments\Default.xml" />
+    <Content Include="SPSD.Extensions.Client.2013\Environments\Extensions\SPSD.Extensions.Client.xml" />
+    <Content Include="SPSD.Extensions.Client.2013\Scripts\Extensions\SPSD.Extensions.Client\manifest.xml" />
+    <Content Include="SPSD.Extensions.Client.2013\Scripts\Extensions\SPSD.Extensions.Client\Microsoft.SharePoint.Client.WorkflowServices.dll" />
+    <Content Include="SPSD.Extensions.Client.2013\Scripts\Extensions\SPSD.Extensions.Client\SPSD.Extensions.Client.dll" />
+    <Content Include="SPSD.Extensions.Client.2013\Scripts\Extensions\SPSD.Extensions.Client\SPSD.Extensions.Client.dll-Help.xml" />
+    <Content Include="SPSD.Extenstions.Client.SPO\Environments\Default.xml" />
+    <Content Include="SPSD.Extenstions.Client.SPO\Environments\Extensions\SPSD.Extensions.Client.xml" />
+    <Content Include="SPSD.Extenstions.Client.SPO\Scripts\Extensions\SPSD.Extensions.Client\manifest.xml" />
+    <Content Include="SPSD.Extenstions.Client.SPO\Scripts\Extensions\SPSD.Extensions.Client\Microsoft.SharePoint.Client.WorkflowServices.dll" />
+    <Content Include="SPSD.Extenstions.Client.SPO\Scripts\Extensions\SPSD.Extensions.Client\SPSD.Extensions.Client.dll" />
+    <Content Include="SPSD.Extenstions.Client.SPO\Scripts\Extensions\SPSD.Extensions.Client\SPSD.Extensions.Client.dll-Help.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
@@ -61,6 +77,12 @@
     <None Include="SiteStructure\Scripts\Extensions\SiteStructure\SiteStructure.ps1" />
     <None Include="ManagedMetadata\Scripts\Extensions\ManagedMetadata\ExportManagedMetadata.ps1" />
     <None Include="ManagedMetadata\Scripts\Extensions\ManagedMetadata\ImportManagedMetadata.ps1" />
+    <None Include="SPSD.Extensions.Client.2010\README.md" />
+    <None Include="SPSD.Extensions.Client.2010\Scripts\Extensions\SPSD.Extensions.Client\SPSD.Extensions.Client.ps1" />
+    <None Include="SPSD.Extensions.Client.2013\README.md" />
+    <None Include="SPSD.Extensions.Client.2013\Scripts\Extensions\SPSD.Extensions.Client\SPSD.Extensions.Client.ps1" />
+    <None Include="SPSD.Extenstions.Client.SPO\README.md" />
+    <None Include="SPSD.Extenstions.Client.SPO\Scripts\Extensions\SPSD.Extensions.Client\SPSD.Extensions.Client.ps1" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
