@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SPSD Version="5.0.3.6438">
+  <Configuration ID="Default">
+    <Settings ID="Default">
+      <DeploymentRetries>3</DeploymentRetries>
+      <DeploymentTimeout>60000</DeploymentTimeout>
+      <RunOnMultipleServersInFarm>OnlyLocal</RunOnMultipleServersInFarm>
+      <WaitAfterDeployment>10000</WaitAfterDeployment>
+      <DisplayWizards>false</DisplayWizards>
+      <CreateULSLogfile>false</CreateULSLogfile>
+    </Settings>
+    <Restrictions ID="Default">
+      <AllowGACDeployment>true</AllowGACDeployment>
+      <AllowCASPolicies>true</AllowCASPolicies>
+      <AllowFullTrustBinDeployment>true</AllowFullTrustBinDeployment>
+      <MinimalSharePointVersion>14.0.0.0</MinimalSharePointVersion>
+      <MinimalSharePointLicense>Foundation</MinimalSharePointLicense>
+      <RequiredSharePointLanguages>
+        <SharePointLanguage LCID="$(LCID)" />
+      </RequiredSharePointLanguages>
+    </Restrictions>
+
+    <Actions ID="Default" AfterDeploy="true" AfterRetract="true" AfterUpdate="true">
+    </Actions>
+  </Configuration>
+  <Environment ID="Default">
+    <Variables ID="Default">
+      <!-- Sample parameters used for the SPSD.Extensions.Client extension. See the environment config for details. -->
+      <!--<Variable Name="WebAppUrl">http://demo2</Variable>
+      <Variable Name="SiteUrl">http://demo2</Variable>
+      <Variable Name="ResourceSiteUrl">http://demo2</Variable>
+      <Variable Name="ResourceLibrary">Shared Documents/ClientSideSolutions</Variable>-->
+      <Variable Name="LCID">1033</Variable>
+	</Variables>
+    <Solutions ID="Default" Force="false" Overwrite="false">
+		<Solution Name="spsd.demo.wsp" />
+    </Solutions>
+  </Environment>
+  <Extensions ID="Default">
+    <Extension ID="SPSD.Extensions.Client" Type="SPSD.Extensions.Client" FilePath="Extensions\SPSD.Extensions.Client.xml" />
+  </Extensions>
+</SPSD>

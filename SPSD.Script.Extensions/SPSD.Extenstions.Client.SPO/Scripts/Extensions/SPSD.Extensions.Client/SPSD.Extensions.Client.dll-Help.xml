@@ -1,0 +1,572 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<helpItems xmlns="http://msh" schema="maml">
+
+  <!--Add-SPFile-->
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>Add-SPFile</command:name>
+      <maml:description>
+        <maml:para>Deploys local files to a document library on SharePoint 2013 or SharePoint Online.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para>2014, Bernd Rickenberg (www.rickenberg.net, @berndrickenberg).</maml:para>
+      </maml:copyright>
+      <command:verb>Add</command:verb>
+      <command:noun>SPFile</command:noun>
+      <dev:version>15</dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para>Deploys local files to a document library on SharePoint 2013 or SharePoint Online. You can deploy either a single file or all files in a directory (recursive).</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Add-SPFile</maml:name>
+        <command:parameter required="true" position="named">
+          <maml:name>SiteUrl</maml:name>
+          <command:parameterValue>string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" position="named">
+          <maml:name>RelativeDocLibUrl</maml:name>
+          <command:parameterValue>string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>FilePath</maml:name>
+          <command:parameterValue>string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>NoOverwrite</maml:name>
+          <command:parameterValue>boolean</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>AddUpdateOnly</maml:name>
+          <command:parameterValue>boolean</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Username</maml:name>
+          <command:parameterValue>string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Password</maml:name>
+          <command:parameterValue>string</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" position="named">
+        <maml:name>SiteUrl</maml:name>
+        <maml:description>
+          <maml:para>The URL of the SharePoint target site</maml:para>
+        </maml:description>
+        <command:parameterValue>string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" position="named">
+        <maml:name>RelativeDocLibUrl</maml:name>
+        <maml:description>
+          <maml:para>Relative URL (from site/SPWeb) to the target document library. You can also specify a sub folder as part of the URL. If folder does not exist in the target library it will created during deployment. E.g. "Shared Documents/Folder-1/Folder-2" is a valid URL.</maml:para>
+        </maml:description>
+        <command:parameterValue>string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>FilePath</maml:name>
+        <maml:description>
+          <maml:para>Literal (full) path to the file to deploy</maml:para>
+        </maml:description>
+        <command:parameterValue>string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>NoOverwrite</maml:name>
+        <maml:description>
+          <maml:para>Set this to true if you do not want to overwrite existing files</maml:para>
+        </maml:description>
+        <command:parameterValue>boolean</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>AddUpdateOnly</maml:name>
+        <maml:description>
+          <maml:para>Set this to true if you only want to upload new and modified files</maml:para>
+        </maml:description>
+        <command:parameterValue>boolean</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Username</maml:name>
+        <maml:description>
+          <maml:para>User name to authenticate against SharePoint. Use user@domain.com for SharePoint Online and domain\user for on-prem</maml:para>
+        </maml:description>
+        <command:parameterValue>string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Password</maml:name>
+        <maml:description>
+          <maml:para>Password in clear text</maml:para>
+        </maml:description>
+        <command:parameterValue>string</command:parameterValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes />
+    <command:returnValues />
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <maml:alertSet />
+    <command:examples>
+      <command:example>
+        <maml:title>    ------------------------ EXAMPLE 1 ------------------------    </maml:title>
+        <dev:code>Add-SPFile -FilePath D:\test.txt -SiteUrl http://demo2 -RelativeDocLibUrl "Shared Documents"</dev:code>
+        <dev:remarks>
+          <maml:para>Deploy single file from literal path</maml:para>
+          <maml:para>The file 'test.txt' is deployed to 'http://demo2/Shared Documents'. You can also deploy it to a sub folder, e.g. 'http://demo2/Shared Document/Folder-1', if you use 'Shared Documents/Folder-1' for the RelativeDocLibUrl parameter.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>    ------------------------ EXAMPLE 2 ------------------------    </maml:title>
+        <dev:code>Get-Item .\test.txt | Add-SPFile -SiteUrl http://demo2 -RelativeDocLibUrl "Shared Documents"</dev:code>
+        <dev:remarks>
+          <maml:para>Deploy single file from pipe</maml:para>
+          <maml:para>Use the Get-Item command to point to the file to deploy. This is the same operation as shown in Example 1.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>    ------------------------ EXAMPLE 3 ------------------------    </maml:title>
+        <dev:code>Get-Item .\files | Add-SPFile -SiteUrl http://demo2 -RelativeDocLibUrl "Shared Documents"</dev:code>
+        <dev:remarks>
+          <maml:para>Deploy files recursively from pipe</maml:para>
+          <maml:para>Use the Get-Item command to point to the folder to deploy. All files in the folder and in its sub folders are deployed maintaining the folder structure. Folders that do not exist in the document library are created during deployment. E.g. the source file from .\files\folder-1\test.txt is deployed to 'http://demo2/Shared Documents/folder-1/test.txt'.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>    ------------------------ EXAMPLE 4 ------------------------    </maml:title>
+        <dev:code>Add-SPWorkflowDefinition -SiteUrl "https://somesite.sharepoint.com" -Username "someone@somedomain.onmicrosoft.com" -Password "somepassword" -FilePath D:\test.txt -RelativeDocLibUrl "Shared Documents"</dev:code>
+        <dev:remarks>
+          <maml:para>Deploy single file to SharePoint Online</maml:para>
+          <maml:para>The same as example 1 but with deployment to SharePoint Online (instead of on-prem). The only difference is that you must provide the -Username and -Password property. Both values in clear-text (sorry). These properties can also be used for on-prem deployments, but when we see a '@' in the username we assume that you are deploying to SharePoint Online.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks />
+  </command:command>
+  
+  <!--Add-SPWorkflowDefinition-->
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>Add-SPWorkflowDefinition</command:name>
+      <maml:description>
+        <maml:para>Deploys a SharePoint 2013 workflow definition to SharePoint 2013 or SharePoint Online.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para>2014, Bernd Rickenberg (www.rickenberg.net, @berndrickenberg).</maml:para>
+      </maml:copyright>
+      <command:verb>Add</command:verb>
+      <command:noun>SPWorkflowDefinition</command:noun>
+      <dev:version>15</dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para>Deploys a SharePoint 2013 workflow definition to SharePoint 2013 or SharePoint Online. NOTE: This cmdlet cannot be used to deploy SharePoint 2010 workflows.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Add-SPWorkflowDefinition</maml:name>
+        <command:parameter required="true" position="named">
+          <maml:name>SiteUrl</maml:name>
+          <command:parameterValue>string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" position="named">
+          <maml:name>Id</maml:name>
+          <command:parameterValue>string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" position="named">
+          <maml:name>DisplayName</maml:name>
+          <command:parameterValue>string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" position="named">
+          <maml:name>Publish</maml:name>
+          <command:parameterValue>boolean</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>FilePath</maml:name>
+          <command:parameterValue>string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Username</maml:name>
+          <command:parameterValue>string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Password</maml:name>
+          <command:parameterValue>string</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" position="named">
+        <maml:name>SiteUrl</maml:name>
+        <maml:description>
+          <maml:para>The URL of the SharePoint target site</maml:para>
+        </maml:description>
+        <command:parameterValue>string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" position="named">
+        <maml:name>Id</maml:name>
+        <maml:description>
+          <maml:para>The Guid identifier for the workflow definition</maml:para>
+        </maml:description>
+        <command:parameterValue>string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" position="named">
+        <maml:name>DisplayName</maml:name>
+        <maml:description>
+          <maml:para>Workflow name as the user sees it</maml:para>
+        </maml:description>
+        <command:parameterValue>string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>FilePath</maml:name>
+        <maml:description>
+          <maml:para>Path to input XAML file</maml:para>
+        </maml:description>
+        <command:parameterValue>string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Publish</maml:name>
+        <maml:description>
+          <maml:para>Whether you want to publish the workflow definition or only save to SharePoint</maml:para>
+        </maml:description>
+        <command:parameterValue>boolean</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Description</maml:name>
+        <maml:description>
+          <maml:para>Text describing what the workflow does</maml:para>
+        </maml:description>
+        <command:parameterValue>string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>DraftVersion</maml:name>
+        <maml:description>
+          <maml:para>Version for a draft</maml:para>
+        </maml:description>
+        <command:parameterValue>string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>FormField</maml:name>
+        <maml:description>
+          <maml:para>A FieldML string that defines the fields of the workflow's initiation and association forms</maml:para>
+        </maml:description>
+        <command:parameterValue>string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>RequiresInitiationForm</maml:name>
+        <maml:description>
+          <maml:para>If set to true, and the InitiationUrl property value is not already set, a default initiation form is automatically generated for the workflow when SaveDefinition(WorkflowDefinition) is called</maml:para>
+        </maml:description>
+        <command:parameterValue>boolean</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>InitiationUrl</maml:name>
+        <maml:description>
+          <maml:para>If this value is a null reference (Nothing in Visual Basic) or empty, the workflow does not have an initiation form</maml:para>
+        </maml:description>
+        <command:parameterValue>string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>RequiresAssociationForm</maml:name>
+        <maml:description>
+          <maml:para>If set to true, and the AssociationUrl property value is not already set, a default association form is automatically generated for the workflow when SaveDefinition(WorkflowDefinition) is called</maml:para>
+        </maml:description>
+        <command:parameterValue>boolean</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>AssociationUrl</maml:name>
+        <maml:description>
+          <maml:para> If this property value is a null reference (Nothing in Visual Basic) or empty, the workflow does not have an association form</maml:para>
+        </maml:description>
+        <command:parameterValue>string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>RestrictToListName</maml:name>
+        <maml:description>
+          <maml:para>Used to set the RestrictToScope to the GUID of the list specified here. It is important to set this property when working with list scoped workflows. If you do not set the RestrictToScope (via guid or list name) the workflow will be reusable and loose all it's bindings to list specific columns.</maml:para>
+        </maml:description>
+        <command:parameterValue>string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>RestrictToScope</maml:name>
+        <maml:description>
+          <maml:para>Used in conjunction with the RestrictToType property to restrict the scope of the workflow definition. For example, if the RestrictToType property value is "List" then setting the RestrictToScope value to a particular list id limits the definition to an association only to the specified list. If the RestrictToType is "List" but the RestrictToScope is a null reference (Nothing in Visual Basic) or empty, then the definition in associable to any list</maml:para>
+        </maml:description>
+        <command:parameterValue>string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>RestrictToType</maml:name>
+        <maml:description>
+          <maml:para>Possible values include "List", "Site", "", or a null reference (Nothing in Visual Basic). For example, a value of "List" indicates this definition is a list workflow and can only be associated to a SharePoint list. An Empty or a null reference (Nothing in Visual Basic) value indicates this definition is a universal template and is able to associate with any event source type</maml:para>
+        </maml:description>
+        <command:parameterValue>string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Username</maml:name>
+        <maml:description>
+          <maml:para>User name to authenticate against SharePoint. Use user@domain.com for SharePoint Online and domain\user for on-prem</maml:para>
+        </maml:description>
+        <command:parameterValue>string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Password</maml:name>
+        <maml:description>
+          <maml:para>Password in clear text</maml:para>
+        </maml:description>
+        <command:parameterValue>string</command:parameterValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes />
+    <command:returnValues />
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <maml:alertSet />
+    <command:examples>
+      <command:example>
+        <maml:title>    ------------------------ EXAMPLE 1 ------------------------    </maml:title>
+        <dev:code>Get-Item .\full-name-http.xaml | Add-SPWorkflowDefinition -SiteUrl "http://demo2" -Publish $true -DisplayName "Site Workflow" -Id "E6120B11-F257-4057-A324-FE2E22CAC28D"</dev:code>
+        <dev:remarks>
+          <maml:para>Deploy site workflow (Workflow Manager Workflow)</maml:para>
+          <maml:para>Use the Get-Item command to point to the workflow definition (XAML format). Alternatively you can provide the full literal path to the XAML file with the -FilePath parameter. You can export the XAML file using SharePoint Designer via Save as template and extract it from the generated WSP file. This example deploys the workflow as a site workflow with the GUID specified in the -Id parameter. The -SiteUrl parameter points to the target site (read SPWeb). If the workflow is not published -Published $false it is only saved to SharePoint and cannot be started from within SharePoint.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>    ------------------------ EXAMPLE 2 ------------------------    </maml:title>
+        <dev:code>Get-Item .\full-name-http.xaml | Add-SPWorkflowDefinition -SiteUrl "http://demo2" -Publish $true -DisplayName "List Workflow" -Id "E6120B11-F257-4057-A324-FE2E22CAC28D" -RestrictToType "List" -RestrictToListName "Contacts"</dev:code>
+        <dev:remarks>
+          <maml:para>Deploy list workflow (Workflow Manager Workflow)</maml:para>
+          <maml:para>Use the Get-Item command to point to the workflow definition (XAML format). Alternatively you can provide the full literal path to the XAML file with the -FilePath parameter. You can export the XAML file using SharePoint Designer via Save as template and extract it from the generated WSP file. This example deploys the workflow as a list workflow with the GUID specified in the -Id parameter. The workflow is attached to one list and preserves the binding to the SharePoint fields referenced. The -SiteUrl parameter points to the target site (read SPWeb). If the workflow is not published -Published $false it is only saved to SharePoint and cannot be started from within SharePoint.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>    ------------------------ EXAMPLE 3 ------------------------    </maml:title>
+        <dev:code>Get-Item .\full-name-http.xaml | Add-SPWorkflowDefinition -SiteUrl "http://demo2" -Publish $true -DisplayName "Reusable List Workflow" -Id "E6120B11-F257-4057-A324-FE2E22CAC28D" -RestrictToType "List"</dev:code>
+        <dev:remarks>
+          <maml:para>Deploy reusable list workflow (Workflow Manager Workflow)</maml:para>
+          <maml:para>Use the Get-Item command to point to the workflow definition (XAML format). Alternatively you can provide the full literal path to the XAML file with the -FilePath parameter. You can export the XAML file using SharePoint Designer via Save as template and extract it from the generated WSP file. This example deploys the workflow as a reusable list workflow with the GUID specified in the -Id parameter. The workflow can be attached to more than one list. Note that this deployment option does not preserve binding to fields (except for those contained in the Item content type) when editing the workflow later on. The -SiteUrl parameter points to the target site (read SPWeb). If the workflow is not published -Published $false it is only saved to SharePoint and cannot be started from within SharePoint.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>    ------------------------ EXAMPLE 4 ------------------------    </maml:title>
+        <dev:code>Get-Item .\full-name-http.xaml | Add-SPWorkflowDefinition -SiteUrl "https://somesite.sharepoint.com" -Username "someone@somedomain.onmicrosoft.com" -Password "somepassword" -Publish $true -DisplayName "Site Workflow" -Id "E6120B11-F257-4057-A324-FE2E22CAC28D"</dev:code>
+        <dev:remarks>
+          <maml:para>Deploy site workflow to SharePoint Online</maml:para>
+          <maml:para>The same as example 1 but with deployment to SharePoint Online (instead of on-prem). The only difference is that you must provide the -Username and -Password property. Both values in clear-text (sorry). These properties can also be used for on-prem deployments, but when we see a '@' in the username we assume that you are deploying to SharePoint Online. NOTE: Currently list workflow deployment is not supported for SharePoint Online (let me know if you know how to fix this :-). Only reusable and site workflows are supported.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks />
+  </command:command>
+
+  <!--Add-SPWorkflowSubscription-->
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>Add-SPWorkflowSubscription</command:name>
+      <maml:description>
+        <maml:para>Deploys a SharePoint 2013 workflow subscription to SharePoint 2013 or SharePoint Online.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para>2014, Bernd Rickenberg (www.rickenberg.net, @berndrickenberg).</maml:para>
+      </maml:copyright>
+      <command:verb>Add</command:verb>
+      <command:noun>SPWorkflowSubscription</command:noun>
+      <dev:version>15</dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para>Deploys a SharePoint 2013 workflow subscription to SharePoint 2013 or SharePoint Online. After successful deployment users can start the workflow from SharePoint. NOTE: This cmdlet cannot be used to deploy SharePoint 2010 workflows.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Add-SPWorkflowSubscription</maml:name>
+        <command:parameter required="true" position="named">
+          <maml:name>SiteUrl</maml:name>
+          <command:parameterValue>string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" position="named">
+          <maml:name>Id</maml:name>
+          <command:parameterValue>string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" position="named">
+          <maml:name>Name</maml:name>
+          <command:parameterValue>string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" position="named">
+          <maml:name>DefinitionId</maml:name>
+          <command:parameterValue>string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>CreateLists</maml:name>
+          <command:parameterValue>boolean</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Enabled</maml:name>
+          <command:parameterValue>boolean</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>EventSourceName</maml:name>
+          <command:parameterValue>string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>EventTypes</maml:name>
+          <command:parameterValue>string[]</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>HistoryListName</maml:name>
+          <command:parameterValue>string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>ManualStartBypassesActivationLimit</maml:name>
+          <command:parameterValue>bool</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>StatusFieldName</maml:name>
+          <command:parameterValue>string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>TaskListName</maml:name>
+          <command:parameterValue>string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Username</maml:name>
+          <command:parameterValue>string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Password</maml:name>
+          <command:parameterValue>string</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" position="named">
+        <maml:name>SiteUrl</maml:name>
+        <maml:description>
+          <maml:para>The URL of the SharePoint target site</maml:para>
+        </maml:description>
+        <command:parameterValue>string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" position="named">
+        <maml:name>Id</maml:name>
+        <maml:description>
+          <maml:para>The Guid identifier for the workflow subscription</maml:para>
+        </maml:description>
+        <command:parameterValue>string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" position="named">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>Gets or sets the name of the workflow subscription for the specified event source.</maml:para>
+        </maml:description>
+        <command:parameterValue>string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" position="named">
+        <maml:name>DefinitionId</maml:name>
+        <maml:description>
+          <maml:para>Gets or sets the unique ID of the workflow definition to activate. Must be the ID of a workflow definition that is deployed to the current site (SPWeb).</maml:para>
+        </maml:description>
+        <command:parameterValue>string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>CreateLists</maml:name>
+        <maml:description>
+          <maml:para>If set to true task and history lists that do not exists are created during deployment.</maml:para>
+        </maml:description>
+        <command:parameterValue>boolean</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Enabled</maml:name>
+        <maml:description>
+          <maml:para>Gets or sets a Boolean value that enables or disables the workflow subscription. When disabled, new instances of the subscription cannot be started, but existing instances will continue to run.</maml:para>
+        </maml:description>
+        <command:parameterValue>boolean</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>EventSourceName</maml:name>
+        <maml:description>
+          <maml:para>Gets or sets the logical source instance name of the event. This can be the name of a SharePoint list or null for a site workflow.</maml:para>
+        </maml:description>
+        <command:parameterValue>string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>EventTypes</maml:name>
+        <maml:description>
+          <maml:para>Gets or sets the list of event types for which the subscription is listening. For SharePoint events, these will map to a value in the SPEventReceiverType enumeration. E.g. ItemAdding or ItemUpdated. Also the value WorkflowStart is a valid event type and indicates that the workflow can be started manually.</maml:para>
+        </maml:description>
+        <command:parameterValue>string[]</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>HistoryListName</maml:name>
+        <maml:description>
+          <maml:para>Name of the history list used with the workflow.</maml:para>
+        </maml:description>
+        <command:parameterValue>string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>ManualStartBypassesActivationLimit</maml:name>
+        <maml:description>
+          <maml:para>Boolean value that specifies whether multiple workflow instances can be started manually on the same list item at the same time. This property can be used for list workflows only.</maml:para>
+        </maml:description>
+        <command:parameterValue>bool</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>StatusFieldName</maml:name>
+        <maml:description>
+          <maml:para>Gets or sets the name of the workflow status field on the specified list.</maml:para>
+        </maml:description>
+        <command:parameterValue>string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>TaskListName</maml:name>
+        <maml:description>
+          <maml:para>Name of the task list for the workflow.</maml:para>
+        </maml:description>
+        <command:parameterValue>string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Username</maml:name>
+        <maml:description>
+          <maml:para>User name to authenticate against SharePoint. Use user@domain.com for SharePoint Online and domain\user for on-prem</maml:para>
+        </maml:description>
+        <command:parameterValue>string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Password</maml:name>
+        <maml:description>
+          <maml:para>Password in clear text</maml:para>
+        </maml:description>
+        <command:parameterValue>string</command:parameterValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes />
+    <command:returnValues />
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <maml:alertSet />
+    <command:examples>
+      <command:example>
+        <maml:title>    ------------------------ EXAMPLE 1 ------------------------    </maml:title>
+        <dev:code>Add-SPWorkflowSubscription -SiteUrl "http://demo2" -Name "Site Workflow" -Id "E6120B11-F257-4057-A324-FE2E22CAC28D" -DefinitionId "7526C741-E342-4B64-BC14-19B99DBDF1B6" -Enabled $true</dev:code>
+        <dev:remarks>
+          <maml:para>Deploy site workflow (Workflow Manager Workflow)</maml:para>
+          <maml:para>Adds the workflow subscription for a site workflow to SharePoint. A workflow definition with the specified Id (via DefinitionId parameter) must be deployed to the site.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>    ------------------------ EXAMPLE 2 ------------------------    </maml:title>
+        <dev:code>Add-SPWorkflowSubscription -SiteUrl "http://demo2" -Name "List Workflow" -Id "E6120B11-F257-4057-A324-FE2E22CAC28E" -DefinitionId "7526C741-E342-4B64-BC14-19B99DBDF1B6" -Enabled $true -EventSourceName "Contacts"</dev:code>
+        <dev:remarks>
+          <maml:para>Deploy list workflow (Workflow Manager Workflow)</maml:para>
+          <maml:para>Adds a workflow subscription to the Contacts list on SharePoint.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>    ------------------------ EXAMPLE 3 ------------------------    </maml:title>
+        <dev:code>Add-SPWorkflowSubscription -SiteUrl "http://demo2" -Name "List Workflow with Task and History" -Id "E6120B11-F257-4057-A324-FE2E22CAC28F" -DefinitionId "7526C741-E342-4B64-BC14-19B99DBDF1B6" -Enabled $true -EventSourceName "Contacts" -TaskListName "Workflow Tasks" -HistoryListName "Workflow History" -CreateLists $true</dev:code>
+        <dev:remarks>
+          <maml:para>Deploy list workflow with task and history list (Workflow Manager Workflow)</maml:para>
+          <maml:para>Same as example 2 but with an attached history and tasks list. Also, if the lists do exist on the target site, they are created during deployment.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks />
+  </command:command>
+
+</helpItems>
