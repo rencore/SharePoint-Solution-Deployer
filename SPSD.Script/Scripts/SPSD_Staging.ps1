@@ -6,6 +6,8 @@
 # License          : MS-PL
 ###############################################################################
 
+
+# inspired by Chris O'Briens https://sharepointci.codeplex.com/
 param 
 (
     [ValidateNotNullOrEmpty()]
