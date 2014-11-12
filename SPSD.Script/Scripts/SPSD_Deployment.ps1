@@ -1332,14 +1332,14 @@
                                 if($AllUrls -or $Urls.Count -eq 0){
                                     Log -Message "Deploying to all content urls..." -Type $SPSD.LogTypes.Normal -NoNewline
 									if ($SPSD.InstalledVersion -eq 14){
-                                    	Install-SPSolution -Identity $solutionName -allwebapplication -CASPolicies:$AllowCASPolicies -GACDeployment:$AllowGACDeployment -force:$force
+                                    	Install-SPSolution -Identity $solutionName -AllWebApplications -CASPolicies:$AllowCASPolicies -GACDeployment:$AllowGACDeployment -force:$force
 									}
                                     elseif ($SPSD.InstalledVersion -eq 15){
                                         if($compLevel){
-                                    	    Install-SPSolution -Identity $solutionName -allwebapplication -FullTrustBinDeployment:$AllowFullTrustBinDeployment -GACDeployment:$AllowGACDeployment -CompatibilityLevel $compLevel -force:$force 
+                                    	    Install-SPSolution -Identity $solutionName -AllWebApplications -FullTrustBinDeployment:$AllowFullTrustBinDeployment -GACDeployment:$AllowGACDeployment -CompatibilityLevel $compLevel -force:$force 
 									    }
                                         else{
-                                            Install-SPSolution -Identity $solutionName -allwebapplication -FullTrustBinDeployment:$AllowFullTrustBinDeployment -GACDeployment:$AllowGACDeployment -force:$force 
+                                            Install-SPSolution -Identity $solutionName -AllWebApplications -FullTrustBinDeployment:$AllowFullTrustBinDeployment -GACDeployment:$AllowGACDeployment -force:$force 
 									    }
                                     }
 									Log -Message "Done" -Type $SPSD.LogTypes.Success -NoIndent
@@ -1789,13 +1789,13 @@
                                      $caUrl = (Get-spwebapplication -includecentraladministration | where {$_.IsAdministrationWebApplication}).Url
                                      if(($solution.DeployedWebApplications | ? { $_.Url -eq $caUrl}) -ne $null){
                                         # Solution also deployed to central admin 
-                                        # remove there first as this is not done with the -allwebapplication switch
+                                        # remove there first as this is not done with the -AllWebApplications switch
                                         Uninstall-SPSolution -Identity $solutionName -WebApplication $caUrl -Confirm:$false
                                         Log -Message "Done (Central Admin)" -Type $SPSD.LogTypes.Success -NoIndent
                                         WaitForJobToFinish $solutionName -Retract
                                         Log -Message "Retracting (all other web applications)..." -Type $SPSD.LogTypes.Normal -NoNewline
                                      }
-                                     Uninstall-SPSolution -Identity $solutionName -allwebapplication -Confirm:$false
+                                     Uninstall-SPSolution -Identity $solutionName -AllWebApplications -Confirm:$false
                                 }
                                 else
                                 {
