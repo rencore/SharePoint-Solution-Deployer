@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SPSD Version="5.0.3.6438">
+  <Extensions>
+    <!-- This represents the extension configuration of the specific instance "FeatureInstance1" of the extension of type "FeaturesExtension" -->
+    <Extension ID="FeatureInstance1" Type="Features">
+		<Events>
+			<Event Name="AfterDeploy">Execute-FeaturesExtension</Event>
+		</Events>
+		<Data>
+			<Features>
+				<!-- configure multiple Features with different scopes -->
+				<Feature Name="The_name_of_the_Feature_folder">
+					<Urls>
+						<!-- the Action can bei either "Enable" or "Disable" -->
+						<!-- if the Feature is Farm-scoped, "Install" will be called automatically -->
+						<Url Action="Enable" Force="false">$(WebAppUrl)</Url>
+					</Urls>
+				</Feature>
+				<Feature Name="The_name_of_the_Feature_folder">
+					<Urls>
+						<Url Action="Disable" Force="false">$(WebAppUrl)</Url>
+						<Url Action="Enable" Force="false">$(WebAppUrl)</Url>
+					</Urls>
+				</Feature>
+			</Features>
+		</Data>
+    </Extension>
+  </Extensions>
+</SPSD>
