@@ -36,6 +36,10 @@
     <Content Include="ContentTypeHub\Environments\Default.xml" />
     <Content Include="ContentTypeHub\Environments\Extensions\ContentTypeHub.xml" />
     <Content Include="ContentTypeHub\Scripts\Extensions\ContentTypeHub\manifest.xml" />
+    <Content Include="FeatureExtension\Environments\Extensions\Features.xml" />
+    <Content Include="FeatureExtension\Readme.txt" />
+    <Content Include="FeatureExtension\ReleaseNotes.txt" />
+    <Content Include="FeatureExtension\Scripts\Extensions\Features\manifest.xml" />
     <Content Include="LoggingConfiguration\Environments\Default.xml" />
     <Content Include="LoggingConfiguration\Environments\Extensions\LoggingConfiguration.xml" />
     <Content Include="LoggingConfiguration\Scripts\Extensions\LoggingConfiguration\ExternalAssemblies\Microsoft.Practices.ServiceLocation.dll" />
@@ -73,6 +77,7 @@
   <ItemGroup>
     <None Include="BlockedFileExtensions\Scripts\Extensions\BlockedFileExtensions\BlockedFileExtensions.ps1" />
     <None Include="ContentTypeHub\Scripts\Extensions\ContentTypeHub\ContentTypeHub.ps1" />
+    <None Include="FeatureExtension\Scripts\Extensions\Features\Features.ps1" />
     <None Include="LoggingConfiguration\Scripts\Extensions\LoggingConfiguration\LoggingConfiguration.ps1" />
     <None Include="SiteStructure\Scripts\Extensions\SiteStructure\SiteStructure.ps1" />
     <None Include="ManagedMetadata\Scripts\Extensions\ManagedMetadata\ExportManagedMetadata.ps1" />
