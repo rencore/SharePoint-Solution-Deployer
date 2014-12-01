@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SPSD>
+	<Extensions>
+		<Extension>
+			<Manifest>
+				<Type>ReGhost</Type>
+				<Description>This extension will allow you reset SPFiles to their SiteDefinition</Description>
+				<Version>1.0.0.0</Version>
+				<Script>ReGhost.ps1</Script>
+				<Enabled>true</Enabled>
+			</Manifest>
+		</Extension>
+	</Extensions>
+</SPSD>
