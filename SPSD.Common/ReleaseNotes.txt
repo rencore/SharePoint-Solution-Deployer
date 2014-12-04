@@ -4,7 +4,7 @@
 # Url              : http://spsd.codeplex.com
 # Creator          : Matthias Einig, RENCORE AB, http://twitter.com/mattein
 # License          : MS-PL
-# File             : ReleaseNotes.txt
+# File             : ReleaseNotes.txt 
 ###############################################################################
 
 Important: Make sure to "Unblock" the zip file before extracting. 
