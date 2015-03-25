@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SPSD>
+  <Extensions>
+    <Extension>
+        <Manifest>
+            <Type>CustomCrawlConnector</Type>
+            <Description>
+              Use this extension to register a custom indexing connector on servers with indexing role in a SharePoint 2013 farm.
+            </Description>
+            <Version>15.0.0.0</Version>
+            <Script>CustomCrawlConnector.ps1</Script>
+            <Enabled>true</Enabled>
+        </Manifest>
+    </Extension>
+   </Extensions>
+</SPSD>

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SPSD Version="5.0.3.6438">
+  <Extensions>
+    <Extension ID="CustomCrawlConnector" Type="CustomCrawlConnector">
+      <Events>
+        <!-- We add the custom indexing connector only on deploy. The intention is to use update for subsequent modifications to the connector -->
+        <!-- The extension does all the necessary stuff to register the crawl connector. If you re-run it does no harm. -->
+        <Event Name="BeforeDeploy">Add-CustomCrawlConnector</Event>
+        <!--
+        <Event Name="AfterDeploy"></Event>
+        <Event Name="BeforeRetract"></Event>
+        <Event Name="AfterRetract"></Event>
+        <Event Name="BeforeUpdate"></Event>
+        <Event Name="AfterUpdate"></Event>
+        <Event Name="Initialize"></Event>
+        <Event Name="Finalize"></Event>
+        <Event Name="ProcessSolution"></Event>
+        <Event Name="Preconditions"></Event>
+       -->
+      </Events>
+      <!-- Here you can define parameter which are passed to the methods which are registered for SPSD events -->
+      <!-- Each parameter is a kez value pair -->
+      <!-- You can also use SPSD variables here which will be resolved automatically on runtime -->
+      <Parameters>
+        <!-- Protocol name used for your indexing connector, such as myfile. -->
+        <Parameter Name="ProtocolName"></Parameter>
+        <!-- Name of the search service application you want to register the connector for. -->
+        <Parameter Name="SearchServiceApplicationName"></Parameter>
+        <!-- Target path for the BDC model of the indexing connector. This is the location where you will deploy the BDC model to on the indexing servers. -->
+        <Parameter Name="ModelFilePath"></Parameter>
+        <!-- Name of the search metadata category where all crawled properties from your connector will go. -->
+        <Parameter Name="CategoryName"></Parameter>
+        <!-- The propset id for your custom indexing connector (hard-coded guid in the connector). -->
+        <Parameter Name="PropsetId"></Parameter>
+      </Parameters>
+      <!-- Not used -->
+      <Data>
+      </Data>
+    </Extension>
+  </Extensions>
+</SPSD>

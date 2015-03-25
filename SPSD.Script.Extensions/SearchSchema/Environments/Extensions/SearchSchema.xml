@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SPSD Version="5.0.3.6438">
+  <Extensions>
+    <Extension ID="SearchSchema" Type="SearchSchema">
+      <Events>
+        <!-- We create the properties on deploy. The intention is to use update for subsequent deploys, only use deploy when properties have changed to save time. -->
+        <!-- The extension does all the necessary stuff to create and map the properties. If you re-run it does no harm. -->
+        <Event Name="BeforeDeploy">Deploy-SearchSchema</Event>
+        <!--
+        <Event Name="AfterDeploy"></Event>
+        <Event Name="BeforeRetract"></Event>
+        <Event Name="AfterRetract"></Event>
+        <Event Name="BeforeUpdate"></Event>
+        <Event Name="AfterUpdate"></Event>
+        <Event Name="Initialize"></Event>
+        <Event Name="Finalize"></Event>
+        <Event Name="ProcessSolution"></Event>
+        <Event Name="Preconditions"></Event>
+       -->
+      </Events>
+      <!-- Here you can define parameter which are passed to the methods which are registered for SPSD events -->
+      <!-- Each parameter is a kez value pair -->
+      <!-- You can also use SPSD variables here which will be resolved automatically on runtime -->
+      <Parameters>
+        <!-- Name of the search service application you want to register the connector for. -->
+        <Parameter Name="SearchServiceApplicationName"></Parameter>
+        <!-- Name of the search metadata category where all crawled properties from your connector will go. -->
+        <Parameter Name="CategoryName"></Parameter>
+        <!-- The propset id for your custom indexing connector (hard-coded guid in the connector). -->
+        <Parameter Name="PropsetId"></Parameter>
+      </Parameters>
+      <Data>
+        <!-- Define your crawled properties here. Name should match the pattern ReturnType.ParameterName. -->
+        <!-- Searchable (true/false) crawled properties are directly added to full text index and do not require mapping to a searchable managed property. -->
+        <AddCrawledProperty Name="" Searchable="" />
+        
+        <!-- Add your managed properties here. You will notice that some settings/attributes currently are not supported. -->
+        <!-- Name: name of the managed property. -->
+        <!-- Type: 1 = Text, 2 = Integer,  3 = Decimal,  4 = DateTime, 5 = YesNo,  6 = Binary,  7 = Double, data type for this managed property -->
+        <!-- WeightGroup: 0-14, sets the context group this managed property should be ranked in to Context 0 - Context 14 -->
+        <!-- All other settings are self explanatory and take true/false as valid values -->
+        <AddManagedProperty Name="" Type="" Searchable="" Queryable="" Retrievable="" Refinable="" Sortable="" HasMultipleValues="" Safe="" />
+
+        <!-- Mappings from crawled to managed properties here. Use the same name you specified above respectively. -->
+        <MapToManagedProperty CrawledPropertyName="" ManagedPropertyName="" />
+      </Data>
+    </Extension>
+  </Extensions>
+</SPSD>
