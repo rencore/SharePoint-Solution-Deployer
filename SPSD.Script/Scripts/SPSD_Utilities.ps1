@@ -120,7 +120,8 @@
 	            $indentChars = " " * (2 * $Script:LogIndentVal)
 	        }
 
-            if((Get-Host).Name -eq "ConsoleHost" -and -not $isAppHost){
+				$loggingHost = (Get-Host).Name
+            if(($loggingHost -eq "ConsoleHost" -or $loggingHost -eq 'Windows PowerShell ISE Host') -and -not $isAppHost){
 	            if($NoNewline)
 	            {
 	                Write-Host -foregroundColor $foregroundColor ($indentChars + $message) -NoNewline
