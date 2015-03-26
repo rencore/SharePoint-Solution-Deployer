@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SPSD Version="5.0.3.6438">
+  <Extensions>
+    <Extension ID="SecureStore" Type="SecureStore">
+      <Events>
+        <!-- We create the target application and fields on deploy. The intention is to use update for subsequent deploys. -->
+        <!-- The extension does all the necessary stuff to create the target application and fields as configured below. If you re-run it does no harm. -->
+        <Event Name="BeforeDeploy">Add-SecureStoreApplication</Event>
+        <!--
+        <Event Name="AfterDeploy"></Event>
+        <Event Name="BeforeRetract"></Event>
+        <Event Name="AfterRetract"></Event>
+        <Event Name="BeforeUpdate"></Event>
+        <Event Name="AfterUpdate"></Event>
+        <Event Name="Initialize"></Event>
+        <Event Name="Finalize"></Event>
+        <Event Name="ProcessSolution"></Event>
+        <Event Name="Preconditions"></Event>
+       -->
+      </Events>
+      <!-- Here you can define parameter which are passed to the methods which are registered for SPSD events -->
+      <!-- Each parameter is a kez value pair -->
+      <!-- You can also use SPSD variables here which will be resolved automatically on runtime -->
+      <Parameters>
+        <!-- Domain\username of the user who is administrator of this target application. -->
+        <Paramenter Name="TargetApplicationAdmin"></Paramenter>
+        <!-- Domain\username of the user who is owner of this target application. -->
+        <Paramenter Name="TargetApplicationOwner"></Paramenter>
+        <!-- Display name of the target application. -->
+        <Paramenter Name="TargetApplicationName"></Paramenter>
+      </Parameters>
+      <!-- Here you can define you custom data XML structure which will be passed to the registered PowerShell functions -->
+      <!-- You can also use SPSD variables which will be resolved automatically on runtime -->
+      <Data>
+        <!-- Add your fields here -->
+        <!-- Name: name of the field as shown in SecureStore administration -->
+        <!-- Type: UserName, Password, Pin, Key, Generic, WindowsUserName, WindowsPassword -->
+        <!-- Masked: true, false - used to mask password inputs -->
+        <SecureStoreApplicationField Name="" Type="" Masked="" />
+      </Data>
+    </Extension>
+  </Extensions>
+</SPSD>
