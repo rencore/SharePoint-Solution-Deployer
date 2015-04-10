@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<SPSD Version="5.0.3.6439">
+<SPSD Version="5.0.4.6440">
   <!-- The configuration node contains general settings which may be reused in several environments -->
   <!-- Attributes -->
   <!-- Required: ID ="[Configuration node ID]" Used to find corresponding referenced node in external file -->
-  <!-- Optional: FilePath="[filepath relative to this xml file]" Specify to replace the node with the same ID from the referenced file -->
+  <!-- Optional: FilePath="[file path relative to this XML file]" Specify to replace the node with the same ID from the referenced file -->
   <Configuration ID="Default">
-    <!-- The settings node specifies global deployment settings for the powershell scripts -->
+    <!-- The settings node specifies global deployment settings for the PowerShell scripts -->
     <Settings>
       <!-- Number of retries if solution deployment fails (default: 3) -->
       <DeploymentRetries>3</DeploymentRetries>
@@ -14,10 +14,10 @@
       <!-- Specifies if checks and actions should be run on all servers in the farm or only the local server -->
       <!-- Valid values are: OnlyLocal, All, WebFrontEnd, Application -->
       <!-- ! Make sure that the deployment account is local administrator on all servers -->
-      <!-- ! Make sure that PowerShell Remoting is enabled on all servers and the deployment user has permisison to use it -->
+      <!-- ! Make sure that PowerShell Remoting is enabled on all servers and the deployment user has permission to use it -->
       <!-- ! This can be done by running 'Enable-PSRemoting -Confirm:$false' on each server -->
       <RunOnMultipleServersInFarm>OnlyLocal</RunOnMultipleServersInFarm>
-      <!-- Number of milliseconds to leave the deployment script window open after the deployment or "pause" to remain it open indefinetly (default: 10000ms)-->
+      <!-- Number of milliseconds to leave the deployment script window open after the deployment or "pause" to remain it open indefinitely (default: 10000ms)-->
       <WaitAfterDeployment>10000</WaitAfterDeployment>
       <!-- Use wizards to specify variables (not yet migrated from MSBuild to PowerShell) -->
       <DisplayWizards>false</DisplayWizards>
@@ -87,7 +87,7 @@
       <!-- Optional: AllWebApps="[true|false]" Warms up all SharePoint WebApplications -->
       <!-- Optional: AllSites="[true|false]" Warms up all SharePoint SiteCollections -->
       <WarmUpUrls AllWebApps="true" AllSites="false">
-        <!-- You can also specify custom urls which should be hit 
+        <!-- You can also specify custom URLs which should be hit 
           <WarmUp Url="$(SiteUrl)" /> 
           <WarmUp Url="$(SiteUrl)" /> 
         -->
@@ -98,16 +98,16 @@
   <!-- The environment node specifies the deployment environment with Variables, PreRequisiteSolutions, Solutions and SiteStructures -->
   <!-- Attributes -->
   <!-- Required: ID="[Environment node ID]" Used to find corresponding referenced node in external file -->
-  <!-- Optional: FilePath="[filepath relative to this xml file]" Specify to replace the node with the same ID from the referenced file -->
+  <!-- Optional: FilePath="[file path relative to this XML file]" Specify to replace the node with the same ID from the referenced file -->
   <Environment ID="Default">
 
     <!-- The variables node specifies the variables which will be replaced in the entire environment XML file -->
     <!-- You can use variables with $(variablename) in the xml file and $vars["variablename"] in the CustomTargets.ps1 PowerShell script -->
     <!-- You can also use system environment variables with $(env:VARIABLENAME) in the xml file and $env:VARIABLENAME in PowerShell -->
-    <!-- For a detailed list of ystem environment variables open cmd.exe and type "set“ or "Get-ChildItem env:" in PowerShell -->
+    <!-- For a detailed list of system environment variables open cmd.exe and type "set“ or "Get-ChildItem env:" in PowerShell -->
     <!-- Attributes -->
     <!-- Required: ID="[Variables node ID]" Used to find corresponding referenced node in external file -->
-    <!-- Optional: FilePath="[filepath relative to this xml file]" Specify to replace the node with the same ID from the referenced file -->
+    <!-- Optional: FilePath="[file path relative to this XML file]" Specify to replace the node with the same ID from the referenced file -->
     <Variables ID="Default">
       <Variable Name="UserID">$(env:USERDOMAIN)\$(env:USERNAME)</Variable>
       <Variable Name="WebAppUrl">http://$(env:COMPUTERNAME).$(env:USERDNSDOMAIN)</Variable>
@@ -116,10 +116,10 @@
     </Variables>
 
     <!-- The PreRequisiteSolutions node specifies which solution should be deployed -->
-    <!-- before the the deployment/update process is starting (does not apply on retraction)-->
+    <!-- before the deployment/update process is starting (does not apply on retraction)-->
     <!-- Attributes -->
     <!-- Required: ID="[PreRequisiteSolutions node ID]" Used to find corresponding referenced node in external file -->
-    <!-- Optional: FilePath="[filepath relative to this xml file]" Specify to replace the node with the same ID from the referenced file -->
+    <!-- Optional: FilePath="[file path relative to this XML file]" Specify to replace the node with the same ID from the referenced file -->
     <PreRequisiteSolutions ID="Default">
       <!-- EXAMPLES: -->
       <!-- Farm solution, which has to be deployed in the farm -->
@@ -145,10 +145,10 @@
     
     <!-- The solutions node specifies which solution should be deployed/reatracted/updated -->
     <!-- If the node is missing or empty all solution files found in the /Solutions folder -->
-    <!-- of the deployment package will be used as farm solutions on all content urls / globally -->
+    <!-- of the deployment package will be used as farm solutions on all content URLs / globally -->
     <!-- Attributes -->
     <!-- Required: ID="[Solutions node ID]" Used to find corresponding referenced node in external file -->
-    <!-- Optional: FilePath="[filepath relative to this xml file]" Specify to replace the node with the same ID from the referenced file -->
+    <!-- Optional: FilePath="[file path relative to this XML file]" Specify to replace the node with the same ID from the referenced file -->
     <!-- Optional: Force="[true|false]" Set to force the deploy/retract/update command (can be used on Solutions/Solution nodes) -->
     <!-- Optional: Overwrite="[true|false]" Set to overwrite solutions if they already exist, solution will be retracted before deployment (can be used on Solutions/Solution nodes)-->
     <!-- Optional: CompatibilityLevel="[14|15|14,15]". SP2013 only, Deployment only, Farm solutions only. Set to deploy the solution only in "14" hive, only in "15" hive or in both hives "14,15" (can be used on Solutions/Solution nodes)-->
@@ -168,7 +168,7 @@
         <WebApplication Url="$(WebAppUrl)" />
       </Solution> -->
 
-      <!-- Sandboxed solution, which will be depoyed to the specified site collections
+      <!-- Sandboxed solution, which will be deployed to the specified site collections
       <Solution Name="Solution.Name.wsp" Overwrite="true">
         <SiteCollection Url="$(SiteUrl1)" />
         <SiteCollection Url="$(SiteUrl2)" />
@@ -180,16 +180,16 @@
   <!-- The Extensions node defines one or multiple extensions which should execute custom code on different SPSD events-->
   <!-- Attributes -->
   <!-- Required: ID="[Extensions node ID]" used to find corresponding referenced node in external file -->
-  <!-- Optional: FilePath="[filepath relative to this xml file]" Specify to replace the node with the same ID from the referenced file -->
+  <!-- Optional: FilePath="[file path relative to this XML file]" Specify to replace the node with the same ID from the referenced file -->
   <Extensions ID="Default">
     <!-- Each extension has to be registered here with its own Extension node -->
-    <!-- An extension can also be registred multiple times with different ids, eg. to execute the same tasks several times-->
-    <!-- You can add the whol extension configuration directly in here, but it is recommended ot just reference a separate file -->
+    <!-- An extension can also be registered multiple times with different ids, e.g. to execute the same tasks several times-->
+    <!-- You can add the entire extension configuration directly in here, but it is recommended to just reference a separate file -->
     <!-- for ease if use and easy update. -->
     <!-- Attributes -->
     <!-- Required: ID="[Extension node ID]" used to find corresponding referenced node in external file -->
     <!-- Required: Type="[Extension Type]" the type of the extension as defined in the extension manifest file in the Scripts/Extensions/<extension> folder -->
-    <!-- Optional: FilePath="[filepath relative to this xml file]" Specify to replace the node with the same ID from the referenced file -->
+    <!-- Optional: FilePath="[file path relative to this XML file]" Specify to replace the node with the same ID from the referenced file -->
     <Extension ID="ExampleInstance1" Type="Example" FilePath="Extensions\Example.xml" />
   </Extensions>
 </SPSD>

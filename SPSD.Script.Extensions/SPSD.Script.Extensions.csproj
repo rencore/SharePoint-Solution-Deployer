@@ -36,6 +36,8 @@
     <Content Include="ContentTypeHub\Environments\Default.xml" />
     <Content Include="ContentTypeHub\Environments\Extensions\ContentTypeHub.xml" />
     <Content Include="ContentTypeHub\Scripts\Extensions\ContentTypeHub\manifest.xml" />
+    <Content Include="CustomCrawlConnector\Environments\Extensions\CustomCrawlConnector.xml" />
+    <Content Include="CustomCrawlConnector\Scripts\Extensions\CustomCrawlConnector\manifest.xml" />
     <Content Include="FeatureExtension\Environments\Extensions\Features.xml" />
     <Content Include="FeatureExtension\Scripts\Extensions\Features\manifest.xml" />
     <Content Include="LoggingConfiguration\Environments\Default.xml" />
@@ -45,6 +47,10 @@
     <Content Include="LoggingConfiguration\Scripts\Extensions\LoggingConfiguration\manifest.xml" />
     <Content Include="ReGhostExtension\Environments\Extensions\ReGhost.xml" />
     <Content Include="ReGhostExtension\Scripts\Extensions\ReGhost\manifest.xml" />
+    <Content Include="SearchSchema\Environments\Extensions\SearchSchema.xml" />
+    <Content Include="SearchSchema\Scripts\Extensions\SearchSchema\manifest.xml" />
+    <Content Include="SecureStore\Environments\Extensions\SecureStore.xml" />
+    <Content Include="SecureStore\Scripts\Extensions\SecureStore\manifest.xml" />
     <Content Include="SiteStructure\Environments\Default.xml" />
     <Content Include="SiteStructure\Environments\Extensions\SiteStructure.xml" />
     <Content Include="SiteStructure\Scripts\Extensions\SiteStructure\manifest.xml" />
@@ -55,21 +61,21 @@
     <Content Include="ManagedMetadata\Scripts\Extensions\ManagedMetadata\Terms.xml" />
     <Content Include="ManagedMetadata\Scripts\Extensions\ManagedMetadata\TermsStoreConfiguration.xml" />
     <Content Include="SPSD.Extensions.Client.2010\Environments\Default.xml" />
-    <Content Include="SPSD.Extensions.Client.2010\Environments\Extensions\SPSD.Extensions.Client.xml" />
-    <Content Include="SPSD.Extensions.Client.2010\Scripts\Extensions\SPSD.Extensions.Client\manifest.xml" />
-    <Content Include="SPSD.Extensions.Client.2010\Scripts\Extensions\SPSD.Extensions.Client\SPSD.Extensions.Client.dll" />
+    <Content Include="SPSD.Extensions.Client.2010\Environments\Extensions\SPSD.Extensions.Client.2010.xml" />
+    <Content Include="SPSD.Extensions.Client.2010\Scripts\Extensions\SPSD.Extensions.Client.2010\manifest.xml" />
+    <Content Include="SPSD.Extensions.Client.2010\Scripts\Extensions\SPSD.Extensions.Client.2010\SPSD.Extensions.Client.dll" />
     <Content Include="SPSD.Extensions.Client.2013\Environments\Default.xml" />
-    <Content Include="SPSD.Extensions.Client.2013\Environments\Extensions\SPSD.Extensions.Client.xml" />
-    <Content Include="SPSD.Extensions.Client.2013\Scripts\Extensions\SPSD.Extensions.Client\manifest.xml" />
-    <Content Include="SPSD.Extensions.Client.2013\Scripts\Extensions\SPSD.Extensions.Client\Microsoft.SharePoint.Client.WorkflowServices.dll" />
-    <Content Include="SPSD.Extensions.Client.2013\Scripts\Extensions\SPSD.Extensions.Client\SPSD.Extensions.Client.dll" />
-    <Content Include="SPSD.Extensions.Client.2013\Scripts\Extensions\SPSD.Extensions.Client\SPSD.Extensions.Client.dll-Help.xml" />
+    <Content Include="SPSD.Extensions.Client.2013\Environments\Extensions\SPSD.Extensions.Client.2013.xml" />
+    <Content Include="SPSD.Extensions.Client.2013\Scripts\Extensions\SPSD.Extensions.Client.2013\manifest.xml" />
+    <Content Include="SPSD.Extensions.Client.2013\Scripts\Extensions\SPSD.Extensions.Client.2013\Microsoft.SharePoint.Client.WorkflowServices.dll" />
+    <Content Include="SPSD.Extensions.Client.2013\Scripts\Extensions\SPSD.Extensions.Client.2013\SPSD.Extensions.Client.dll" />
+    <Content Include="SPSD.Extensions.Client.2013\Scripts\Extensions\SPSD.Extensions.Client.2013\SPSD.Extensions.Client.dll-Help.xml" />
     <Content Include="SPSD.Extenstions.Client.SPO\Environments\Default.xml" />
-    <Content Include="SPSD.Extenstions.Client.SPO\Environments\Extensions\SPSD.Extensions.Client.xml" />
-    <Content Include="SPSD.Extenstions.Client.SPO\Scripts\Extensions\SPSD.Extensions.Client\manifest.xml" />
-    <Content Include="SPSD.Extenstions.Client.SPO\Scripts\Extensions\SPSD.Extensions.Client\Microsoft.SharePoint.Client.WorkflowServices.dll" />
-    <Content Include="SPSD.Extenstions.Client.SPO\Scripts\Extensions\SPSD.Extensions.Client\SPSD.Extensions.Client.dll" />
-    <Content Include="SPSD.Extenstions.Client.SPO\Scripts\Extensions\SPSD.Extensions.Client\SPSD.Extensions.Client.dll-Help.xml" />
+    <Content Include="SPSD.Extenstions.Client.SPO\Environments\Extensions\SPSD.Extensions.Client.SPO.xml" />
+    <Content Include="SPSD.Extenstions.Client.SPO\Scripts\Extensions\SPSD.Extensions.Client.SPO\manifest.xml" />
+    <Content Include="SPSD.Extenstions.Client.SPO\Scripts\Extensions\SPSD.Extensions.Client.SPO\Microsoft.SharePoint.Client.WorkflowServices.dll" />
+    <Content Include="SPSD.Extenstions.Client.SPO\Scripts\Extensions\SPSD.Extensions.Client.SPO\SPSD.Extensions.Client.dll" />
+    <Content Include="SPSD.Extenstions.Client.SPO\Scripts\Extensions\SPSD.Extensions.Client.SPO\SPSD.Extensions.Client.dll-Help.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
@@ -77,18 +83,24 @@
   <ItemGroup>
     <None Include="BlockedFileExtensions\Scripts\Extensions\BlockedFileExtensions\BlockedFileExtensions.ps1" />
     <None Include="ContentTypeHub\Scripts\Extensions\ContentTypeHub\ContentTypeHub.ps1" />
+    <None Include="CustomCrawlConnector\README.md" />
+    <Content Include="CustomCrawlConnector\Scripts\Extensions\CustomCrawlConnector\CustomCrawlConnector.ps1" />
     <None Include="FeatureExtension\Scripts\Extensions\Features\Features.ps1" />
     <None Include="LoggingConfiguration\Scripts\Extensions\LoggingConfiguration\LoggingConfiguration.ps1" />
     <None Include="ReGhostExtension\Scripts\Extensions\ReGhost\ReGhost.ps1" />
+    <None Include="SearchSchema\README.md" />
+    <Content Include="SearchSchema\Scripts\Extensions\SearchSchema\SearchSchema.ps1" />
+    <None Include="SecureStore\README.md" />
+    <Content Include="SecureStore\Scripts\Extensions\SecureStore\SecureStore.ps1" />
     <None Include="SiteStructure\Scripts\Extensions\SiteStructure\SiteStructure.ps1" />
     <None Include="ManagedMetadata\Scripts\Extensions\ManagedMetadata\ExportManagedMetadata.ps1" />
     <None Include="ManagedMetadata\Scripts\Extensions\ManagedMetadata\ImportManagedMetadata.ps1" />
     <None Include="SPSD.Extensions.Client.2010\README.md" />
-    <None Include="SPSD.Extensions.Client.2010\Scripts\Extensions\SPSD.Extensions.Client\SPSD.Extensions.Client.ps1" />
+    <None Include="SPSD.Extensions.Client.2010\Scripts\Extensions\SPSD.Extensions.Client.2010\SPSD.Extensions.Client.ps1" />
     <None Include="SPSD.Extensions.Client.2013\README.md" />
-    <None Include="SPSD.Extensions.Client.2013\Scripts\Extensions\SPSD.Extensions.Client\SPSD.Extensions.Client.ps1" />
+    <None Include="SPSD.Extensions.Client.2013\Scripts\Extensions\SPSD.Extensions.Client.2013\SPSD.Extensions.Client.ps1" />
     <None Include="SPSD.Extenstions.Client.SPO\README.md" />
-    <None Include="SPSD.Extenstions.Client.SPO\Scripts\Extensions\SPSD.Extensions.Client\SPSD.Extensions.Client.ps1" />
+    <None Include="SPSD.Extenstions.Client.SPO\Scripts\Extensions\SPSD.Extensions.Client.SPO\SPSD.Extensions.Client.ps1" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<SPSD Version="5.0.3.6438">
+<SPSD Version="5.0.4.6440">
   <Extensions>
     <Extension ID="CustomCrawlConnector" Type="CustomCrawlConnector">
       <Events>
@@ -19,7 +19,7 @@
        -->
       </Events>
       <!-- Here you can define parameter which are passed to the methods which are registered for SPSD events -->
-      <!-- Each parameter is a kez value pair -->
+      <!-- Each parameter is a key value pair -->
       <!-- You can also use SPSD variables here which will be resolved automatically on runtime -->
       <Parameters>
         <!-- Protocol name used for your indexing connector, such as myfile. -->
@@ -28,9 +28,9 @@
         <Parameter Name="SearchServiceApplicationName"></Parameter>
         <!-- Target path for the BDC model of the indexing connector. This is the location where you will deploy the BDC model to on the indexing servers. -->
         <Parameter Name="ModelFilePath"></Parameter>
-        <!-- Name of the search metadata category where all crawled properties from your connector will go. -->
+        <!-- Name of the search meta data category where all crawled properties from your connector will go. -->
         <Parameter Name="CategoryName"></Parameter>
-        <!-- The propset id for your custom indexing connector (hard-coded guid in the connector). -->
+        <!-- The propset id for your custom indexing connector (hard-coded GUID in the connector). -->
         <Parameter Name="PropsetId"></Parameter>
       </Parameters>
       <!-- Not used -->

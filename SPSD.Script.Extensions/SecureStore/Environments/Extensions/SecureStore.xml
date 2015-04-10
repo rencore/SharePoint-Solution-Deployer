@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<SPSD Version="5.0.3.6438">
+<SPSD Version="5.0.4.6440">
   <Extensions>
     <Extension ID="SecureStore" Type="SecureStore">
       <Events>
@@ -19,7 +19,7 @@
        -->
       </Events>
       <!-- Here you can define parameter which are passed to the methods which are registered for SPSD events -->
-      <!-- Each parameter is a kez value pair -->
+      <!-- Each parameter is a key value pair -->
       <!-- You can also use SPSD variables here which will be resolved automatically on runtime -->
       <Parameters>
         <!-- Domain\username of the user who is administrator of this target application. -->

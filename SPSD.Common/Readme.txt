@@ -1,6 +1,6 @@
 ###############################################################################
 # SharePoint Solution Deployer (SPSD)
-# Version          : 5.0.3.6439
+# Version          : 5.0.4.6440
 # Url              : http://spsd.codeplex.com
 # Creator          : Matthias Einig, RENCORE AB, http://twitter.com/mattein
 # License          : MS-PL
@@ -10,14 +10,14 @@
 Warning: Leave all script files starting with SPSD_ in the Scripts folder untouched in order to be able to easily update to the next version of the scripts.
 
 ### Environment files
-SPSD is configured with environment xml files located in the /Environments folder
+SPSD is configured with environment XML files located in the /Environments folder
 
 How to create environments:
 
 1.Modify the 'default.xml' environment definition XML in the "Environments" folder
 2.Create your own environment file in the "Environments" folder 
   - If you name the file after a machine it will be used when the script runs on that machine, 
-  - If you name it after a username, it will be used when the script runs by this user,
+  - If you name it after a user name, it will be used when the script runs by this user,
   - If none of the above exist, default.xml is used
 3.Extract any XML node of a environment file to a separate file and specify the ID and FilePath tags. 
   SPSD will automatically merge the files together. 
@@ -27,7 +27,7 @@ How to create environments:
   You can also use system environment variables (run "Get-ChildItem env:" in PowerShell to see all available variables)
 
 ### Environment Editor
-To edit the xml files you can use the SPSD Environment Editor located which can be downloaded from http://spsd.codeplex.com/releases/view/100340. 
+To edit the XML files you can use the SPSD Environment Editor located which can be downloaded from http://spsd.codeplex.com/releases/view/100340. 
 Comments in the XML files will be lost when saving with the Environment Editor.
 
 Currently the environment editor does not yet support 
@@ -37,7 +37,7 @@ Configuration
 Extensions
 
 ### Scripts/AppLogo.txt
-If you want to embed your own ascii art logo or application info, please customize the file Scripts/AppLogo.txt.
+If you want to embed your own ASCII art logo or application info, please customize the file Scripts/AppLogo.txt.
 Links:
 - http://patorjk.com/software/taag/#p=display&h=0&v=0&f=Doh&t=SPSD
 - http://picascii.com/
@@ -54,9 +54,9 @@ Links:
 		- Finalize
 
 ### Scripts/Extensions and Environments/Extensions
-	SPSD has an extension szstem which allows zou to develop re-usable extensions which can be just dropped and registered in any SPSD deployment package.
+	SPSD has an extension system which allows you to develop re-usable extensions which can be just dropped and registered in any SPSD deployment package.
 	This makes it easy for to inject common tasks into the deployment process , 
-	eg. creating a ContentTypeHub, creating a site structure, importing managed metadata etc.
+	eg. creating a ContentTypeHub, creating a site structure, importing managed meta data etc.
 
 	Please have a look at the example extension in the extensions folder to understand how it works.
 
@@ -64,7 +64,7 @@ Links:
 	http://gallery.technet.microsoft.com/site/search?f%5B0%5D.Type=Tag&f%5B0%5D.Value=SPSD&f%5B0%5D.Text=SPSD
 
 ### Logging:
-	 You can (and should) use the SPSD Logging function to write to the PowerShell window/logfile 
+	 You can (and should) use the SPSD Logging function to write to the PowerShell window/log file 
 	 instead of using Write-Host, Write-Output, Write Error
  
 	 Using the log method provided by SPSD will help you to assure that 
@@ -88,7 +88,7 @@ Links:
 		3 or $SPSD.LogTypes.Information -> White
 		4 or $SPSD.LogTypes.Normal      -> Gray
 	 -NoNewline [switch]
-	   Will not add a line break after the message, eg. for progress checks or if you have to change the log type for the rest of the line
+	   Will not add a line break after the message, e.g. for progress checks or if you have to change the log type for the rest of the line
 	 -Indent [switch]
  		Indents all following logging messages by 2 characters (adds to previous indentation)
 	 -Outdent [switch]

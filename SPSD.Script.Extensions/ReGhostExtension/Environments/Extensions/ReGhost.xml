@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<SPSD Version="5.0.3.6438">
+<SPSD Version="5.0.4.6440">
   <Extensions>
     <!-- This represents the extension configuration of the specific instance "ReGhostInstance1" of the extension of type "ReGhostExtension" -->
 	  <Extension ID="ReGhostExtension" Type="ReGhost">

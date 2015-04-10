@@ -1,13 +1,13 @@
 ﻿###############################################################################
 # SharePoint Solution Deployer (SPSD)
-# Version          : 5.0.3.6439
+# Version          : 5.0.4.6440
 # Url              : http://spsd.codeplex.com
 # Creator          : Matthias Einig, RENCORE AB, http://twitter.com/mattein
 # License          : MS-PL
 # File             : HowToCreateExtensions.txt
 ###############################################################################
 
-SPSD has a built in extension system which allows you a way to de-couple your custom scripts from the main
+SPSD has a built in extension system which allows you a way to decouple your custom scripts from the main
 deployment script. By that, you can update SPSD and the extension independently and also re-use the extension
 for multiple different deployments.
                 

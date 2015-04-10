@@ -1,6 +1,6 @@
 ###############################################################################
 # SharePoint Solution Deployer (SPSD)
-# Version          : 5.0.3.6439
+# Version          : 5.0.4.6440
 # Url              : http://spsd.codeplex.com
 # Creator          : Matthias Einig
 # License          : MS-PL

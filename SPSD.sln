@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPSD.Editor", "SPSD.Editor\SPSD.Editor.csproj", "{AF0387DA-975B-4598-8E5A-6F7180583316}"
 EndProject
@@ -46,7 +46,6 @@ Global
 		{1413D4F7-542B-445E-9A3A-DDD7B1CCCEDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1413D4F7-542B-445E-9A3A-DDD7B1CCCEDB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4EFD98DF-2C6D-46AD-87E5-12483614DA95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4EFD98DF-2C6D-46AD-87E5-12483614DA95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EFD98DF-2C6D-46AD-87E5-12483614DA95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EFD98DF-2C6D-46AD-87E5-12483614DA95}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9A7FBDC7-769F-4E86-9F5F-F74C3B799770}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

@@ -1,0 +1,31 @@
+﻿This read-me describes how to create a new SPSD release. The intended audience are SPSD developers that want to create a new release and publish it to spsd.codeplex.com.
+
+- Add release notes to ReleaseNotes.txt in this project
+- Update SharePointVersions.xml with latest SharePoint build numbers
+- Solution-wide search and replace of SPSD version number
+- Build the SPSD.Script project
+- Add new/modified extensions to build output (in SPSD folder). This is currently a manual process. Check for each extension the following items:
+  - XML file under Environments/Extensions
+  - Extension element in Default.xml and DefaultNoComments.xml that in commented out under Environments
+  - Folder with the actual extension under Scripts/Extensions
+  - Double-check that ID and Type for the extensions matches in Default.xml, manifest.xml and [extension-name].xml
+  - Double-check that the extension folder has the same name as the extension type
+- Test deployment of WSP
+- Test deployment using the extensions
+- Rename the SPSD folder to SPSD_[version_number]
+- ZIP the folder
+- Publish the ZIP file to spsd.codeplex.com and update the release notes on the downloads page
+- Update SPSD home page
+- Commit changes to GitHub repository
+
+Versioning info
+---------------
+
+Let us use semantic versioning. The build number has currently no real use, I just increment it each time. Maybe we should find something better for this.
+
+1. MAJOR version when you make incompatible API changes,
+2. MINOR version when you add functionality in a backwards-compatible manner, and
+3. PATH version when you make backwards-compatible bug fixes.
+4. BUILD NUMBER automatic number supplied by the build system (which currently do not have)
+
+Bernd Rickenberg, 09-04-2015

@@ -1,6 +1,6 @@
 ﻿###############################################################################
 # SharePoint Solution Deployer (SPSD)
-# Version          : 5.0.3.6439
+# Version          : 5.0.4.6440
 # Url              : http://spsd.codeplex.com
 # Creator          : Matthias Einig
 # License          : MS-PL
@@ -14,7 +14,7 @@
 # Each extension can have multiple functions and also included other PowerShell files
 # In the extension you should use the SPSD logging functions as described in the "HowToExtendSPSD.txt" file.
 #
-# The functions requre to have following paramters
+# The functions require to have following parameters
 # - $parameters     : a collection of all named parameters defined in the extension configuration file
 # - $data            : the <Data></Data> node of the extension configuration file
 # - $extId          : the extension Id as defined in the extension configuration file 

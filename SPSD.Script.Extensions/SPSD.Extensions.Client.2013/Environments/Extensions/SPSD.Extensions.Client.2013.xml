@@ -1,10 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<SPSD Version="5.0.3.6438">
+<SPSD Version="5.0.4.6440">
   <Extensions>
-    <!-- This represents the extension configuration of the specific instance "ExampleExtension1" of-->
-    <!-- the extension of type "ExampleExtension" -->
-    <Extension ID="SPSD.Extensions.Client" Type="SPSD.Extensions.Client">
-      <!-- Here you register the methods of zour extension .ps1 file to one or several events -->
+    <!-- This registers the CSOM extensions for SharePoint 2013 on-prem -->
+    <Extension ID="SPSD.Extensions.Client.2013" Type="SPSD.Extensions.Client.2013">
+      <!-- Here you register the methods of your extension .ps1 file to one or several events -->
       <!-- You can also register multiple methods to the same event. -->
       <Events>
         <!-- This examples lists the available events -->
@@ -23,7 +22,7 @@
        -->
       </Events>
       <!-- Here you can define parameter which are passed to the methods which are registered for SPSD events -->
-      <!-- Each parameter is a kez value pair -->
+      <!-- Each parameter is a key value pair -->
       <!-- You can also use SPSD variables here which will be resolved automatically on runtime -->
       <Parameters>
       </Parameters>
@@ -32,13 +31,13 @@
       <Data>
         <!-- Deploy client-side stuff -->
         <!-- Configure here what files to deploy. For a full list of parameters see the PowerShell help for Add-SPFile after loading SPSD.Extension.Client.dll module into the PowerShell session. -->
-        <!--<AddSPFileItem SourcePath="..\..\..\ClientSolutions\ResourceLibrary" SiteUrl="$(ResourceSiteUrl)" RelativeDocLibUrl="$(ResourceLibrary)" NoOverwrite="false" AddUpdateOnly="true" Username="$(Username)" Password="$(Password)" />-->
+        <!--<AddSPFileItem SourcePath="..\..\..\ClientSolutions\ResourceLibrary" SiteUrl="$(ResourceSiteUrl)" RelativeDocLibUrl="$(ResourceLibrary)" NoOverwrite="false" AddUpdateOnly="true" />-->
         <!-- Deploy a workflow definition -->
         <!-- Configure here what workflows to deploy, requires a XAML file. For a full list of parameters see the PowerShell help for Add-SPWorkflowDefinition after loading SPSD.Extension.Client.dll module into the PowerShell session. -->
-        <!--<AddSPWorkflowDefinitionItem SourcePath="..\..\..\ClientSolutions\Workflows\simple-list.xaml" SiteUrl="$(SiteUrl)" Id="E6120B11-F257-4057-A324-FE2E22CAC28D" DisplayName="Simple List Workflow" Publish="true" RestrictToType="List" RestrictToListName="Contacts" Username="$(Username)" Password="$(Password)" />-->
+        <!--<AddSPWorkflowDefinitionItem SourcePath="..\..\..\ClientSolutions\Workflows\simple-list.xaml" SiteUrl="$(SiteUrl)" Id="E6120B11-F257-4057-A324-FE2E22CAC28D" DisplayName="Simple List Workflow" Publish="true" RestrictToType="List" RestrictToListName="Contacts" />-->
         <!-- Deploy a workflow subscription -->
-        <!-- Configure here what workflows subscribtions to deploy, requires a deployed workflow definition. For a full list of parameters see the PowerShell help for Add-SPWorkflowSubscription after loading SPSD.Extension.Client.dll module into the PowerShell session. -->
-        <!--<AddSPWorkflowSubscriptionItem SiteUrl="$(SiteUrl)" DefinitionId="E6120B11-F257-4057-A324-FE2E22CAC28D" Enabled="true" EventSourceName="Contacts" Id="E88C9FDA-3C75-4277-A26D-53370A1215E8" Name="Simple List WF" Username="$(Username)" Password="$(Password)" />-->
+        <!-- Configure here what workflows subscriptions to deploy, requires a deployed workflow definition. For a full list of parameters see the PowerShell help for Add-SPWorkflowSubscription after loading SPSD.Extension.Client.dll module into the PowerShell session. -->
+        <!--<AddSPWorkflowSubscriptionItem SiteUrl="$(SiteUrl)" DefinitionId="E6120B11-F257-4057-A324-FE2E22CAC28D" Enabled="true" EventSourceName="Contacts" Id="E88C9FDA-3C75-4277-A26D-53370A1215E8" Name="Simple List WF" />-->
       </Data>
     </Extension>
   </Extensions>

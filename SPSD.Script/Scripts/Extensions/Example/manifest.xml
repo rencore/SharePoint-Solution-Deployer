@@ -13,8 +13,8 @@
                   - the associated script file and 
                   - if the extension is currently enabled or disabled entirely    
                   
-                 By specifýing this, it allows SPSD to automatically pick up your extension and register it for deployment actions.
-                 The extension is loaded inline, which means that functions and variables of the extension script are not available
+                 By specifying this, it allows SPSD to automatically pick up your extension and register it for deployment actions.
+                 The extension is loaded in-line, which means that functions and variables of the extension script are not available
                  after the extension is done.
                  
                  Please have a look into the comments in the other example extensions files to understand how each of it works.

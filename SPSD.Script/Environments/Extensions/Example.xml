@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<SPSD Version="5.0.3.6439">
+<SPSD Version="5.0.4.6440">
   <Extensions>
     <!-- This represents the extension configuration of the specific instance "ExampleExtension1" of-->
     <!-- the extension of type "ExampleExtension" -->
     <Extension ID="ExampleInstance1" Type="Example">
-      <!-- Here you register the methods of zour extension .ps1 file to one or several events -->
+      <!-- Here you register the methods of your extension .ps1 file to one or several events -->
       <!-- You can also register multiple methods to the same event. -->
       <Events>
         <!-- This examples lists the available events -->
@@ -23,7 +23,7 @@
        -->
       </Events>
       <!-- Here you can define parameter which are passed to the methods which are registered for SPSD events -->
-      <!-- Each parameter is a kez value pair -->
+      <!-- Each parameter is a key value pair -->
       <!-- You can also use SPSD variables here which will be resolved automatically on runtime -->
       <Parameters>
         <Parameter Name="ExtensionParameter1">$(UserID)</Parameter>
