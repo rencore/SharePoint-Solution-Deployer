@@ -1092,7 +1092,9 @@
                                         Force = $force
                                         Overwrite = $overwrite
                                         CompatibilityLevel = $compLevel
-                                        Urls = @($_.Url)})
+                                        Urls = @($_.Url)
+                                        SortOrder = $result.FarmSolutions.Count
+                                        })
                                 }
                                 else {
                                     # just add another url
@@ -1109,7 +1111,9 @@
                                     Force = $force
                                     CompatibilityLevel = $compLevel
                                     AllUrls = $true # will override additonal web application deployments
-                                    Overwrite = $overwrite })
+                                    Overwrite = $overwrite
+                                    SortOrder = $result.FarmSolutions.Count
+                                    })
                             }
                             else {
                                  $result.FarmSolutions[$solutionName]["AllUrls"] = $true # will override additonal web application deployments
@@ -1259,7 +1263,7 @@
                CheckIfSolutionFilesExist -solutions $solutions
                CheckIfUrlsExists -solutions $solutions
                Log -Message "Deploying:" -Type $SPSD.LogTypes.Information -Indent
-               $solutions.FarmSolutions.Values | ForEach-Object{ DeployFarmSolution -solutionDefinition $_}
+               $solutions.FarmSolutions.Values | Sort-Object { $_.SortOrder } | ForEach-Object{ DeployFarmSolution -solutionDefinition $_}
                $solutions.SiteSolutions.Values | ForEach-Object{ DeploySandboxedSolution -solutionDefinition $_ }
                LogOutdent
 	        }
@@ -1541,7 +1545,7 @@
                CheckIfSolutionFilesExist -solutions $solutions
                CheckIfUrlsExists -solutions $solutions
                Log -Message "Updating:" -Type $SPSD.LogTypes.Information -Indent
-               $solutions.FarmSolutions.Values | ForEach-Object{ UpdateFarmSolutions -solution $_}
+               $solutions.FarmSolutions.Values | Sort-Object { $_.SortOrder } | ForEach-Object{ UpdateFarmSolutions -solution $_}
                $solutions.SiteSolutions.Values | ForEach-Object{ UpdateSandboxedSolutions -solution $_ }
                LogOutdent
 	        }
@@ -1732,7 +1736,7 @@
 
                CheckIfUrlsExists -solutions $solutions
                Log -Message "Retracting:" -Type $SPSD.LogTypes.Information -Indent
-               $solutions.FarmSolutions.Values | ForEach-Object{ RetractFarmSolution -solution $_}
+               $solutions.FarmSolutions.Values | Sort-Object { $_.SortOrder } -Descending | ForEach-Object{ RetractFarmSolution -solution $_}
                $solutions.SiteSolutions.Values | ForEach-Object{ RetractSandboxedSolution -solution $_ }
                LogOutdent
 
