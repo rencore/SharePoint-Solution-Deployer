@@ -2,7 +2,7 @@
 # SharePoint Solution Deployer (SPSD)
 # CustomCrawlConnector Extension
 # Registers a custom crawl connector for SharePoint search
-# Version          : 15.0.0.0
+# Version          : 15.0.0.1
 # Creator          : Bernd Rickenberg
 ###############################################################################
 
@@ -27,7 +27,7 @@ function Add-CustomCrawlConnector($parameters, [System.Xml.XmlElement]$data, [st
 	LogOutdent
 
 	# Add protocol handler to registry
-	$protocolHandler = Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Office Server\15.0\Search\Setup\ProtocolHandlers" -Name $name
+	$protocolHandler = Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Office Server\15.0\Search\Setup\ProtocolHandlers" -Name $name -ErrorAction SilentlyContinue
 	if ($protocolHandler -eq $null) {
 		New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Office Server\15.0\Search\Setup\ProtocolHandlers" -Name $name -PropertyType String -Value "OSearch15.ConnectorProtocolHandler.1"
 		Log -message "Protocol handler '$name' created." -type $SPSD.LogTypes.Success
@@ -39,7 +39,8 @@ function Add-CustomCrawlConnector($parameters, [System.Xml.XmlElement]$data, [st
 	# Register the custom indexing connector
 	$searchApp = Get-SPEnterpriseSearchServiceApplication -Identity $searchAppName
 	$connector = Get-SPEnterpriseSearchCrawlCustomConnector -SearchApplication $searchApp -Protocol $name
-	if ($connector -eq $null) {
+	# Ok, weird stuff - if the crawl connector is not registered (does not exist) an object with empty properties is returned
+	if ($connector.DisplayName -eq "") {
 		New-SPEnterpriseSearchCrawlCustomConnector -SearchApplication $searchApp -protocol $name -ModelFilePath $modelFilePath -Name $name
 		Log -message "Custom crawl connector '$name' created." -type $SPSD.LogTypes.Success
 	}
@@ -48,7 +49,7 @@ function Add-CustomCrawlConnector($parameters, [System.Xml.XmlElement]$data, [st
 	}
 
 	# Create and configure the metadata category (for the crawled properties exposed by the connector)
-	$category = Get-SPEnterpriseSearchMetadataCategory -Identity $categoryName -SearchApplication $searchApp
+	$category = Get-SPEnterpriseSearchMetadataCategory -Identity $categoryName -SearchApplication $searchAppGet-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Office Server\15.0\Search\Setup\ProtocolHandlers" -Name $name
 	if ($category -eq $null) {
 		New-SPEnterpriseSearchMetadataCategory -Name $categoryName -Propset $propsetId -searchApplication $searchApp -DiscoverNewProperties $true
 		Log -message "Metadata category '$categoryName' created." -type $SPSD.LogTypes.Success
