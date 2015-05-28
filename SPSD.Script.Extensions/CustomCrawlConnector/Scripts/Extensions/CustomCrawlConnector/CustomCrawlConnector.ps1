@@ -49,7 +49,7 @@ function Add-CustomCrawlConnector($parameters, [System.Xml.XmlElement]$data, [st
 	}
 
 	# Create and configure the metadata category (for the crawled properties exposed by the connector)
-	$category = Get-SPEnterpriseSearchMetadataCategory -Identity $categoryName -SearchApplication $searchAppGet-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Office Server\15.0\Search\Setup\ProtocolHandlers" -Name $name
+	$category = Get-SPEnterpriseSearchMetadataCategory -Identity $categoryName -SearchApplication $searchApp
 	if ($category -eq $null) {
 		New-SPEnterpriseSearchMetadataCategory -Name $categoryName -Propset $propsetId -searchApplication $searchApp -DiscoverNewProperties $true
 		Log -message "Metadata category '$categoryName' created." -type $SPSD.LogTypes.Success
