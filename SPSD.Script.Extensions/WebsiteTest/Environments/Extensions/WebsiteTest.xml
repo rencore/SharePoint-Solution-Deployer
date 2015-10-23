@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SPSD Version="5.0.1.6438">
+  <Extensions>
+    <Extension ID="WebsiteTest" Type="WebsiteTest">
+      <Events>
+        <Event Name="AfterDeploy">Execute-WebsiteExtension</Event>
+      </Events>
+		 <Data>
+			 <Websites>
+				 <!-- plain Website -->
+				 <Website Url="http://spsd.codeplex.com" Method="GET" Payload="" ContainsText="Sharepoint Solution Deployer" NotContainsText="" />
+				 <!-- Webservice -->
+				 <Website Url="http://ip.jsontest.com" Method="GET" Payload="" ContainsText="ip" NotContainsText="Should not contain this text" />
+				 <!-- Webservice with GET -->
+				 <Website Url="http://echo.jsontest.com/key" Method="GET" Payload="/one/two" ContainsText="one" NotContainsText="" />
+				 <!-- Webservice with POST -->
+				 <Website Url="http://validate.jsontest.com" Method="POST" Payload="json={'key':'value'}" ContainsText="error" NotContainsText="" />
+			 </Websites>
+		 </Data>
+    </Extension>
+  </Extensions>
+</SPSD>
