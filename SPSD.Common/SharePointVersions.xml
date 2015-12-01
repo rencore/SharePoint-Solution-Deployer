@@ -166,6 +166,7 @@
 			<Version Number="​​​15.0.4745.1001" Name="SharePoint Server 2013 Aug 2015 CU"/>
 			<Version Number="​15.0.4753.1000" Name="SharePoint Server 2013 Sep 2015 CU"/>
 			<Version Number="​15.0.4763.1000" Name="SharePoint Server 2013 Oct 2015 CU"/>
+			<Version Number="​​15.0.4771.1000" Name="SharePoint Server 2013 Nov 2015 CU"/>
 		</Versions>
 		<!--
       Get SharePoint products Guid by running SharePoint PowerShell console and call "(Get-SPFarm).Products" (works > =SP2010)
