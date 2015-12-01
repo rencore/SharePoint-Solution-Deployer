@@ -130,15 +130,13 @@
 	                Write-Host -foregroundColor $foregroundColor ($indentChars + $message)
 	            }
             }
-            else
-            {
-	            if($NoNewline){
-                    [System.IO.File]::AppendAllText($script:LogFile, ($indentChars + $message), [System.Text.Encoding]::Default)
-	            }
-                else{
-                    Add-Content $script:LogFile ($indentChars + $message)
-	            }
-            }
+            # always log to file
+	         if($NoNewline){
+                  [System.IO.File]::AppendAllText($script:LogFile, ($indentChars + $message), [System.Text.Encoding]::Default)
+	         }
+               else{
+                  Add-Content $script:LogFile ($indentChars + $message)
+	         }
 	        if($Indent){ LogIndent }
 	    }
 	    #endregion
