@@ -576,7 +576,14 @@
                  Log -message " (3) Redeploy (first retract, then deploy)" -type $SPSD.LogTypes.Normal
                  Log -message " (4) Update" -type $SPSD.LogTypes.Normal
                  Log -message "SPSD:> " -type $SPSD.LogTypes.Information -NoNewline
-		         $key = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+					try {
+						$key = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+						} catch {
+							# ISE doesn't like the above
+							$input = Read-Host
+							$key = New-Object 'System.Management.Automation.Host.KeyInfo'
+							$key.Character = $input.ToCharArray()[0]
+						}
                  Log -message $key.Character
                  switch($key.Character){
                     '1' { 
