@@ -439,19 +439,15 @@
 		}
         #endregion
 	    #region LoadEnvironment
-	    # Desc: Loads the enviroment definition file
-		Function LoadEnvironment(){
-		    Log -message "Loading deployment environment configuration" -type $SPSD.LogTypes.Information -Indent
-		    
-		    $envFile = GetEnvironmentFile
+		  Function GetVariablesFromFile([bool]$defaultXml) {
+            $envFile = GetEnvironmentFile $defaultXml
 	        $relEnvFilePath = (GetRelFilePath -filePath $envFile)
 
 			if(!$envFile){
 		        Throw "Environment definition file not found at '$relEnvFilePath'"
 		    }
 			[xml]$rawXML = LoadXMLFile $envFile
-
-			$allExternalNodes = (Select-Xml -xml $rawXML -XPath "//*[@FilePath]")
+			$allExternalNodes = (Select-Xml -xml $rawXML -XPath "//*[@FilePath]")			
 		    $loopLimit = 10 # make sure not to have an endless loop
 		    # get all nodes from external files
             LogIndent
@@ -459,7 +455,6 @@
 		    {
 		        $allExternalNodes | ForEach-Object{
 		            $newNode = LoadNodeFromFile -node $_.Node -srcFile $envFile -filterAttribute "ID"
-
 		            if(!$newNode -and $_.GetType() -eq [System.Xml.XmlElement]){
 		                $_.RemoveAttribute("FilePath")
 		            }
@@ -476,11 +471,21 @@
 		    # replacing environment and user variables
 		    $completeXml = GetStringOfXML -inputXml $rawXML
 		    if($rawXML.SPSD.Environment.Variables){
-		        $completeXml = ReplaceVariables -Variables $rawXML.SPSD.Environment.Variables -xml $completeXml
+				$completeXml = ReplaceVariables -Variables $rawXML.SPSD.Environment.Variables -xml $completeXml
 		    }
 		    else {
 		        Log -message "No 'Variables' node found in '$relEnvFilePath'" -type $SPSD.LogTypes.Normal
 		    }
+            return $envFile,$completeXml
+        }
+	    # Desc: Loads the enviroment definition file
+		Function LoadEnvironment(){
+		    Log -message "Loading deployment environment configuration" -type $SPSD.LogTypes.Information -Indent
+		    
+            # load server,machine,user settings
+		    $variablesXml = GetVariablesFromFile $false
+            $envFile = $variablesXml[0]
+            $completeXml = $variablesXml[1]
 		    # save result XML file if name is specified
 		    if($saveEnvXml){
 		        $Script:resultXmlFile = $logDir + "\" + "$LogTime-$Command-"+([System.IO.Path]::GetFileNameWithoutExtension($envFile))+".xml"
@@ -489,7 +494,8 @@
 		        Log -message "Saved complete environment XML to '$relResultFilePath'" -type $SPSD.LogTypes.Normal
 		    }
 		    LogOutdent
-		    [xml]$Script:xmlinput =   $completeXml
+
+		    [xml]$Script:xmlinput = $completeXml
 		    [System.Xml.XMLElement]$Script:conf = $xmlinput.SPSD.Configuration
 		    [System.Xml.XMLElement]$Script:env = $xmlinput.SPSD.Environment
 		    [System.Xml.XMLElement]$Script:struct = $xmlinput.SiteStructures
@@ -499,6 +505,19 @@
             }
             else{
                 $Script:vars = @{}
+            }
+
+            if (([System.IO.Path]::GetFileNameWithoutExtension($envFile)).ToLower() -ne "default") {
+                # load default as well, and apply variables that are not overridden in the specific config already loaded
+                $defaultVariablesXml = GetVariablesFromFile $true
+                [xml]$defaultCompleteXml = $defaultVariablesXml[1]
+                $defaultHashtable = BuildVarsCollection -node $defaultCompleteXml.SPSD.Environment.Variables;
+                foreach ($defaultVariable in $defaultHashtable.GetEnumerator()) {
+                    if ($Script:vars.ContainsKey($defaultVariable.Key) -eq $false) {
+                        # add default value
+                        $Script:vars.Add($defaultVariable.Key,$defaultVariable.Value)
+                    }
+                }
             }
             LoadSettings
 		}
