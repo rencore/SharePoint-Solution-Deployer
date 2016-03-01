@@ -386,8 +386,8 @@
  		        $timeout = $DefaultTimeout * 2
                 if(!$retract){ # Deployment / Update
                     $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue
-		            $jobName = "*solution-deployment*$solutionFileName*" 
-		            $job = Get-SPTimerJob | ?{ $_.Name -like $jobName } 
+		            $jobName = "*$solutionFileName*" 
+		            $job = Get-SPTimerJob | ?{ $_.Title -like $jobName } 
 		            if ($job -eq $null) 
 		            { 
 		                Throw "Timer job for '$solutionFileName' not found, maybe file name is too long and does not fit into the jobname. Please report to https://spsd.codeplex.com/workitem/16451 "
