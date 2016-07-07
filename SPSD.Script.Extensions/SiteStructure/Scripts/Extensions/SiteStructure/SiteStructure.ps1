@@ -38,7 +38,7 @@ function Create-SiteStructure($parameters, [System.Xml.XmlElement]$xml,[string]$
                     }
                 }
                 # Create Subwebs
-                if($site.Webs -ne $null -and $site.Webs.Web.Count -gt 0){
+                if($site.Webs -ne $null -and @($site.Webs.Web).Count -gt 0){
                     Log -message ("Subwebs") -type $SPSD.LogTypes.Normal -indent
                     foreach($web in $site.Webs.Web){
                           New-SPSDWeb $($webAppUrl + $web.Url) $web.Template $web.Title $($web.LCID) $web.Webs
