@@ -8,6 +8,10 @@ Custom PowerShell command-lets using SharePoint Client Side Object Model (CSOM) 
 
 The PowerShell command-lets can be used with or without SPSD. All SPSD plumbing is written. Simply go the SPSD.Extensions.Client.xml, add the files you want to deploy and set the site and library variables in the default.xml.
 
+Resources
+---------
+Blog post that shows how to [deploy a Workflow Manager workflow](http://www.rickenberg.dk/2014/10/06/flexible-sharepoint-deployment) to SharePoint.
+
 Note
 ----
 
