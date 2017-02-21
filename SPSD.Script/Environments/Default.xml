@@ -79,6 +79,11 @@
       <RecycleAppPools All="false" /> 
        -->
 
+      <!-- Recycle given IIS application pool in the servers in the farm -->
+      <!-- 
+      <RecycleAppPool Name="$(PoolName)" />
+      -->
+      
       <!-- Warms up urls after the deployment process  -->
       <!-- The warmup will be executed the servers by using a local proxy to avoid issues with a load balancer -->
       <!-- It is required, that the LoopBackCheck is disabled on all servers where this action should run -->

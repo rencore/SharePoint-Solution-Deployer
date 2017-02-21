@@ -8,6 +8,53 @@
 
 #region Deployment
     #region Deployment.Actions
+		#region RecycleAppPool
+	    # Desc: Recycles IIS application pool
+		Function RecycleAppPool([string]$poolName){
+			# Inspired by http://blog.mijalko.com/2011/11/using-powershell-to-get-iis-worker.html
+			foreach ($server in $servers)
+			{           
+				Log -message "Recycling IIS application pool on server $($server)" -type $SPSD.LogTypes.Information -Indent
+				CustomEnter-PSSession $server
+				
+				try{
+					Log -message "Recycling '$($poolName)'" -type $SPSD.LogTypes.Information -Indent -NoNewline
+
+					try{
+						# Check if apppool exists under display name
+						Get-WebAppPoolState -Name $poolName | Out-Null 
+						Log -message "" -NoIndent                        
+					}                            
+					catch{
+						# Get service apppool based on Guid
+						$poolName = Get-SPServiceApplicationPool | Where-Object {$_.Name -eq $poolName} | ForEach-Object {$_.ID -replace "-", ""}
+						Log -message " ($poolName)" -type $SPSD.LogTypes.Information -NoIndent
+					}
+					if ($poolName) {
+						Log -message "Recycling..." -type $SPSD.LogTypes.Normal -NoNewline
+						
+						if( (Get-WebAppPoolState -Name $poolName).Value -eq "Started"){
+							Restart-WebAppPool -Name $poolName
+						}
+						else {
+							Start-WebAppPool -Name $poolName
+						}
+
+						Log -message "Done" -type $SPSD.LogTypes.Success -NoIndent
+						EnsureAppPoolRunning -appPoolName $poolName
+						LogOutdent
+					}
+					else{
+						Log -message "Application pool not found!" -type $SPSD.LogTypes.Warning
+					}
+				}
+				finally{
+					CustomExit-PSSession $server
+					LogOutdent
+				}
+			}
+		}
+        #endregion
 	    #region RecycleAppPools
 	    # Desc: Recycles IIS application pools (either only SharePoint related or all)
         Function RecycleAppPools([bool]$all){
@@ -280,6 +327,9 @@
                     $all = [System.Convert]::ToBoolean($action.All) 
                     RecycleAppPools -all $all
                 }
+				"recycleapppool"{
+					RecycleAppPool -poolName $action.Name
+				}
                 "warmupurls"{
                     foreach ($server in $servers){ 
                         Log -message "Warming up urls from server $server" -type $SPSD.LogTypes.Information -Indent
@@ -386,8 +436,8 @@
  		        $timeout = $DefaultTimeout * 2
                 if(!$retract){ # Deployment / Update
                     $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue
-		            $jobName = "*solution-deployment*$solutionFileName*" 
-		            $job = Get-SPTimerJob | ?{ $_.Name -like $jobName } 
+		            $jobName = "*$solutionFileName*" 
+		            $job = Get-SPTimerJob | ?{ $_.Title -like $jobName } 
 		            if ($job -eq $null) 
 		            { 
 		                Throw "Timer job for '$solutionFileName' not found, maybe file name is too long and does not fit into the jobname. Please report to https://spsd.codeplex.com/workitem/16451 "
