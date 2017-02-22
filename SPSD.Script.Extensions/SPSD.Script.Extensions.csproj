@@ -38,6 +38,7 @@
     <Content Include="ContentTypeHub\Scripts\Extensions\ContentTypeHub\manifest.xml" />
     <Content Include="CustomCrawlConnector\Environments\Extensions\CustomCrawlConnector.xml" />
     <Content Include="CustomCrawlConnector\Scripts\Extensions\CustomCrawlConnector\manifest.xml" />
+    <Content Include="WebsiteTest\Environments\Extensions\WebsiteTest.xml" />
     <Content Include="FeatureExtension\Environments\Extensions\Features.xml" />
     <Content Include="FeatureExtension\Scripts\Extensions\Features\manifest.xml" />
     <Content Include="LoggingConfiguration\Environments\Default.xml" />
@@ -76,6 +77,7 @@
     <Content Include="SPSD.Extenstions.Client.SPO\Scripts\Extensions\SPSD.Extensions.Client.SPO\Microsoft.SharePoint.Client.WorkflowServices.dll" />
     <Content Include="SPSD.Extenstions.Client.SPO\Scripts\Extensions\SPSD.Extensions.Client.SPO\SPSD.Extensions.Client.dll" />
     <Content Include="SPSD.Extenstions.Client.SPO\Scripts\Extensions\SPSD.Extensions.Client.SPO\SPSD.Extensions.Client.dll-Help.xml" />
+    <Content Include="WebsiteTest\Scripts\Extensions\Websites\manifest.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
@@ -85,6 +87,8 @@
     <None Include="ContentTypeHub\Scripts\Extensions\ContentTypeHub\ContentTypeHub.ps1" />
     <None Include="CustomCrawlConnector\README.md" />
     <Content Include="CustomCrawlConnector\Scripts\Extensions\CustomCrawlConnector\CustomCrawlConnector.ps1" />
+    <None Include="WebsiteTest\README.md" />
+    <None Include="WebsiteTest\Scripts\Extensions\Websites\Websites.ps1" />
     <None Include="FeatureExtension\Scripts\Extensions\Features\Features.ps1" />
     <None Include="LoggingConfiguration\Scripts\Extensions\LoggingConfiguration\LoggingConfiguration.ps1" />
     <None Include="ReGhostExtension\Scripts\Extensions\ReGhost\ReGhost.ps1" />
