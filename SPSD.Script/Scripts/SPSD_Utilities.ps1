@@ -1,6 +1,6 @@
 ###############################################################################
 # SharePoint Solution Deployer (SPSD)
-# Version          : 5.0.4.6440
+# Version          : 5.0.5.6441
 # Url              : http://spsd.codeplex.com
 # Creator          : Matthias Einig, RENCORE AB, http://twitter.com/mattein
 # License          : MS-PL
@@ -130,13 +130,6 @@
 	                Write-Host -foregroundColor $foregroundColor ($indentChars + $message)
 	            }
             }
-            # always log to file
-	         if($NoNewline){
-                  [System.IO.File]::AppendAllText($script:LogFile, ($indentChars + $message), [System.Text.Encoding]::Default)
-	         }
-               else{
-                  Add-Content $script:LogFile ($indentChars + $message)
-	         }
 	        if($Indent){ LogIndent }
 	    }
 	    #endregion
