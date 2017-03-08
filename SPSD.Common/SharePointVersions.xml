@@ -11,7 +11,7 @@
   Last Update: 2015-04-04
  
 -->
-<SPSD Version="5.0.4.6440">
+<SPSD Version="5.0.5.6441">
     <SharePoint>
         <!--
       Get the SharePoint version by running SharePoint PowerShell console and calling "(Get-SPFarm).BuildVersion" (works > =SP2010)
@@ -159,7 +159,7 @@
             <Version Number="15.0.4675.1000" Name="SharePoint Server 2013 Dec 2014 CU"/>
             <Version Number="15.0.4693.1001" Name="SharePoint Server 2013 Feb 2015 CU"/>
             <Version Number="15.0.4701.1001" Name="SharePoint Server 2013 Mar 2015 CU"/>
-            <Version Number="15.0.4711.1000" Name="SharePoint Server 2013 ​Apr 2015 CU"/>
+            <Version Number="15.0.4711.1000" Name="SharePoint Server 2013 â€‹Apr 2015 CU"/>
             <Version Number="15.0.4719.1002" Name="SharePoint Server 2013 May 2015 CU"/>
             <Version Number="15.0.4727.1001" Name="SharePoint Server 2013 Jun 2015 CU"/>
             <Version Number="15.0.4737.1001" Name="SharePoint Server 2013 Jul 2015 CU"/>
@@ -172,27 +172,27 @@
             <Version Number="15.0.4797.1000" Name="SharePoint Server 2013 Feb 2016 CU"/>
             <Version Number="15.0.4805.1000" Name="SharePoint Server 2013 Mar 2016 CU"/>
             <Version Number="15.0.4815.1000" Name="SharePoint Server 2013 Apr 2016 CU"/>
-            <Version Number="​15.0.4823.1003" Name="SharePoint Server 2013 May 2016 CU"/>
+            <Version Number="15.0.4823.1003" Name="SharePoint Server 2013 May 2016 CU"/>
             <Version Number="15.0.4833.1003" Name="SharePoint Server 2013 Jun 2016 CU"/>
             <Version Number="15.0.4841.1000" Name="SharePoint Server 2013 Jul 2016 CU"/>
-            <Version Number="​15.0.4849.1000" Name="SharePoint Server 2013 Aug 2016 CU"/>
-            <Version Number="​15.0.4859.1000" Name="SharePoint Server 2013 Sep 2016 CU"/>
-            <Version Number="​15.0.4867.1002" Name="SharePoint Server 2013 Oct 2016 CU"/>
-            <Version Number="​15.0.4875.1000" Name="SharePoint Server 2013 Nov 2016 CU"/>
-            <Version Number="​15.0.4885.1000" Name="SharePoint Server 2013 Dec 2016 CU"/>
-            <Version Number="​15.0.4893.1001" Name="SharePoint Server 2013 Jan 2017 CU"/>
-            <Version Number="​16.0.4351.1000" Name="SharePoint Server 2016 RTM"/>
-            <Version Number="​16.0.4366.1000" Name="SharePoint Server 2016 Apr 2016 CU"/>
-            <Version Number="​16.0.4378.1000" Name="SharePoint Server 2016 May 2016 CU"/>
-            <Version Number="​16.0.4393.1000" Name="SharePoint Server 2016 Jun 2016 CU"/>
-            <Version Number="16.0.4405.1000​" Name="SharePoint Server 2016 Jul 2016 CU"/>
-            <Version Number="16.0.4417.1000​" Name="SharePoint Server 2016 Aug 2016 CU"/>
-            <Version Number="​16.0.4432.1003" Name="SharePoint Server 2016 Sep 2016 CU"/>
-            <Version Number="​16.0.4444.1004" Name="SharePoint Server 2016 Oct 2016 CU"/>
-            <Version Number="​16.0.4456.1002" Name="SharePoint Server 2016 Nov 2016 CU"/>
-            <Version Number="​16.0.4471.1000" Name="SharePoint Server 2016 Dec 2016 CU"/>
-            <Version Number="​16.0.4483.1001" Name="SharePoint Server 2016 Jan 2017 CU"/>
-            <Version Number="​16.0.4498.1002" Name="SharePoint Server 2016 Feb 2017 CU"/>
+            <Version Number="15.0.4849.1000" Name="SharePoint Server 2013 Aug 2016 CU"/>
+            <Version Number="15.0.4859.1000" Name="SharePoint Server 2013 Sep 2016 CU"/>
+            <Version Number="15.0.4867.1002" Name="SharePoint Server 2013 Oct 2016 CU"/>
+            <Version Number="15.0.4875.1000" Name="SharePoint Server 2013 Nov 2016 CU"/>
+            <Version Number="15.0.4885.1000" Name="SharePoint Server 2013 Dec 2016 CU"/>
+            <Version Number="15.0.4893.1001" Name="SharePoint Server 2013 Jan 2017 CU"/>
+            <Version Number="16.0.4351.1000" Name="SharePoint Server 2016 RTM"/>
+            <Version Number="16.0.4366.1000" Name="SharePoint Server 2016 Apr 2016 CU"/>
+            <Version Number="16.0.4378.1000" Name="SharePoint Server 2016 May 2016 CU"/>
+            <Version Number="16.0.4393.1000" Name="SharePoint Server 2016 Jun 2016 CU"/>
+            <Version Number="16.0.4405.1000" Name="SharePoint Server 2016 Jul 2016 CU"/>
+            <Version Number="16.0.4417.1000" Name="SharePoint Server 2016 Aug 2016 CU"/>
+            <Version Number="16.0.4432.1003" Name="SharePoint Server 2016 Sep 2016 CU"/>
+            <Version Number="16.0.4444.1004" Name="SharePoint Server 2016 Oct 2016 CU"/>
+            <Version Number="16.0.4456.1002" Name="SharePoint Server 2016 Nov 2016 CU"/>
+            <Version Number="16.0.4471.1000" Name="SharePoint Server 2016 Dec 2016 CU"/>
+            <Version Number="16.0.4483.1001" Name="SharePoint Server 2016 Jan 2017 CU"/>
+            <Version Number="16.0.4498.1002" Name="SharePoint Server 2016 Feb 2017 CU"/>
         </Versions>
         <!--
       Get SharePoint products Guid by running SharePoint PowerShell console and call "(Get-SPFarm).Products" (works > =SP2010)
