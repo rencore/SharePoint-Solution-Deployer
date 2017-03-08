@@ -159,7 +159,7 @@
             <Version Number="15.0.4675.1000" Name="SharePoint Server 2013 Dec 2014 CU"/>
             <Version Number="15.0.4693.1001" Name="SharePoint Server 2013 Feb 2015 CU"/>
             <Version Number="15.0.4701.1001" Name="SharePoint Server 2013 Mar 2015 CU"/>
-            <Version Number="15.0.4711.1000" Name="SharePoint Server 2013 â€‹Apr 2015 CU"/>
+            <Version Number="15.0.4711.1000" Name="SharePoint Server 2013 Apr 2015 CU"/>
             <Version Number="15.0.4719.1002" Name="SharePoint Server 2013 May 2015 CU"/>
             <Version Number="15.0.4727.1001" Name="SharePoint Server 2013 Jun 2015 CU"/>
             <Version Number="15.0.4737.1001" Name="SharePoint Server 2013 Jul 2015 CU"/>
@@ -191,7 +191,7 @@
             <Version Number="16.0.4444.1004" Name="SharePoint Server 2016 Oct 2016 CU"/>
             <Version Number="16.0.4456.1002" Name="SharePoint Server 2016 Nov 2016 CU"/>
             <Version Number="16.0.4471.1000" Name="SharePoint Server 2016 Dec 2016 CU"/>
-            <Version Number="16.0.4483.1001" Name="SharePoint Server 2016 Jan 2017 CU"/>
+            <Version Number="16.0.4483.1000" Name="SharePoint Server 2016 Jan 2017 CU"/>
             <Version Number="16.0.4498.1002" Name="SharePoint Server 2016 Feb 2017 CU"/>
         </Versions>
         <!--

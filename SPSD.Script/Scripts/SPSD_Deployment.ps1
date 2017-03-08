@@ -1388,7 +1388,7 @@
 									if ($SPSD.InstalledVersion -eq 14){
                                     	Install-SPSolution -Identity $solutionName -AllWebApplications -CASPolicies:$AllowCASPolicies -GACDeployment:$AllowGACDeployment -force:$force
 									}
-                                    elseif ($SPSD.InstalledVersion -eq 15){
+                                    elseif ($SPSD.InstalledVersion -eq 15 -or $SPSD.InstalledVersion -eq 16){
                                         if($compLevel){
                                     	    Install-SPSolution -Identity $solutionName -AllWebApplications -FullTrustBinDeployment:$AllowFullTrustBinDeployment -GACDeployment:$AllowGACDeployment -CompatibilityLevel $compLevel -force:$force 
 									    }
@@ -1421,7 +1421,7 @@
                                         if ($SPSD.InstalledVersion -eq 14){
                                             Install-SPSolution -Identity $solutionName -webapplication $_ -CASPolicies:$AllowCASPolicies -GACDeployment:$AllowGACDeployment -force:$force
                                         }
-                                        elseif ($SPSD.InstalledVersion -eq 15){
+                                        elseif ($SPSD.InstalledVersion -eq 15 -or $SPSD.InstalledVersion -eq 16){
 											if($compLevel){
 												Install-SPSolution -Identity $solutionName -webapplication $_ -FullTrustBinDeployment:$AllowFullTrustBinDeployment -GACDeployment:$AllowGACDeployment -CompatibilityLevel $compLevel -force:$force
 											}
@@ -1439,7 +1439,7 @@
 								if ($SPSD.InstalledVersion -eq 14){
                                 	Install-SPSolution -Identity $solutionName -GACDeployment:$AllowGACDeployment -force:$force
 								}
-                                elseif ($SPSD.InstalledVersion -eq 15){
+                                elseif ($SPSD.InstalledVersion -eq 15 -or $SPSD.InstalledVersion -eq 16){
 									if($compLevel){
                                 		Install-SPSolution -Identity $solutionName -GACDeployment:$AllowGACDeployment -CompatibilityLevel $compLevel -force:$force
 									}
@@ -1636,7 +1636,7 @@
 							if ($SPSD.InstalledVersion -eq 14){
                             	Update-SPSolution -LiteralPath "$solDir\$solutionName" -Identity $solutionName -CASPolicies:$AllowCASPolicies -GACDeployment:$AllowGACDeployment -force:$force -Confirm:$false
 							}
-                            elseif ($SPSD.InstalledVersion -eq 15){
+                            elseif ($SPSD.InstalledVersion -eq 15 -or $SPSD.InstalledVersion -eq 16){
 								if($solution.ContainsWebApplicationResource){
 									Update-SPSolution -LiteralPath "$solDir\$solutionName" -Identity $solutionName -FullTrustBinDeployment:$AllowFullTrustBinDeployment -GACDeployment:$AllowGACDeployment -force:$force -Confirm:$false
 								}
