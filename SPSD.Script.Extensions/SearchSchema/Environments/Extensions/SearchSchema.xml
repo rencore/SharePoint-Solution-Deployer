@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<SPSD Version="5.0.4.6440">
+<SPSD Version="5.0.5.6441">
   <Extensions>
     <Extension ID="SearchSchema" Type="SearchSchema">
       <Events>

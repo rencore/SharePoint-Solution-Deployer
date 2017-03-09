@@ -55,7 +55,10 @@ IF %ERRORLEVEL% == 0 (
     )
 ECHO - OK.
 :: Check Installed SharePoint version
-IF EXIST "%ProgramW6432%\Common Files\microsoft shared\Web Server Extensions\15\ISAPI\Microsoft.SharePoint.dll" (
+IF EXIST "%ProgramW6432%\Common Files\microsoft shared\Web Server Extensions\16\ISAPI\Microsoft.SharePoint.dll" (
+	SET SharePointVersion=16
+	SET PSVersion=3
+) ELSE IF EXIST "%ProgramW6432%\Common Files\microsoft shared\Web Server Extensions\15\ISAPI\Microsoft.SharePoint.dll" (
 	SET SharePointVersion=15
 	SET PSVersion=3
 ) ELSE IF EXIST "%ProgramW6432%\Common Files\microsoft shared\Web Server Extensions\14\ISAPI\Microsoft.SharePoint.dll" (

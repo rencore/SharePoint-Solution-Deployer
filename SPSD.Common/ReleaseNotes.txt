@@ -1,6 +1,6 @@
 ###############################################################################
 # SharePoint Solution Deployer (SPSD)
-# Version          : 5.0.4.6440
+# Version          : 5.0.5.6441
 # Url              : http://spsd.codeplex.com
 # Creator          : Matthias Einig, RENCORE AB, http://twitter.com/mattein
 # License          : MS-PL
@@ -9,6 +9,9 @@
 
 Important: Make sure to "Unblock" the zip file before extracting. 
 Otherwise you have to unblock each bat, ps1 and exe file one by one to get the SPSD running.
+
+v5.0.5.6441 (2017-03-08)
+- New: SharePoint 2016 support
 
 v5.0.4.6440 (2015-04-04)
 - New: All extensions added: Blocked file extensions, content type hub, custom crawl connector, features, logging configuration, managed metadata, re-ghost, search schema, secure store, site structure, CSOM extensions for files and 2013 workflows
