@@ -1335,7 +1335,7 @@
             	        Log -Message "'$solutionName' (farm solution)" -Type $SPSD.LogTypes.Information -Indent
 						
 						$processSolution = (ProcessSolution $vars $solutionName $SPSD.Commands.Deploy $false) -or $false
-                        Execute-Extensions $events.ProcessSolutions
+                        Execute-Extensions $events.ProcessSolution
 
 						if($processSolution){
 							Log -Message "'$solutionName' (farm solution) skipped by custom target" -Type $SPSD.LogTypes.Warning
