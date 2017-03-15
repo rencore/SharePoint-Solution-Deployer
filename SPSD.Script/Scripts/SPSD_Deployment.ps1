@@ -1838,8 +1838,6 @@
                                 if ($solution.ContainsWebApplicationResource)
                                 {
 
-
-
                                      $caUrl = (Get-spwebapplication -includecentraladministration | where {$_.IsAdministrationWebApplication}).Url
                                      if(($solution.DeployedWebApplications | ? { $_.Url -eq $caUrl}) -ne $null){
                                         # Solution also deployed to central admin 
@@ -1849,7 +1847,9 @@
                                         WaitForJobToFinish $solutionName -Retract
                                         Log -Message "Retracting (all other web applications)..." -Type $SPSD.LogTypes.Normal -NoNewline
                                      }
-                                     Uninstall-SPSolution -Identity $solutionName -AllWebApplications -Confirm:$false
+                                     $solution.DeployedWebApplications |? { $_.Url -ne $caUrl } |% {
+                                         Uninstall-SPSolution -Identity "$solutionName" -WebApplication $_.Url -Confirm:$false
+                                     }
                                 }
                                 else
                                 {
