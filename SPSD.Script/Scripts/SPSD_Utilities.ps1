@@ -567,7 +567,7 @@
             }
             else {
                 while ($WaitAfterDeployment -gt 0){
-     		        Write-Host "Waiting for"$($WaitAfterDeployment/1000)"seconds before closing this window.    "
+     		        Write-Host "Waiting for $($WaitAfterDeployment/1000) seconds before closing this window."
                     $Host.UI.RawUI.CursorPosition = New-Object System.Management.Automation.Host.Coordinates 0,(($Host.UI.RawUI.CursorPosition).Y-1)
                     Start-Sleep -Milliseconds 1000
                     $WaitAfterDeployment = $WaitAfterDeployment - 1000;
