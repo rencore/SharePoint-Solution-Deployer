@@ -12,7 +12,7 @@
 	    Function LoadSharePointPS(){
 	    	Log -message "Loading SharePoint Powershell Snapin" -type $SPSD.LogTypes.Normal
             If ((Get-PsSnapin |?{$_.Name -eq "Microsoft.SharePoint.PowerShell"})-eq $null)
-		    { $PSSnapin = Add-PsSnapin Microsoft.SharePoint.PowerShell -ErrorAction SilentlyContinue -WarningAction SilentlyContinue | Out-Null }
+		    { $PSSnapin = Add-PsSnapin Microsoft.SharePoint.PowerShell -ErrorAction SilentlyContinue -WarningAction SilentlyContinue > $null }
 	    }
 	    #endregion
 	    #region LoadWebAdminPS
@@ -21,9 +21,9 @@
 	    Function LoadWebAdminPS(){
 	        Log -message "Loading WebAdministration Powershell Snapin" -type $SPSD.LogTypes.Normal
 	        if ([System.Version]$(Gwmi Win32_OperatingSystem).Version -ge [System.Version]"6.1")
-	        { Import-Module WebAdministration -ErrorAction SilentlyContinue -WarningAction SilentlyContinue | Out-Null}
+	        { Import-Module WebAdministration -ErrorAction SilentlyContinue -WarningAction SilentlyContinue -Verbose:$false > $null}
 	        else
-	        { Add-PSSnapin WebAdministration -ErrorAction SilentlyContinue -WarningAction SilentlyContinue | Out-Null}
+	        { Add-PSSnapin WebAdministration -ErrorAction SilentlyContinue -WarningAction SilentlyContinue -Verbose:$false > $null}
 	    }
         #endregion
         #region CustomEnter-PSSession
@@ -108,28 +108,51 @@
 	        #}
 	        $foregroundColor = "Gray"
 	        $backgroundColor = "Blue"
-	        switch ($type){
+	        
+			switch ($type){
 	            $SPSD.LogTypes.Success          { $foregroundColor = "Green" }
 	            $SPSD.LogTypes.Error            { $foregroundColor = "Red" }
 	            $SPSD.LogTypes.Warning          { $foregroundColor = "Yellow" }
 	            $SPSD.LogTypes.Information      { $foregroundColor = "White" }
 	            $SPSD.LogTypes.Normal           { $foregroundColor = "Gray" }
 	        }
+
 	        if($Outdent){ LogOutdent }
-	        if(!$NoIndent){
+	        
+			if(!$NoIndent){
 	            $indentChars = " " * (2 * $Script:LogIndentVal)
 	        }
 
-				$loggingHost = (Get-Host).Name
+			$message = $indentChars + $message
+
+			$loggingHost = (Get-Host).Name
             if(($loggingHost -eq "ConsoleHost" -or $loggingHost -eq 'Windows PowerShell ISE Host') -and -not $isAppHost){
 	            if($NoNewline)
 	            {
-	                Write-Host -foregroundColor $foregroundColor ($indentChars + $message) -NoNewline
+	                Write-Host -foregroundColor $foregroundColor $message -NoNewline
 	            }
 	            else{
-	                Write-Host -foregroundColor $foregroundColor ($indentChars + $message)
+	                Write-Host -foregroundColor $foregroundColor $message
 	            }
             }
+			if ($isAppHost) {
+				if ($NoNewline) {
+					if ($Script:logOutputBuffer) {
+						$Script:logOutputBuffer = $Script:logOutputBuffer + $message
+					} else {
+						$Script:logOutputBuffer = $message
+					}
+				} else {
+					if ($Script:logOutputBuffer) {
+						$message = $Script:logOutputBuffer + $message
+						$Script:logOutputBuffer = $null
+					}
+
+					Write-Verbose $message
+					Add-Content $script:LogFile $message
+				}
+			}
+
 	        if($Indent){ LogIndent }
 	    }
 	    #endregion
@@ -677,7 +700,7 @@
 	    #region Get-SPTermStore
 	    # Desc: Retrieves the termstore by name from the central admin web application
         function Get-SPTermStore([string] $name) {
-            $site = Get-SPSite (Get-SPCentralAdministrationUrl)
+            $site = Get-SPSite (Get-SPCentralAdministrationUrl) -Verbose:$false
             try{
                 $session = new-object Microsoft.SharePoint.Taxonomy.TaxonomySession($site)
                 $termstore = $session.TermStores[$name]
@@ -692,7 +715,7 @@
 	    #region Get-SPCentralAdministrationUrl
 	    # Desc: Retrieves the Url of the central administration
         function Get-SPCentralAdministrationUrl(){
-            return Get-SPWebApplication -includecentraladministration | where {$_.IsAdministrationWebApplication} | Select-Object -ExpandProperty Url
+            return Get-SPWebApplication -includecentraladministration -Verbose:$false | where {$_.IsAdministrationWebApplication} | Select-Object -ExpandProperty Url
         }
         #enregion
     #endregion

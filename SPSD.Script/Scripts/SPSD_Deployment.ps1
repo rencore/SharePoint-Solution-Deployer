@@ -71,7 +71,7 @@
                     }
                     else{
                         # get apppools from web applications
-                        $appPools = Get-spwebapplication -includecentraladministration | ForEach-Object { Get-Item "IIS:\Sites\$($_.DisplayName)"} | ForEach-Object {$_.applicationPool}
+                        $appPools = Get-spwebapplication -includecentraladministration -Verbose:$false | ForEach-Object { Get-Item "IIS:\Sites\$($_.DisplayName)"} | ForEach-Object {$_.applicationPool}
                         # get apppools from service applications
                         $appPools += Get-SPServiceApplicationPool | ForEach-Object {$_.Name}
                     }
@@ -228,7 +228,7 @@
         Function WarmUpAllSites(){
             Log -message "Warming up all sites in the farm" -type $SPSD.LogTypes.Information -Indent
             try{
-                Get-SPSite -Limit ALL | foreach-object { WarmUpUrl -url $_.url }
+                Get-SPSite -Limit ALL -Verbose:$false | foreach-object { WarmUpUrl -url $_.url }
             }
             finally{
                 LogOutdent
@@ -425,7 +425,7 @@
             if(!$site){
                 # Farm Soluion
                 $timeout = $DefaultTimeout * 5
-                while(!(Get-SPFarm) -or (Get-SPFarm).Status -ne "Online"){
+                while(!(Get-SPFarm -Verbose:$false) -or (Get-SPFarm -Verbose:$false).Status -ne "Online"){
                     if($timeout -le 0)
                     {
                         Throw "Farm not online after "+ ($DefaultTimeout * 5 / 60000) + " minutes" 
@@ -717,7 +717,7 @@
 		Function CheckUserIsAdministrator(){
 		    Log -Message "Checking permissions" -Type $SPSD.LogTypes.Information -Indent
 		    Log -Message "Checking if user '$env:USERDOMAIN\$env:USERNAME' is farm administrator..." -Type $SPSD.LogTypes.Normal -NoNewline
-		    $farm = Get-SPFarm
+		    $farm = Get-SPFarm -Verbose:$false
 		    if($farm.CurrentUserIsAdministrator()){
 		        Log -Message "Ok" -Type $SPSD.LogTypes.Success -NoIndent
 		    }
@@ -764,7 +764,7 @@
 		        if($minimalVersion){
                     # load external SharePoint versions lookup data
                     [xml]$SPSDSharePoint = LoadXMLFile($scriptDir+"\SharePointVersions.xml")
-		            $installedVersion = (Get-SPFarm).BuildVersion
+		            $installedVersion = (Get-SPFarm -Verbose:$false).BuildVersion
                     # set script variable for deployment actions
 					$SPSD.InstalledVersion = $installedVersion.Major
 
@@ -806,7 +806,7 @@
                     Log -Message "Checking required SharePoint language packs" -Type $SPSD.LogTypes.Information -Indent  
 
                     # get installed languages from central admin rootweb
-                    $site = Get-SPSite (Get-SPWebApplication -IncludeCentralAdministration | where {$_.IsAdministrationWebApplication}).Url
+                    $site = Get-SPSite (Get-SPWebApplication -IncludeCentralAdministration  -Verbose:$false | where {$_.IsAdministrationWebApplication}).Url -Verbose:$false
                     $installedLanguages = $site.RootWeb.RegionalSettings.InstalledLanguages
 
                     $output = @()
@@ -870,7 +870,7 @@
 		        if($minimalLicense){
                     # load external SharePoint releases lookup data
                     [xml]$SPSDSharePoint = LoadXMLFile($scriptDir+"\SharePointVersions.xml")
-		            $installedProducts =  Get-SPFarm | select Products
+		            $installedProducts =  Get-SPFarm -Verbose:$false | select Products
 		            $installedLicences = $SPSDSharePoint.SPSD.SharePoint.Licenses.License  | Where-Object { $installedProducts.Products -icontains $_.Guid}
 		            if($installedLicences -and (($installedLicences | ForEach-Object {$_.Type}) | Where-Object { $_ -ieq $minimalLicense -or ($minimalLicense -ieq "Standard" -and $_ -ieq "Enterprise") }))
 		            {
@@ -983,7 +983,7 @@
         #       Validates if SPUserCodeV4 is running if it is a sandboxed solution
         #       Validates if Webapplication solutions are deployed to the specific url
 		Function IsSolutionDeployed([string]$solutionName, [string]$url, [switch]$sandboxed){
-            Start-SPAssignment -Global
+            Start-SPAssignment -Global -Verbose:$false
             try{
                 if(!$solutionName){
                     Log -Message "Solution name not specified in configuration." -Type $SPSD.LogTypes.Warning 
@@ -993,7 +993,7 @@
 		        # check sandboxed solution
 		        if($sandboxed){
                     Log -Message "Url: '$url'..." -Type $SPSD.LogTypes.Normal -NoNewline
-                    if(!$url -or (Get-SPSite $url -ErrorAction SilentlyContinue) -eq $null){
+                    if(!$url -or (Get-SPSite $url -ErrorAction SilentlyContinue -Verbose:$false) -eq $null){
                         Log -Message "Url invalid" -Type $SPSD.LogTypes.Error -NoIndent
                         return $false
                     }
@@ -1024,7 +1024,7 @@
 		        # check solution deployed to web application
 		        if($url){
                     Log -Message "Url: '$url'..." -Type $SPSD.LogTypes.Normal -NoNewline
-                    if((Get-SPWebApplication $url -ErrorAction SilentlyContinue) -eq $null){
+                    if((Get-SPWebApplication $url -ErrorAction SilentlyContinue -Verbose:$false) -eq $null){
                         Log -Message "Url invalid" -Type $SPSD.LogTypes.Error -NoIndent
                         return $false
                     }
@@ -1062,7 +1062,7 @@
 		        return $deployed
             }
             finally{
-                Stop-SPAssignment -Global
+                Stop-SPAssignment -Global -Verbose:$false
             }
 		}
         #endregion
@@ -1209,14 +1209,14 @@
 	    # Desc: Checks if a SPSite object exists at a given url
         Function CheckIfSiteExists([string]$url){
             if(!$url){ return $true }
-            Start-SPAssignment -Global
+            Start-SPAssignment -Global -Verbose:$false
             Log -Message "Site: '$url'..." -Type $SPSD.LogTypes.Normal -NoNewline
-            if(!$url -or (Get-SPSite $url -ErrorAction SilentlyContinue) -eq $null){
+            if(!$url -or (Get-SPSite $url -ErrorAction SilentlyContinue -Verbose:$false) -eq $null){
                 Log -Message "No Found" -Type $SPSD.LogTypes.Error -NoIndent
                 return $false
             }
             Log -Message "Ok" -Type $SPSD.LogTypes.Success -NoIndent
-            Stop-SPAssignment -Global
+            Stop-SPAssignment -Global -Verbose:$false
             return $true
         }
         #endregion
@@ -1224,14 +1224,14 @@
 	    # Desc: Checks if a WebApplication object exists at a given url
         Function CheckIfWebAppExists([string]$url){
             if(!$url){ return $true }
-            Start-SPAssignment -Global
+            Start-SPAssignment -Global -Verbose:$false
             Log -Message "WebApplication: '$url'..." -Type $SPSD.LogTypes.Normal -NoNewline
-            if(!$url -or(Get-SPWebApplication $url -ErrorAction SilentlyContinue) -eq $null){
+            if(!$url -or(Get-SPWebApplication $url -ErrorAction SilentlyContinue -Verbose:$false) -eq $null){
                 Log -Message "No Found" -Type $SPSD.LogTypes.Error -NoIndent
                 return $false
             }
             Log -Message "Ok" -Type $SPSD.LogTypes.Success -NoIndent
-            Stop-SPAssignment -Global
+            Stop-SPAssignment -Global -Verbose:$false
             return $true
         }
         #endregion
@@ -1840,7 +1840,7 @@
 
 
 
-                                     $caUrl = (Get-spwebapplication -includecentraladministration | where {$_.IsAdministrationWebApplication}).Url
+                                     $caUrl = (Get-spwebapplication -includecentraladministration -Verbose:$false | where {$_.IsAdministrationWebApplication}).Url
                                      if(($solution.DeployedWebApplications | ? { $_.Url -eq $caUrl}) -ne $null){
                                         # Solution also deployed to central admin 
                                         # remove there first as this is not done with the -AllWebApplications switch

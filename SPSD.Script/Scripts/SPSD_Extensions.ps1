@@ -94,8 +94,8 @@ function Execute-Extensions([string]$event){
 
                 Log -message ("Executing  `"{1}:{0}`" with method `"{2}`"" -f $extension.ID, $extension.Type, $_.InnerText) -type $SPSD.LogTypes.Information -Indent
                 # disposing all previous objects, and starting new assigment for all objects of the extension
-                Stop-SPAssignment -Global
-                Start-SPAssignment -Global
+                Stop-SPAssignment -Global -Verbose:$false
+                Start-SPAssignment -Global -Verbose:$false
                 try{
                     & ($_.InnerText) $parameters $data $extension.ID (Split-Path -Parent ($Script:Extensions[$extension.Type]))
                 }
@@ -104,10 +104,10 @@ function Execute-Extensions([string]$event){
                     throw
                 }
                 finally{
-                    Stop-SPAssignment -Global
+                    Stop-SPAssignment -Global -Verbose:$false
                 }
                 #retarting global assigment for the rest of SPSD
-                Start-SPAssignment -Global
+                Start-SPAssignment -Global -Verbose:$false
                 Log -message ("("+$extensionEvendElapsedTime.Elapsed+ ")") -type $SPSD.LogTypes.Normal
                 LogOutdent
             }
