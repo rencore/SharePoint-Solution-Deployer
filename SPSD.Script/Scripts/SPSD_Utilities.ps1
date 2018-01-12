@@ -419,50 +419,65 @@
 	    #region GetEnvironmentFile
 	    # Desc: Gets the environment file in the order
         #       1. File passed as parameter to the script
-        #       2. xml file in the environments folder named after the current user
-        #       3. xml file in the environments folder named after the current computer
-        #       4. default environments file "default.xml"
-		Function GetEnvironmentFile(){
-		    if($envFile -and (Test-Path $envFile)){
-	            $relFilePath = (GetRelFilePath -filePath $envFile)
-		        Log -message "Loading passed environment from '$relFilePath'" -type $SPSD.LogTypes.Normal
-		        return $envFile
-		    }
-		    # no envfile passed to script
-		    if(!(Test-Path $envDir)){
-		        Log -message "Environment directory not found at path $envDir" -type $SPSD.LogTypes.Error
-		        return $null   
-		    }
-		    $file = "$envDir\$env:USERNAME.xml"
-	        $relFilePath = (GetRelFilePath -filePath $file)
-		    if(Test-Path $file ){
-		        Log -message "Loading user specific environment for '$env:USERNAME' from '$relFilePath'" -type $SPSD.LogTypes.Normal
-		        return $file    
-		    }
-		    $file  = "$envDir\$env:COMPUTERNAME.xml"
-	        $relFilePath = (GetRelFilePath -filePath $file)
-		    if(Test-Path $file ){
-		        Log -message "Loading machine specific environment for '$env:COMPUTERNAME' from '$relFilePath'" -type $SPSD.LogTypes.Normal
-		        return $file    
-		    }
+		#       2. File passed as parameter to the script in the environments folder
+        #       3. xml file in the environments folder named after the current user
+        #       4. xml file in the environments folder named after the current computer
+        #       5. default environments file "default.xml"
+		Function GetEnvironmentFile([bool]$useDefault = $false){
+		    
+			if (!$useDefault) {
+				if($envFile -and (Test-Path $envFile)){
+					$relFilePath = (GetRelFilePath -filePath $envFile)
+					Log -message "Loading passed environment from '$relFilePath'" -type $SPSD.LogTypes.Normal
+					return $envFile
+				}
+				
+				if(!(Test-Path $envDir)){
+					Throw "Environment directory not found at path $envDir"
+					return $null   
+				}
+
+				$file = "$envDir\$envFile"
+				$relFilePath = (GetRelFilePath -filePath $file)
+				if($envFile -and (Test-Path $file) ){
+					Log -message "Loading passed environment from '$relFilePath'" -type $SPSD.LogTypes.Normal
+					return $file    
+				}
+
+				# no envfile passed to script
+				$file = "$envDir\$env:USERNAME.xml"
+				$relFilePath = (GetRelFilePath -filePath $file)
+				if(Test-Path $file ){
+					Log -message "Loading user specific environment for '$env:USERNAME' from '$relFilePath'" -type $SPSD.LogTypes.Normal
+					return $file    
+				}
+				$file  = "$envDir\$env:COMPUTERNAME.xml"
+				$relFilePath = (GetRelFilePath -filePath $file)
+				if(Test-Path $file ){
+					Log -message "Loading machine specific environment for '$env:COMPUTERNAME' from '$relFilePath'" -type $SPSD.LogTypes.Normal
+					return $file    
+				}
+			}
+
 		    $file  = "$envDir\Default.xml"
 	        $relFilePath = (GetRelFilePath -filePath $file)
 		    if(Test-Path $file ){
 		        Log -message "Loading default environment from '$relFilePath'" -type $SPSD.LogTypes.Normal
 		        return $file    
 		    }
-		    return $null
+		    
+			return $null
 		}
         #endregion
 	    #region LoadEnvironment
-		  Function GetVariablesFromFile([bool]$defaultXml) {
-            $envFile = GetEnvironmentFile $defaultXml
-	        $relEnvFilePath = (GetRelFilePath -filePath $envFile)
+		  Function GetVariablesFromFile($file) {
+	        $relEnvFilePath = (GetRelFilePath -filePath $file)
 
-			if(!$envFile){
+			if(!(Test-Path $file)){
 		        Throw "Environment definition file not found at '$relEnvFilePath'"
 		    }
-			[xml]$rawXML = LoadXMLFile $envFile
+
+			[xml]$rawXML = LoadXMLFile $file
 			$allExternalNodes = (Select-Xml -xml $rawXML -XPath "//*[@FilePath]")			
 		    $loopLimit = 10 # make sure not to have an endless loop
 		    # get all nodes from external files
@@ -492,18 +507,22 @@
 		    else {
 		        Log -message "No 'Variables' node found in '$relEnvFilePath'" -type $SPSD.LogTypes.Normal
 		    }
-            return $envFile,$completeXml
+            return $completeXml
         }
 	    # Desc: Loads the enviroment definition file
 		Function LoadEnvironment(){
 		    Log -message "Loading deployment environment configuration" -type $SPSD.LogTypes.Information -Indent
 		    
             # load server,machine,user settings
-		    $variablesXml = GetVariablesFromFile $false
-            $envFile = $variablesXml[0]
-            $completeXml = $variablesXml[1]
+            $envFile = GetEnvironmentFile
+
+			if (!$envFile) {
+				Throw "Environment file not found"
+			}
+            $completeXml = GetVariablesFromFile $envFile
 		    # save result XML file if name is specified
-		    if($saveEnvXml){
+		    
+			if($saveEnvXml){
 		        $Script:resultXmlFile = $logDir + "\" + "$LogTime-$Command-"+([System.IO.Path]::GetFileNameWithoutExtension($envFile))+".xml"
 		        Set-Content -Value $completeXml -Path $resultXmlFile -Encoding UTF8
 	            $relResultFilePath = (GetRelFilePath -filePath $resultXmlFile)
@@ -525,15 +544,18 @@
 
             if (([System.IO.Path]::GetFileNameWithoutExtension($envFile)).ToLower() -ne "default") {
                 # load default as well, and apply variables that are not overridden in the specific config already loaded
-                $defaultVariablesXml = GetVariablesFromFile $true
-                [xml]$defaultCompleteXml = $defaultVariablesXml[1]
-                $defaultHashtable = BuildVarsCollection -node $defaultCompleteXml.SPSD.Environment.Variables;
-                foreach ($defaultVariable in $defaultHashtable.GetEnumerator()) {
-                    if ($Script:vars.ContainsKey($defaultVariable.Key) -eq $false) {
-                        # add default value
-                        $Script:vars.Add($defaultVariable.Key,$defaultVariable.Value)
-                    }
-                }
+				$defaultXml = GetEnvironmentFile $true
+				if ($defaultXml) {
+					$defaultVariablesXml = GetVariablesFromFile $defaultXml
+					[xml]$defaultCompleteXml = $defaultVariablesXml[1]
+					$defaultHashtable = BuildVarsCollection -node $defaultCompleteXml.SPSD.Environment.Variables;
+					foreach ($defaultVariable in $defaultHashtable.GetEnumerator()) {
+					    if ($Script:vars.ContainsKey($defaultVariable.Key) -eq $false) {
+					        # add default value
+					        $Script:vars.Add($defaultVariable.Key,$defaultVariable.Value)
+					    }
+					}
+				}
             }
             LoadSettings
 		}
