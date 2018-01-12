@@ -522,11 +522,7 @@
                     Log -Message "Ok" -Type $SPSD.LogTypes.Success -NoIndent
                     return $true
                 }
-                if($solution.Deployed){
-                    Log -Message "Ok" -Type $SPSD.LogTypes.Success -NoIndent
-                    return $true
-                }
-                Log -Message "Not deployed" -Type $SPSD.LogTypes.Error -NoIndent
+                Log -Message $solution.LastOperationResult -Type $SPSD.LogTypes.Error -NoIndent
                 return $false
 
             }
