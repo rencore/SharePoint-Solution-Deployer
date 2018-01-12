@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<SPSD Version="5.0.5.6441">
+<SPSD Version="5.0.6.6442">
   <!-- The configuration node contains general settings which may be reused in several environments -->
   <!-- Attributes -->
   <!-- Required: ID ="[Configuration node ID]" Used to find corresponding referenced node in external file -->

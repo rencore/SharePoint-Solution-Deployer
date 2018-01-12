@@ -1,6 +1,6 @@
 ###############################################################################
 # SharePoint Solution Deployer (SPSD)
-# Version          : 5.0.5.6441
+# Version          : 5.0.6.6442
 # Url              : http://spsd.codeplex.com
 # Creator          : Matthias Einig, RENCORE AB, http://twitter.com/mattein
 # License          : MS-PL
@@ -10,7 +10,7 @@
 	# Desc: Initializes constants and directories
 	Function InitializeScript(){
 	    $Script:SPSD = @{
-	                        Version = [System.Version]"5.0.5.6441"
+	                        Version = [System.Version]"5.0.6.6442"
                             DisplayName ="SharePoint Solution Deployer (SPSD)"
                             StatusWidth = 79
 	                        LogTypes = @{
