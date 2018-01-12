@@ -418,12 +418,12 @@
     #endregion
 	#region Deployment.Utilities
 	    #region WaitForJobToFinish
-	    # Desc: Waits for a deploymen/retraction job to be finished
+	    # Desc: Waits for a deployment/retraction job to be finished
         #       Works both for farm and sandboxed solutions
 		#  Ref: http://gallery.technet.microsoft.com/office/Add-Install-and-Enable-fe8c945c
 		Function WaitForJobToFinish([string]$solutionFileName, [string]$Site, [switch]$retract) { 
             if(!$site){
-                # Farm Soluion
+                # Farm Solution
                 $timeout = $DefaultTimeout * 5
                 while(!(Get-SPFarm -Verbose:$false) -or (Get-SPFarm -Verbose:$false).Status -ne "Online"){
                     if($timeout -le 0)
@@ -624,7 +624,7 @@
 	    # Desc: Checks if all required services for deployment are running
         Function CheckServicesRunning(){
  		    Log -Message "Checking services for deployment" -Type $SPSD.LogTypes.Information -Indent
-            # only testing current server as we need these only for the deloyment
+            # only testing current server as we need these only for the deployment
      	    EnsureServiceRunning -serviceName "SPAdminV4" -computer $env:COMPUTERNAME
 	        EnsureServiceRunning -serviceName "SPTimerV4" -computer $env:COMPUTERNAME
             LogOutdent
@@ -1365,12 +1365,12 @@
                         }
 
                         if($SPSD.InstalledVersion -eq 14 -and !$AllowCASPolicies -and $solution.ContainsCasPolicy){
-                            Log -Message "Solution contains CAS policy which is restricted in the deploymentconfiguration. Solution skipped" -Type $SPSD.LogTypes.Warning
+                            Log -Message "Solution contains CAS policy which is restricted in the deployment configuration. Solution skipped" -Type $SPSD.LogTypes.Warning
                             Remove-SPSolution -Identity $solutionName -Confirm:$false -ErrorAction:SilentlyContinue
                             return
                         }
                         if(!$AllowGACDeployment -and $solution.ContainsGlobalAssembly){
-                            Log -Message "Solution contains GAC assemlby which is restricted in the deployment configuration. Solution skipped" -Type $SPSD.LogTypes.Warning
+                            Log -Message "Solution contains GAC assembly which is restricted in the deployment configuration. Solution skipped" -Type $SPSD.LogTypes.Warning
                             Remove-SPSolution -Identity $solutionName -Confirm:$false -ErrorAction:SilentlyContinue
                             return
                         }
@@ -1716,7 +1716,7 @@
                                     # Updating
                                     $runCount = 0
                                     $solution = $solutions[0]
-                                    $oldSolutionName = $solution.Name # use realname of solution to update from now on
+                                    $oldSolutionName = $solution.Name # use real name of solution to update from now on
                                     While($runCount -le $DeploymentRetries){
                                         $runCount++
 
@@ -1782,7 +1782,7 @@
 	        # Desc: Retracts the solutions
 	        Function RetractSolutions(){
                $solutions = GetSolutions
-               # existance of files in /Solutions folder not neccesary on retraction
+               # existence of files in /Solutions folder not necessary on retraction
 
                CheckIfUrlsExists -solutions $solutions
                Log -Message "Retracting:" -Type $SPSD.LogTypes.Information -Indent

@@ -151,9 +151,9 @@
     }
     #endregion
 	#region ErrorSummary
-	# Desc: Writes an error summary into a separate logfile
+	# Desc: Writes an error summary into a separate log file
     Function ErrorSummary(){
-        Log -message "One or multiple errors occurred while excecuting SPSD" -type $SPSD.LogTypes.Information -NoIndent 
+        Log -message "One or multiple errors occurred while executing SPSD" -type $SPSD.LogTypes.Information -NoIndent 
         $Script:errNum = 0;
         $error | foreach { 
             Log -message ("Error "+$Script:errNum+": "+$_) -type $SPSD.LogTypes.Error -NoIndent 

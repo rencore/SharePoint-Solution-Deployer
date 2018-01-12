@@ -304,7 +304,7 @@
     #endregion
     #region Utilities.XML
 	    #region LoadXMLFile
-	    # Desc: Loads an xml file and checkes if the major and minor version of the xml definition equals the current script version 
+	    # Desc: Loads an xml file and checked if the major and minor version of the xml definition equals the current script version 
         Function LoadXMLFile([string]$filePath){
 	        [xml]$xml = Get-Content $filePath
 	        if(!$xml.SPSD)
@@ -509,7 +509,7 @@
 		    }
             return $completeXml
         }
-	    # Desc: Loads the enviroment definition file
+	    # Desc: Loads the environment definition file
 		Function LoadEnvironment(){
 		    Log -message "Loading deployment environment configuration" -type $SPSD.LogTypes.Information -Indent
 		    
@@ -576,7 +576,7 @@
         }
         #endregion
 	    #region Pause
-	    # Desc: Wait for user to press a key - normally used after an error has occured
+	    # Desc: Wait for user to press a key - normally used after an error has occurred
         #       If configured the function will only wait for a specific time  
 	    #  Ref: http://www.microsoft.com/technet/scriptcenter/resources/pstips/jan08/pstip0118.mspx 
 	    Function Pause{
@@ -739,7 +739,7 @@
         function Get-SPCentralAdministrationUrl(){
             return Get-SPWebApplication -includecentraladministration -Verbose:$false | where {$_.IsAdministrationWebApplication} | Select-Object -ExpandProperty Url
         }
-        #enregion
+        #endregion
     #endregion
 
 #endregion

@@ -5,7 +5,7 @@
 # Creator          : Matthias Einig, RENCORE AB, http://twitter.com/mattein
 # License          : MS-PL
 ###############################################################################
-#region Extenstions
+#region Extensions
 #endregion
 	    #region BuildParametersCollection
 	    # Desc: Builds the parameters collection out of the configured parameters which should be available extension
@@ -93,7 +93,7 @@ function Execute-Extensions([string]$event){
                 }
 
                 Log -message ("Executing  `"{1}:{0}`" with method `"{2}`"" -f $extension.ID, $extension.Type, $_.InnerText) -type $SPSD.LogTypes.Information -Indent
-                # disposing all previous objects, and starting new assigment for all objects of the extension
+                # disposing all previous objects, and starting new assignment for all objects of the extension
                 Stop-SPAssignment -Global -Verbose:$false
                 Start-SPAssignment -Global -Verbose:$false
                 try{
@@ -106,7 +106,7 @@ function Execute-Extensions([string]$event){
                 finally{
                     Stop-SPAssignment -Global -Verbose:$false
                 }
-                #retarting global assigment for the rest of SPSD
+                #restarting global assignment for the rest of SPSD
                 Start-SPAssignment -Global -Verbose:$false
                 Log -message ("("+$extensionEvendElapsedTime.Elapsed+ ")") -type $SPSD.LogTypes.Normal
                 LogOutdent
