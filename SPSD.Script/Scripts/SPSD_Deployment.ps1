@@ -435,9 +435,9 @@
                 }
  		        $timeout = $DefaultTimeout * 2
                 if(!$retract){ # Deployment / Update
-                    $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue
+                    $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue -Verbose:$false
 		            $jobName = "*$solutionFileName*" 
-		            $job = Get-SPTimerJob | ?{ $_.Title -like $jobName } 
+		            $job = Get-SPTimerJob -Verbose:$false | ?{ $_.Title -like $jobName } 
 		            if ($job -eq $null) 
 		            { 
 		                Throw "Timer job for '$solutionFileName' not found, maybe file name is too long and does not fit into the jobname. Please report to https://spsd.codeplex.com/workitem/16451 "
@@ -454,12 +454,12 @@
                         Start-Sleep -Seconds 2
 		                Log  . -NoNewLine -Type $SPSD.LogTypes.Normal -NoIndent
                         $timeout -= 2000
-		            } while ((Get-SPTimerJob $jobFullName) -ne $null) 
+		            } while ((Get-SPTimerJob $jobFullName -Verbose:$false) -ne $null) 
 
                 }
                 else{ # Retraction
             	    Log -Message "Waiting to finish retraction..." -Type $SPSD.LogTypes.Normal -NoNewline
-		            $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue
+		            $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue -Verbose:$false
 		            do{ 
                         if($timeout -le 0)
                         {
@@ -516,7 +516,7 @@
         Function FarmSolutionDeployedSuccessful([string]$solutionName ){
              Log -Message "Checking deployment..." -Type $SPSD.LogTypes.Normal -NoNewline
 
-            $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue
+            $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue -Verbose:$false
             if($solution){
                 if($solution.LastOperationResult -eq [Microsoft.SharePoint.Administration.SPSolutionOperationResult]::DeploymentSucceeded){
                     Log -Message "Ok" -Type $SPSD.LogTypes.Success -NoIndent
@@ -536,7 +536,7 @@
         Function FarmSolutionRetractedSuccessful([string]$solutionName ){
              Log -Message "Checking retraction..." -Type $SPSD.LogTypes.Normal -NoNewline
 
-            $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue
+            $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue -Verbose:$false
             if($solution){
                 if($solution.Deployed){
                     Log -Message "Failed" -Type $SPSD.LogTypes.Error -NoIndent
@@ -1012,7 +1012,7 @@
 		        }
 
                 # get farm solution
-		        $solution = Get-SPSolution -Identity $solutionName -ErrorAction SilentlyContinue
+		        $solution = Get-SPSolution -Identity $solutionName -ErrorAction SilentlyContinue -Verbose:$false
 		        $isGAC = $solution.ContainsGlobalAssembly
 		        $deployed = $solution.Deployed
 		        $webApps = $solution.DeployedWebApplications
@@ -1338,7 +1338,7 @@
 							return
 						}
 						
-                        $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue
+                        $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue -Verbose:$false
                         if ($solution -ne $null -and $overwrite)
                         {
                             Log -Message "Solution already exist and overwriting set to true" -Type $SPSD.LogTypes.warning -Indent
@@ -1354,7 +1354,7 @@
                         # Adding Solution
                         Log -Message "Adding solution..." -Type $SPSD.LogTypes.Normal -NoNewLine
                         Add-SPSolution -LiteralPath "$solDir\$solutionName" | Out-Null
-                        $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue
+                        $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue -Verbose:$false
                         if($solution){ Log -Message "Ok" -Type $SPSD.LogTypes.Success -NoIndent }
                         else{ Log -Message "Failed" -Type $SPSD.LogTypes.Error -NoIndent
                               Throw "Farm solution '$solutionName' could not be added"
@@ -1400,7 +1400,7 @@
                                         # fix provided by Elio Struyf
                                         Log -Message ("Deploying to '"+$_+"'...") -Type $SPSD.LogTypes.Normal -NoNewline
                                         if ($Urls.Count -gt 1) {
-                                            $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue
+                                            $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue -Verbose:$false
  		                                    $timeout = $DefaultTimeout * 2
 		                                    while ($solution.JobExists) 
                                             { 
@@ -1614,7 +1614,7 @@
 							return
 						}
 						
-                        $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue
+                        $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue -Verbose:$false
                         if ($solution -eq $null)
                         {
                             Log -Message "Solution does not exist, deploying instead" -Type $SPSD.LogTypes.warning -Indent
@@ -1630,14 +1630,14 @@
 
                             Log -Message "Updating..." -Type $SPSD.LogTypes.Normal -NoNewline
 							if ($SPSD.InstalledVersion -eq 14){
-                            	Update-SPSolution -LiteralPath "$solDir\$solutionName" -Identity $solutionName -CASPolicies:$AllowCASPolicies -GACDeployment:$AllowGACDeployment -force:$force -Confirm:$false
+                            	Update-SPSolution -LiteralPath "$solDir\$solutionName" -Identity $solutionName -CASPolicies:$AllowCASPolicies -GACDeployment:$AllowGACDeployment -force:$force -Confirm:$false -Verbose:$false
 							}
                             elseif ($SPSD.InstalledVersion -eq 15 -or $SPSD.InstalledVersion -eq 16){
 								if($solution.ContainsWebApplicationResource){
-									Update-SPSolution -LiteralPath "$solDir\$solutionName" -Identity $solutionName -FullTrustBinDeployment:$AllowFullTrustBinDeployment -GACDeployment:$AllowGACDeployment -force:$force -Confirm:$false
+									Update-SPSolution -LiteralPath "$solDir\$solutionName" -Identity $solutionName -FullTrustBinDeployment:$AllowFullTrustBinDeployment -GACDeployment:$AllowGACDeployment -force:$force -Confirm:$false -Verbose:$false
 								}
 								else{
-									Update-SPSolution -LiteralPath "$solDir\$solutionName" -Identity $solutionName -GACDeployment:$AllowGACDeployment -force:$force -Confirm:$false
+									Update-SPSolution -LiteralPath "$solDir\$solutionName" -Identity $solutionName -GACDeployment:$AllowGACDeployment -force:$force -Confirm:$false -Verbose:$false
 								}
 							}
                             Log -Message "Done" -Type $SPSD.LogTypes.Success -NoIndent
@@ -1805,7 +1805,7 @@
 							return
 						}
 						
-                        $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue
+                        $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue -Verbose:$false
                         if ($solution -eq $null -and $overwrite)
                         {
                             Log -Message "Solution is not installed, skipping retraction" -Type $SPSD.LogTypes.Normal
