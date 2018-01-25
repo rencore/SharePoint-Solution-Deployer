@@ -1,6 +1,6 @@
 ###############################################################################
 # SharePoint Solution Deployer (SPSD)
-# Version          : 5.0.5.6441
+# Version          : 5.0.6.6442
 # Url              : http://spsd.codeplex.com
 # Creator          : Matthias Einig, RENCORE AB, http://twitter.com/mattein
 # License          : MS-PL
@@ -71,7 +71,7 @@
                     }
                     else{
                         # get apppools from web applications
-                        $appPools = Get-spwebapplication -includecentraladministration | ForEach-Object { Get-Item "IIS:\Sites\$($_.DisplayName)"} | ForEach-Object {$_.applicationPool}
+                        $appPools = Get-spwebapplication -includecentraladministration -Verbose:$false | ForEach-Object { Get-Item "IIS:\Sites\$($_.DisplayName)"} | ForEach-Object {$_.applicationPool}
                         # get apppools from service applications
                         $appPools += Get-SPServiceApplicationPool | ForEach-Object {$_.Name}
                     }
@@ -228,7 +228,7 @@
         Function WarmUpAllSites(){
             Log -message "Warming up all sites in the farm" -type $SPSD.LogTypes.Information -Indent
             try{
-                Get-SPSite -Limit ALL | foreach-object { WarmUpUrl -url $_.url }
+                Get-SPSite -Limit ALL -Verbose:$false | foreach-object { WarmUpUrl -url $_.url }
             }
             finally{
                 LogOutdent
@@ -418,14 +418,14 @@
     #endregion
 	#region Deployment.Utilities
 	    #region WaitForJobToFinish
-	    # Desc: Waits for a deploymen/retraction job to be finished
+	    # Desc: Waits for a deployment/retraction job to be finished
         #       Works both for farm and sandboxed solutions
 		#  Ref: http://gallery.technet.microsoft.com/office/Add-Install-and-Enable-fe8c945c
 		Function WaitForJobToFinish([string]$solutionFileName, [string]$Site, [switch]$retract) { 
             if(!$site){
-                # Farm Soluion
+                # Farm Solution
                 $timeout = $DefaultTimeout * 5
-                while(!(Get-SPFarm) -or (Get-SPFarm).Status -ne "Online"){
+                while(!(Get-SPFarm -Verbose:$false) -or (Get-SPFarm -Verbose:$false).Status -ne "Online"){
                     if($timeout -le 0)
                     {
                         Throw "Farm not online after "+ ($DefaultTimeout * 5 / 60000) + " minutes" 
@@ -435,9 +435,9 @@
                 }
  		        $timeout = $DefaultTimeout * 2
                 if(!$retract){ # Deployment / Update
-                    $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue
+                    $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue -Verbose:$false
 		            $jobName = "*$solutionFileName*" 
-		            $job = Get-SPTimerJob | ?{ $_.Title -like $jobName } 
+		            $job = Get-SPTimerJob -Verbose:$false | ?{ $_.Title -like $jobName } 
 		            if ($job -eq $null) 
 		            { 
 		                Throw "Timer job for '$solutionFileName' not found, maybe file name is too long and does not fit into the jobname. Please report to https://spsd.codeplex.com/workitem/16451 "
@@ -454,12 +454,12 @@
                         Start-Sleep -Seconds 2
 		                Log  . -NoNewLine -Type $SPSD.LogTypes.Normal -NoIndent
                         $timeout -= 2000
-		            } while ((Get-SPTimerJob $jobFullName) -ne $null) 
+		            } while ((Get-SPTimerJob $jobFullName -Verbose:$false) -ne $null) 
 
                 }
                 else{ # Retraction
             	    Log -Message "Waiting to finish retraction..." -Type $SPSD.LogTypes.Normal -NoNewline
-		            $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue
+		            $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue -Verbose:$false
 		            do{ 
                         if($timeout -le 0)
                         {
@@ -516,17 +516,13 @@
         Function FarmSolutionDeployedSuccessful([string]$solutionName ){
              Log -Message "Checking deployment..." -Type $SPSD.LogTypes.Normal -NoNewline
 
-            $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue
+            $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue -Verbose:$false
             if($solution){
                 if($solution.LastOperationResult -eq [Microsoft.SharePoint.Administration.SPSolutionOperationResult]::DeploymentSucceeded){
                     Log -Message "Ok" -Type $SPSD.LogTypes.Success -NoIndent
                     return $true
                 }
-                if($solution.Deployed){
-                    Log -Message "Ok" -Type $SPSD.LogTypes.Success -NoIndent
-                    return $true
-                }
-                Log -Message "Not deployed" -Type $SPSD.LogTypes.Error -NoIndent
+                Log -Message $solution.LastOperationResult -Type $SPSD.LogTypes.Error -NoIndent
                 return $false
 
             }
@@ -540,7 +536,7 @@
         Function FarmSolutionRetractedSuccessful([string]$solutionName ){
              Log -Message "Checking retraction..." -Type $SPSD.LogTypes.Normal -NoNewline
 
-            $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue
+            $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue -Verbose:$false
             if($solution){
                 if($solution.Deployed){
                     Log -Message "Failed" -Type $SPSD.LogTypes.Error -NoIndent
@@ -624,7 +620,7 @@
 	    # Desc: Checks if all required services for deployment are running
         Function CheckServicesRunning(){
  		    Log -Message "Checking services for deployment" -Type $SPSD.LogTypes.Information -Indent
-            # only testing current server as we need these only for the deloyment
+            # only testing current server as we need these only for the deployment
      	    EnsureServiceRunning -serviceName "SPAdminV4" -computer $env:COMPUTERNAME
 	        EnsureServiceRunning -serviceName "SPTimerV4" -computer $env:COMPUTERNAME
             LogOutdent
@@ -717,7 +713,7 @@
 		Function CheckUserIsAdministrator(){
 		    Log -Message "Checking permissions" -Type $SPSD.LogTypes.Information -Indent
 		    Log -Message "Checking if user '$env:USERDOMAIN\$env:USERNAME' is farm administrator..." -Type $SPSD.LogTypes.Normal -NoNewline
-		    $farm = Get-SPFarm
+		    $farm = Get-SPFarm -Verbose:$false
 		    if($farm.CurrentUserIsAdministrator()){
 		        Log -Message "Ok" -Type $SPSD.LogTypes.Success -NoIndent
 		    }
@@ -764,7 +760,7 @@
 		        if($minimalVersion){
                     # load external SharePoint versions lookup data
                     [xml]$SPSDSharePoint = LoadXMLFile($scriptDir+"\SharePointVersions.xml")
-		            $installedVersion = (Get-SPFarm).BuildVersion
+		            $installedVersion = (Get-SPFarm -Verbose:$false).BuildVersion
                     # set script variable for deployment actions
 					$SPSD.InstalledVersion = $installedVersion.Major
 
@@ -806,7 +802,7 @@
                     Log -Message "Checking required SharePoint language packs" -Type $SPSD.LogTypes.Information -Indent  
 
                     # get installed languages from central admin rootweb
-                    $site = Get-SPSite (Get-SPWebApplication -IncludeCentralAdministration | where {$_.IsAdministrationWebApplication}).Url
+                    $site = Get-SPSite (Get-SPWebApplication -IncludeCentralAdministration  -Verbose:$false | where {$_.IsAdministrationWebApplication}).Url -Verbose:$false
                     $installedLanguages = $site.RootWeb.RegionalSettings.InstalledLanguages
 
                     $output = @()
@@ -870,7 +866,7 @@
 		        if($minimalLicense){
                     # load external SharePoint releases lookup data
                     [xml]$SPSDSharePoint = LoadXMLFile($scriptDir+"\SharePointVersions.xml")
-		            $installedProducts =  Get-SPFarm | select Products
+		            $installedProducts =  Get-SPFarm -Verbose:$false | select Products
 		            $installedLicences = $SPSDSharePoint.SPSD.SharePoint.Licenses.License  | Where-Object { $installedProducts.Products -icontains $_.Guid}
 		            if($installedLicences -and (($installedLicences | ForEach-Object {$_.Type}) | Where-Object { $_ -ieq $minimalLicense -or ($minimalLicense -ieq "Standard" -and $_ -ieq "Enterprise") }))
 		            {
@@ -983,7 +979,7 @@
         #       Validates if SPUserCodeV4 is running if it is a sandboxed solution
         #       Validates if Webapplication solutions are deployed to the specific url
 		Function IsSolutionDeployed([string]$solutionName, [string]$url, [switch]$sandboxed){
-            Start-SPAssignment -Global
+            Start-SPAssignment -Global -Verbose:$false
             try{
                 if(!$solutionName){
                     Log -Message "Solution name not specified in configuration." -Type $SPSD.LogTypes.Warning 
@@ -993,7 +989,7 @@
 		        # check sandboxed solution
 		        if($sandboxed){
                     Log -Message "Url: '$url'..." -Type $SPSD.LogTypes.Normal -NoNewline
-                    if(!$url -or (Get-SPSite $url -ErrorAction SilentlyContinue) -eq $null){
+                    if(!$url -or (Get-SPSite $url -ErrorAction SilentlyContinue -Verbose:$false) -eq $null){
                         Log -Message "Url invalid" -Type $SPSD.LogTypes.Error -NoIndent
                         return $false
                     }
@@ -1016,7 +1012,7 @@
 		        }
 
                 # get farm solution
-		        $solution = Get-SPSolution -Identity $solutionName -ErrorAction SilentlyContinue
+		        $solution = Get-SPSolution -Identity $solutionName -ErrorAction SilentlyContinue -Verbose:$false
 		        $isGAC = $solution.ContainsGlobalAssembly
 		        $deployed = $solution.Deployed
 		        $webApps = $solution.DeployedWebApplications
@@ -1024,7 +1020,7 @@
 		        # check solution deployed to web application
 		        if($url){
                     Log -Message "Url: '$url'..." -Type $SPSD.LogTypes.Normal -NoNewline
-                    if((Get-SPWebApplication $url -ErrorAction SilentlyContinue) -eq $null){
+                    if((Get-SPWebApplication $url -ErrorAction SilentlyContinue -Verbose:$false) -eq $null){
                         Log -Message "Url invalid" -Type $SPSD.LogTypes.Error -NoIndent
                         return $false
                     }
@@ -1062,7 +1058,7 @@
 		        return $deployed
             }
             finally{
-                Stop-SPAssignment -Global
+                Stop-SPAssignment -Global -Verbose:$false
             }
 		}
         #endregion
@@ -1209,14 +1205,14 @@
 	    # Desc: Checks if a SPSite object exists at a given url
         Function CheckIfSiteExists([string]$url){
             if(!$url){ return $true }
-            Start-SPAssignment -Global
+            Start-SPAssignment -Global -Verbose:$false
             Log -Message "Site: '$url'..." -Type $SPSD.LogTypes.Normal -NoNewline
-            if(!$url -or (Get-SPSite $url -ErrorAction SilentlyContinue) -eq $null){
+            if(!$url -or (Get-SPSite $url -ErrorAction SilentlyContinue -Verbose:$false) -eq $null){
                 Log -Message "No Found" -Type $SPSD.LogTypes.Error -NoIndent
                 return $false
             }
             Log -Message "Ok" -Type $SPSD.LogTypes.Success -NoIndent
-            Stop-SPAssignment -Global
+            Stop-SPAssignment -Global -Verbose:$false
             return $true
         }
         #endregion
@@ -1224,14 +1220,14 @@
 	    # Desc: Checks if a WebApplication object exists at a given url
         Function CheckIfWebAppExists([string]$url){
             if(!$url){ return $true }
-            Start-SPAssignment -Global
+            Start-SPAssignment -Global -Verbose:$false
             Log -Message "WebApplication: '$url'..." -Type $SPSD.LogTypes.Normal -NoNewline
-            if(!$url -or(Get-SPWebApplication $url -ErrorAction SilentlyContinue) -eq $null){
+            if(!$url -or(Get-SPWebApplication $url -ErrorAction SilentlyContinue -Verbose:$false) -eq $null){
                 Log -Message "No Found" -Type $SPSD.LogTypes.Error -NoIndent
                 return $false
             }
             Log -Message "Ok" -Type $SPSD.LogTypes.Success -NoIndent
-            Stop-SPAssignment -Global
+            Stop-SPAssignment -Global -Verbose:$false
             return $true
         }
         #endregion
@@ -1342,7 +1338,7 @@
 							return
 						}
 						
-                        $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue
+                        $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue -Verbose:$false
                         if ($solution -ne $null -and $overwrite)
                         {
                             Log -Message "Solution already exist and overwriting set to true" -Type $SPSD.LogTypes.warning -Indent
@@ -1358,19 +1354,19 @@
                         # Adding Solution
                         Log -Message "Adding solution..." -Type $SPSD.LogTypes.Normal -NoNewLine
                         Add-SPSolution -LiteralPath "$solDir\$solutionName" | Out-Null
-                        $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue
+                        $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue -Verbose:$false
                         if($solution){ Log -Message "Ok" -Type $SPSD.LogTypes.Success -NoIndent }
                         else{ Log -Message "Failed" -Type $SPSD.LogTypes.Error -NoIndent
                               Throw "Farm solution '$solutionName' could not be added"
                         }
 
                         if($SPSD.InstalledVersion -eq 14 -and !$AllowCASPolicies -and $solution.ContainsCasPolicy){
-                            Log -Message "Solution contains CAS policy which is restricted in the deploymentconfiguration. Solution skipped" -Type $SPSD.LogTypes.Warning
+                            Log -Message "Solution contains CAS policy which is restricted in the deployment configuration. Solution skipped" -Type $SPSD.LogTypes.Warning
                             Remove-SPSolution -Identity $solutionName -Confirm:$false -ErrorAction:SilentlyContinue
                             return
                         }
                         if(!$AllowGACDeployment -and $solution.ContainsGlobalAssembly){
-                            Log -Message "Solution contains GAC assemlby which is restricted in the deployment configuration. Solution skipped" -Type $SPSD.LogTypes.Warning
+                            Log -Message "Solution contains GAC assembly which is restricted in the deployment configuration. Solution skipped" -Type $SPSD.LogTypes.Warning
                             Remove-SPSolution -Identity $solutionName -Confirm:$false -ErrorAction:SilentlyContinue
                             return
                         }
@@ -1404,7 +1400,7 @@
                                         # fix provided by Elio Struyf
                                         Log -Message ("Deploying to '"+$_+"'...") -Type $SPSD.LogTypes.Normal -NoNewline
                                         if ($Urls.Count -gt 1) {
-                                            $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue
+                                            $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue -Verbose:$false
  		                                    $timeout = $DefaultTimeout * 2
 		                                    while ($solution.JobExists) 
                                             { 
@@ -1618,7 +1614,7 @@
 							return
 						}
 						
-                        $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue
+                        $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue -Verbose:$false
                         if ($solution -eq $null)
                         {
                             Log -Message "Solution does not exist, deploying instead" -Type $SPSD.LogTypes.warning -Indent
@@ -1634,14 +1630,14 @@
 
                             Log -Message "Updating..." -Type $SPSD.LogTypes.Normal -NoNewline
 							if ($SPSD.InstalledVersion -eq 14){
-                            	Update-SPSolution -LiteralPath "$solDir\$solutionName" -Identity $solutionName -CASPolicies:$AllowCASPolicies -GACDeployment:$AllowGACDeployment -force:$force -Confirm:$false
+                            	Update-SPSolution -LiteralPath "$solDir\$solutionName" -Identity $solutionName -CASPolicies:$AllowCASPolicies -GACDeployment:$AllowGACDeployment -force:$force -Confirm:$false -Verbose:$false
 							}
                             elseif ($SPSD.InstalledVersion -eq 15 -or $SPSD.InstalledVersion -eq 16){
 								if($solution.ContainsWebApplicationResource){
-									Update-SPSolution -LiteralPath "$solDir\$solutionName" -Identity $solutionName -FullTrustBinDeployment:$AllowFullTrustBinDeployment -GACDeployment:$AllowGACDeployment -force:$force -Confirm:$false
+									Update-SPSolution -LiteralPath "$solDir\$solutionName" -Identity $solutionName -FullTrustBinDeployment:$AllowFullTrustBinDeployment -GACDeployment:$AllowGACDeployment -force:$force -Confirm:$false -Verbose:$false
 								}
 								else{
-									Update-SPSolution -LiteralPath "$solDir\$solutionName" -Identity $solutionName -GACDeployment:$AllowGACDeployment -force:$force -Confirm:$false
+									Update-SPSolution -LiteralPath "$solDir\$solutionName" -Identity $solutionName -GACDeployment:$AllowGACDeployment -force:$force -Confirm:$false -Verbose:$false
 								}
 							}
                             Log -Message "Done" -Type $SPSD.LogTypes.Success -NoIndent
@@ -1716,7 +1712,7 @@
                                     # Updating
                                     $runCount = 0
                                     $solution = $solutions[0]
-                                    $oldSolutionName = $solution.Name # use realname of solution to update from now on
+                                    $oldSolutionName = $solution.Name # use real name of solution to update from now on
                                     While($runCount -le $DeploymentRetries){
                                         $runCount++
 
@@ -1782,7 +1778,7 @@
 	        # Desc: Retracts the solutions
 	        Function RetractSolutions(){
                $solutions = GetSolutions
-               # existance of files in /Solutions folder not neccesary on retraction
+               # existence of files in /Solutions folder not necessary on retraction
 
                CheckIfUrlsExists -solutions $solutions
                Log -Message "Retracting:" -Type $SPSD.LogTypes.Information -Indent
@@ -1809,7 +1805,7 @@
 							return
 						}
 						
-                        $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue
+                        $solution = Get-SPSolution -Identity $solutionName -ErrorAction:SilentlyContinue -Verbose:$false
                         if ($solution -eq $null -and $overwrite)
                         {
                             Log -Message "Solution is not installed, skipping retraction" -Type $SPSD.LogTypes.Normal
@@ -1840,7 +1836,7 @@
 
 
 
-                                     $caUrl = (Get-spwebapplication -includecentraladministration | where {$_.IsAdministrationWebApplication}).Url
+                                     $caUrl = (Get-spwebapplication -includecentraladministration -Verbose:$false | where {$_.IsAdministrationWebApplication}).Url
                                      if(($solution.DeployedWebApplications | ? { $_.Url -eq $caUrl}) -ne $null){
                                         # Solution also deployed to central admin 
                                         # remove there first as this is not done with the -AllWebApplications switch

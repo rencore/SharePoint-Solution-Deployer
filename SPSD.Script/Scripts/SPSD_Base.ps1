@@ -1,6 +1,6 @@
 ###############################################################################
 # SharePoint Solution Deployer (SPSD)
-# Version          : 5.0.5.6441
+# Version          : 5.0.6.6442
 # Url              : http://spsd.codeplex.com
 # Creator          : Matthias Einig, RENCORE AB, http://twitter.com/mattein
 # License          : MS-PL
@@ -10,7 +10,7 @@
 	# Desc: Initializes constants and directories
 	Function InitializeScript(){
 	    $Script:SPSD = @{
-	                        Version = [System.Version]"5.0.5.6441"
+	                        Version = [System.Version]"5.0.6.6442"
                             DisplayName ="SharePoint Solution Deployer (SPSD)"
                             StatusWidth = 79
 	                        LogTypes = @{
@@ -114,14 +114,16 @@
         Get-Content -Path "$scriptDir\AppLogo.txt"
     	Log    
 		
-		# Do not modify title, author, version, licenses or url! Thanks for keeping the credits, Matthias
+		$Script:StartDateTime = Get-Date
+
+		# Do not modify title, author, version, licenses or URL! Thanks for keeping the credits, Matthias
         Log -message ("*"*$SPSD.StatusWidth) -type $SPSD.LogTypes.Information
 	    Log -message (GetStatusLine -text ($SPSD.DisplayName + " by Matthias Einig (@mattein)") ) -type $SPSD.LogTypes.Information
 	    Log -message (GetStatusLine -text ("Version          : "+$($SPSD.Version))) -type $SPSD.LogTypes.Information
 	    Log -message (GetStatusLine -text ("License          : MS-PL")) -type $SPSD.LogTypes.Information
         Log -message (GetStatusLine -text ("Url              : http://spsd.codeplex.com")) -type $SPSD.LogTypes.Information
         Log -message (GetStatusLine -text "") -type $SPSD.LogTypes.Information
-        Log -message (GetStatusLine -text ("Started on       : "+$(get-date))) -type $SPSD.LogTypes.Information
+        Log -message (GetStatusLine -text ("Started on       : "+$($Script:StartDateTime))) -type $SPSD.LogTypes.Information
         Log -message (GetStatusLine -text ("Command          : "+$Command)) -type $SPSD.LogTypes.Information
         Log -message (GetStatusLine -text ("Type             : "+$Type)) -type $SPSD.LogTypes.Information
         Log -message (GetStatusLine -text ("Machine          : $env:COMPUTERNAME")) -type $SPSD.LogTypes.Information
@@ -149,9 +151,9 @@
     }
     #endregion
 	#region ErrorSummary
-	# Desc: Writes an error summary into a separate logfile
+	# Desc: Writes an error summary into a separate log file
     Function ErrorSummary(){
-        Log -message "One or multiple errors occurred while excecuting SPSD" -type $SPSD.LogTypes.Information -NoIndent 
+        Log -message "One or multiple errors occurred while executing SPSD" -type $SPSD.LogTypes.Information -NoIndent 
         $Script:errNum = 0;
         $error | foreach { 
             Log -message ("Error "+$Script:errNum+": "+$_) -type $SPSD.LogTypes.Error -NoIndent 
@@ -193,7 +195,7 @@
         Log -NoIndent -message (GetStatusLine -text ("Machine          : $env:COMPUTERNAME")) -type $SPSD.LogTypes.Information
         Log -NoIndent -message (GetStatusLine -text ("User             : $env:USERDOMAIN\$env:USERNAME")) -type $SPSD.LogTypes.Information
         Log -NoIndent -message (GetStatusLine -text "") -type $SPSD.LogTypes.Information
-        Log -NoIndent -message (GetStatusLine -text ("Started on       : "+$(get-date))) -type $SPSD.LogTypes.Information
+        Log -NoIndent -message (GetStatusLine -text ("Started on       : "+$($Script:StartDateTime))) -type $SPSD.LogTypes.Information
         Log -NoIndent -message (GetStatusLine -text ("Ended on         : "+$(get-date))) -type $SPSD.LogTypes.Information
         Log -NoIndent -message (GetStatusLine -text ("Elapsed Time     : "+$Script:ElapsedTime.Elapsed)) -type $SPSD.LogTypes.Information
         Log -NoIndent -message (GetStatusLine -text ("Log file         : "+(GetRelFilePath -filePath $LogFile))) -type $SPSD.LogTypes.Information

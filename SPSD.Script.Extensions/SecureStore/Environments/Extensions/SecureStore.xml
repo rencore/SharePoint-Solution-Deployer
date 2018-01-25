@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<SPSD Version="5.0.5.6441">
+<SPSD Version="5.0.6.6442">
   <Extensions>
     <Extension ID="SecureStore" Type="SecureStore">
       <Events>

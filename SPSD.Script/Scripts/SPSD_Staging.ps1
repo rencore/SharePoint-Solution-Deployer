@@ -1,6 +1,6 @@
 ###############################################################################
 # SharePoint Solution Deployer (SPSD)
-# Version          : 5.0.5.6441
+# Version          : 5.0.6.6442
 # Url              : http://spsd.codeplex.com
 # Creator          : Matthias Einig
 # License          : MS-PL
@@ -57,7 +57,7 @@ try
 	Invoke-Command -Session $s { param([string]$dropLocation, [string]$targetFolder) Copy-Item -Path $("Microsoft.PowerShell.Core\FileSystem::"+$dropLocation) -Destination $targetFolder -Force -Recurse } -ArgumentList $DropLocation,$TargetFolder 
 	
 
-	Write-Output "Excecuting SPSD deployment script from $TargetFolder"
+	Write-Output "Executing SPSD deployment script from $TargetFolder"
 	Invoke-Command -Session $s { param([string]$package) cd $package } -ArgumentList ($TargetFolder+"\Package")
 	$result = Invoke-Command -Session $s { param([string]$Command, [string]$Type, [string]$Verbosity) .\Scripts\SPSD_Main.ps1 @PSBoundParameters } -ArgumentList $Command, $Type, $Verbosity
 

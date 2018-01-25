@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<SPSD Version="5.0.5.6441">
+<SPSD Version="5.0.6.6442">
   <Extensions>
     <!-- This registers the CSOM extensions for SharePoint 2010 -->
     <Extension ID="SPSD.Extensions.Client.2010" Type="SPSD.Extensions.Client.2010">

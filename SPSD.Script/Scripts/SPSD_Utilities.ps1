@@ -1,6 +1,6 @@
 ###############################################################################
 # SharePoint Solution Deployer (SPSD)
-# Version          : 5.0.5.6441
+# Version          : 5.0.6.6442
 # Url              : http://spsd.codeplex.com
 # Creator          : Matthias Einig, RENCORE AB, http://twitter.com/mattein
 # License          : MS-PL
@@ -12,7 +12,7 @@
 	    Function LoadSharePointPS(){
 	    	Log -message "Loading SharePoint Powershell Snapin" -type $SPSD.LogTypes.Normal
             If ((Get-PsSnapin |?{$_.Name -eq "Microsoft.SharePoint.PowerShell"})-eq $null)
-		    { $PSSnapin = Add-PsSnapin Microsoft.SharePoint.PowerShell -ErrorAction SilentlyContinue -WarningAction SilentlyContinue | Out-Null }
+		    { $PSSnapin = Add-PsSnapin Microsoft.SharePoint.PowerShell -ErrorAction SilentlyContinue -WarningAction SilentlyContinue > $null }
 	    }
 	    #endregion
 	    #region LoadWebAdminPS
@@ -21,9 +21,9 @@
 	    Function LoadWebAdminPS(){
 	        Log -message "Loading WebAdministration Powershell Snapin" -type $SPSD.LogTypes.Normal
 	        if ([System.Version]$(Gwmi Win32_OperatingSystem).Version -ge [System.Version]"6.1")
-	        { Import-Module WebAdministration -ErrorAction SilentlyContinue -WarningAction SilentlyContinue | Out-Null}
+	        { Import-Module WebAdministration -ErrorAction SilentlyContinue -WarningAction SilentlyContinue -Verbose:$false > $null}
 	        else
-	        { Add-PSSnapin WebAdministration -ErrorAction SilentlyContinue -WarningAction SilentlyContinue | Out-Null}
+	        { Add-PSSnapin WebAdministration -ErrorAction SilentlyContinue -WarningAction SilentlyContinue -Verbose:$false > $null}
 	    }
         #endregion
         #region CustomEnter-PSSession
@@ -108,28 +108,51 @@
 	        #}
 	        $foregroundColor = "Gray"
 	        $backgroundColor = "Blue"
-	        switch ($type){
+	        
+			switch ($type){
 	            $SPSD.LogTypes.Success          { $foregroundColor = "Green" }
 	            $SPSD.LogTypes.Error            { $foregroundColor = "Red" }
 	            $SPSD.LogTypes.Warning          { $foregroundColor = "Yellow" }
 	            $SPSD.LogTypes.Information      { $foregroundColor = "White" }
 	            $SPSD.LogTypes.Normal           { $foregroundColor = "Gray" }
 	        }
+
 	        if($Outdent){ LogOutdent }
-	        if(!$NoIndent){
+	        
+			if(!$NoIndent){
 	            $indentChars = " " * (2 * $Script:LogIndentVal)
 	        }
 
-				$loggingHost = (Get-Host).Name
+			$message = $indentChars + $message
+
+			$loggingHost = (Get-Host).Name
             if(($loggingHost -eq "ConsoleHost" -or $loggingHost -eq 'Windows PowerShell ISE Host') -and -not $isAppHost){
 	            if($NoNewline)
 	            {
-	                Write-Host -foregroundColor $foregroundColor ($indentChars + $message) -NoNewline
+	                Write-Host -foregroundColor $foregroundColor $message -NoNewline
 	            }
 	            else{
-	                Write-Host -foregroundColor $foregroundColor ($indentChars + $message)
+	                Write-Host -foregroundColor $foregroundColor $message
 	            }
             }
+			if ($isAppHost) {
+				if ($NoNewline) {
+					if ($Script:logOutputBuffer) {
+						$Script:logOutputBuffer = $Script:logOutputBuffer + $message
+					} else {
+						$Script:logOutputBuffer = $message
+					}
+				} else {
+					if ($Script:logOutputBuffer) {
+						$message = $Script:logOutputBuffer + $message
+						$Script:logOutputBuffer = $null
+					}
+
+					Write-Verbose $message
+					Add-Content $script:LogFile $message
+				}
+			}
+
 	        if($Indent){ LogIndent }
 	    }
 	    #endregion
@@ -281,7 +304,7 @@
     #endregion
     #region Utilities.XML
 	    #region LoadXMLFile
-	    # Desc: Loads an xml file and checkes if the major and minor version of the xml definition equals the current script version 
+	    # Desc: Loads an xml file and checked if the major and minor version of the xml definition equals the current script version 
         Function LoadXMLFile([string]$filePath){
 	        [xml]$xml = Get-Content $filePath
 	        if(!$xml.SPSD)
@@ -396,50 +419,65 @@
 	    #region GetEnvironmentFile
 	    # Desc: Gets the environment file in the order
         #       1. File passed as parameter to the script
-        #       2. xml file in the environments folder named after the current user
-        #       3. xml file in the environments folder named after the current computer
-        #       4. default environments file "default.xml"
-		Function GetEnvironmentFile(){
-		    if($envFile -and (Test-Path $envFile)){
-	            $relFilePath = (GetRelFilePath -filePath $envFile)
-		        Log -message "Loading passed environment from '$relFilePath'" -type $SPSD.LogTypes.Normal
-		        return $envFile
-		    }
-		    # no envfile passed to script
-		    if(!(Test-Path $envDir)){
-		        Log -message "Environment directory not found at path $envDir" -type $SPSD.LogTypes.Error
-		        return $null   
-		    }
-		    $file = "$envDir\$env:USERNAME.xml"
-	        $relFilePath = (GetRelFilePath -filePath $file)
-		    if(Test-Path $file ){
-		        Log -message "Loading user specific environment for '$env:USERNAME' from '$relFilePath'" -type $SPSD.LogTypes.Normal
-		        return $file    
-		    }
-		    $file  = "$envDir\$env:COMPUTERNAME.xml"
-	        $relFilePath = (GetRelFilePath -filePath $file)
-		    if(Test-Path $file ){
-		        Log -message "Loading machine specific environment for '$env:COMPUTERNAME' from '$relFilePath'" -type $SPSD.LogTypes.Normal
-		        return $file    
-		    }
+		#       2. File passed as parameter to the script in the environments folder
+        #       3. xml file in the environments folder named after the current user
+        #       4. xml file in the environments folder named after the current computer
+        #       5. default environments file "default.xml"
+		Function GetEnvironmentFile([bool]$useDefault = $false){
+		    
+			if (!$useDefault) {
+				if($envFile -and (Test-Path $envFile)){
+					$relFilePath = (GetRelFilePath -filePath $envFile)
+					Log -message "Loading passed environment from '$relFilePath'" -type $SPSD.LogTypes.Normal
+					return $envFile
+				}
+				
+				if(!(Test-Path $envDir)){
+					Throw "Environment directory not found at path $envDir"
+					return $null   
+				}
+
+				$file = "$envDir\$envFile"
+				$relFilePath = (GetRelFilePath -filePath $file)
+				if($envFile -and (Test-Path $file) ){
+					Log -message "Loading passed environment from '$relFilePath'" -type $SPSD.LogTypes.Normal
+					return $file    
+				}
+
+				# no envfile passed to script
+				$file = "$envDir\$env:USERNAME.xml"
+				$relFilePath = (GetRelFilePath -filePath $file)
+				if(Test-Path $file ){
+					Log -message "Loading user specific environment for '$env:USERNAME' from '$relFilePath'" -type $SPSD.LogTypes.Normal
+					return $file    
+				}
+				$file  = "$envDir\$env:COMPUTERNAME.xml"
+				$relFilePath = (GetRelFilePath -filePath $file)
+				if(Test-Path $file ){
+					Log -message "Loading machine specific environment for '$env:COMPUTERNAME' from '$relFilePath'" -type $SPSD.LogTypes.Normal
+					return $file    
+				}
+			}
+
 		    $file  = "$envDir\Default.xml"
 	        $relFilePath = (GetRelFilePath -filePath $file)
 		    if(Test-Path $file ){
 		        Log -message "Loading default environment from '$relFilePath'" -type $SPSD.LogTypes.Normal
 		        return $file    
 		    }
-		    return $null
+		    
+			return $null
 		}
         #endregion
 	    #region LoadEnvironment
-		  Function GetVariablesFromFile([bool]$defaultXml) {
-            $envFile = GetEnvironmentFile $defaultXml
-	        $relEnvFilePath = (GetRelFilePath -filePath $envFile)
+		  Function GetVariablesFromFile($file) {
+	        $relEnvFilePath = (GetRelFilePath -filePath $file)
 
-			if(!$envFile){
+			if(!(Test-Path $file)){
 		        Throw "Environment definition file not found at '$relEnvFilePath'"
 		    }
-			[xml]$rawXML = LoadXMLFile $envFile
+
+			[xml]$rawXML = LoadXMLFile $file
 			$allExternalNodes = (Select-Xml -xml $rawXML -XPath "//*[@FilePath]")			
 		    $loopLimit = 10 # make sure not to have an endless loop
 		    # get all nodes from external files
@@ -469,18 +507,22 @@
 		    else {
 		        Log -message "No 'Variables' node found in '$relEnvFilePath'" -type $SPSD.LogTypes.Normal
 		    }
-            return $envFile,$completeXml
+            return $completeXml
         }
-	    # Desc: Loads the enviroment definition file
+	    # Desc: Loads the environment definition file
 		Function LoadEnvironment(){
 		    Log -message "Loading deployment environment configuration" -type $SPSD.LogTypes.Information -Indent
 		    
             # load server,machine,user settings
-		    $variablesXml = GetVariablesFromFile $false
-            $envFile = $variablesXml[0]
-            $completeXml = $variablesXml[1]
+            $envFile = GetEnvironmentFile
+
+			if (!$envFile) {
+				Throw "Environment file not found"
+			}
+            $completeXml = GetVariablesFromFile $envFile
 		    # save result XML file if name is specified
-		    if($saveEnvXml){
+		    
+			if($saveEnvXml){
 		        $Script:resultXmlFile = $logDir + "\" + "$LogTime-$Command-"+([System.IO.Path]::GetFileNameWithoutExtension($envFile))+".xml"
 		        Set-Content -Value $completeXml -Path $resultXmlFile -Encoding UTF8
 	            $relResultFilePath = (GetRelFilePath -filePath $resultXmlFile)
@@ -502,15 +544,18 @@
 
             if (([System.IO.Path]::GetFileNameWithoutExtension($envFile)).ToLower() -ne "default") {
                 # load default as well, and apply variables that are not overridden in the specific config already loaded
-                $defaultVariablesXml = GetVariablesFromFile $true
-                [xml]$defaultCompleteXml = $defaultVariablesXml[1]
-                $defaultHashtable = BuildVarsCollection -node $defaultCompleteXml.SPSD.Environment.Variables;
-                foreach ($defaultVariable in $defaultHashtable.GetEnumerator()) {
-                    if ($Script:vars.ContainsKey($defaultVariable.Key) -eq $false) {
-                        # add default value
-                        $Script:vars.Add($defaultVariable.Key,$defaultVariable.Value)
-                    }
-                }
+				$defaultXml = GetEnvironmentFile $true
+				if ($defaultXml) {
+					$defaultVariablesXml = GetVariablesFromFile $defaultXml
+					[xml]$defaultCompleteXml = $defaultVariablesXml[1]
+					$defaultHashtable = BuildVarsCollection -node $defaultCompleteXml.SPSD.Environment.Variables;
+					foreach ($defaultVariable in $defaultHashtable.GetEnumerator()) {
+					    if ($Script:vars.ContainsKey($defaultVariable.Key) -eq $false) {
+					        # add default value
+					        $Script:vars.Add($defaultVariable.Key,$defaultVariable.Value)
+					    }
+					}
+				}
             }
             LoadSettings
 		}
@@ -531,7 +576,7 @@
         }
         #endregion
 	    #region Pause
-	    # Desc: Wait for user to press a key - normally used after an error has occured
+	    # Desc: Wait for user to press a key - normally used after an error has occurred
         #       If configured the function will only wait for a specific time  
 	    #  Ref: http://www.microsoft.com/technet/scriptcenter/resources/pstips/jan08/pstip0118.mspx 
 	    Function Pause{
@@ -544,7 +589,7 @@
             }
             else {
                 while ($WaitAfterDeployment -gt 0){
-     		        Write-Host "Waiting for"$($WaitAfterDeployment/1000)"seconds before closing this window.    "
+     		        Write-Host "Waiting for $($WaitAfterDeployment/1000) seconds before closing this window."
                     $Host.UI.RawUI.CursorPosition = New-Object System.Management.Automation.Host.Coordinates 0,(($Host.UI.RawUI.CursorPosition).Y-1)
                     Start-Sleep -Milliseconds 1000
                     $WaitAfterDeployment = $WaitAfterDeployment - 1000;
@@ -677,7 +722,7 @@
 	    #region Get-SPTermStore
 	    # Desc: Retrieves the termstore by name from the central admin web application
         function Get-SPTermStore([string] $name) {
-            $site = Get-SPSite (Get-SPCentralAdministrationUrl)
+            $site = Get-SPSite (Get-SPCentralAdministrationUrl) -Verbose:$false
             try{
                 $session = new-object Microsoft.SharePoint.Taxonomy.TaxonomySession($site)
                 $termstore = $session.TermStores[$name]
@@ -692,9 +737,9 @@
 	    #region Get-SPCentralAdministrationUrl
 	    # Desc: Retrieves the Url of the central administration
         function Get-SPCentralAdministrationUrl(){
-            return Get-SPWebApplication -includecentraladministration | where {$_.IsAdministrationWebApplication} | Select-Object -ExpandProperty Url
+            return Get-SPWebApplication -includecentraladministration -Verbose:$false | where {$_.IsAdministrationWebApplication} | Select-Object -ExpandProperty Url
         }
-        #enregion
+        #endregion
     #endregion
 
 #endregion

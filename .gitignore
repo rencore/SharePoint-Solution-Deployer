@@ -174,3 +174,4 @@ UpgradeLog*.htm
 FakesAssemblies/
 /SPSD.jmconfig
 *.DotSettings
+/.vs
