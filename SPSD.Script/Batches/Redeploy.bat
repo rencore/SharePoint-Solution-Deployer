@@ -77,5 +77,5 @@ IF NOT "%ExecutionPolicy%"=="Bypass" IF NOT "%ExecutionPolicy%"=="Unrestricted" 
 	)
 GOTO LAUNCHSCRIPT
 :LAUNCHSCRIPT
-"%SYSTEMROOT%\system32\windowspowershell\v1.0\powershell.exe" -Command Start-Process "$PSHOME\powershell.exe" -Verb RunAs -ArgumentList '-Version %PSVersion%  "%~dp0\Scripts\SPSD_Main.ps1 -Command %command% -Type %type% -Verbosity %verbosity% %saveEnvXml% %envFile%"'
+"%SYSTEMROOT%\system32\windowspowershell\v1.0\powershell.exe" -Command Start-Process "$PSHOME\powershell.exe" -Verb RunAs -ArgumentList '-Version %PSVersion%  "%~dp0\Scripts\SPSD_Main.ps1 -Command %command% -Type %type% -Verbosity %verbosity% %envFile% %saveEnvXml%"'
 ENDLOCAL
