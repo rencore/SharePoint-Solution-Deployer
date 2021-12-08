@@ -65,7 +65,7 @@ IF EXIST "%ProgramW6432%\Common Files\microsoft shared\Web Server Extensions\16\
 	SET SharePointVersion=14
 	SET PSVersion=2
 ) ELSE (
-	ECHO "SharePoint 2010/2013 is not found in the default installation directory"
+	ECHO "SharePoint 2010/2013/2016/2019 is not found in the default installation directory"
 	EXIT
 )
 :: Get existing Powershell ExecutionPolicy
